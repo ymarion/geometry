@@ -1,0 +1,8 @@
+# Initializing some objects
+C c1 0 0 10
+C c2 0 0 20
+# Undoing
+UNDO
+# Redoing
+REDO
+

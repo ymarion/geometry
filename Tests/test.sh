@@ -66,6 +66,8 @@ echo $sRun
 # execute the command line
 eval $sRun
 returnCode=$?
+# Removes temp file
+rm temp.in
 
 resultGlobal=1
 
@@ -92,7 +94,9 @@ then
   grep -v '^#' "temp.out.comments" > "temp.out"
   rm temp.out.comments
 
-  diff -wB temp.out std.out >/dev/null
+#  diff -wB temp.out std.out >/dev/null
+# Do NOT ignore whitespaces and blank lines
+  diff temp.out std.out >/dev/null
   if [ $? -eq 0 ]
   then
     echo "                                       Stdout      : PASSED"
@@ -103,7 +107,6 @@ then
     resultGlobal=0
   fi
   # clean temporary out file
-  rm temp.in
   rm temp.out
 fi
 
@@ -111,7 +114,9 @@ fi
 resultErr="Not tested"
 if [ -r "stderr.out" ]
 then 
-  diff -wB temp.err stderr.out >/dev/null
+#  diff -wB temp.err stderr.out >/dev/null
+# Do NOT ignore whitespaces and blank lines
+  diff temp.err stderr.out >/dev/null
   if [ $? -eq 0 ]
   then
     echo "                                       Stderr      : PASSED"
@@ -136,6 +141,7 @@ then
     if [ -r $fileName ]
     then
 #      diff -wB $i $fileName
+# Do NOT ignore whitespaces and blank lines
       diff $i $fileName
       if [ $? -eq 0 ]
       then

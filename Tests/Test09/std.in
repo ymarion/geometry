@@ -1,0 +1,5 @@
+# Creating a circle
+C c1 0 0 10
+# And now, moving it
+MOVE c1 10 10
+

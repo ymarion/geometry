@@ -1,0 +1,6 @@
+# Initializing 2 objects
+C c1 0 0 10
+C c2 10 10 10
+# Undoing last operation
+UNDO
+

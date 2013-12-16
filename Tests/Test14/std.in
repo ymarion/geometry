@@ -1,0 +1,5 @@
+# Initializing an object
+C c1 0 0 10
+# Saving it
+SAVE testOut.txt
+
