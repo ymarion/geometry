@@ -1,2 +1,5 @@
+# Creating a circle
 C C1 0 0 5
+# Should show C1
+LIST
 

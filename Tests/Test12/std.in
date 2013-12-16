@@ -5,4 +5,6 @@ C c2 0 0 20
 UNDO
 # Redoing
 REDO
+# Should have c1 and c2
+LIST
 

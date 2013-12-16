@@ -1,5 +1,6 @@
 # Creating a circle
-C c1 0 0 10
+C c1 0 10 10
 # And now, moving it
 MOVE c1 10 10
-
+# Displaying the moved circle
+LIST

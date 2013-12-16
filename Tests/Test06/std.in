@@ -1,2 +1,5 @@
-PL PL1 0 0 0 15 15 15 15 0
 # creating a polyligne x1 y1 .. xn yn
+PL PL1 0 0 0 15 15 15 15 0
+# Should show pl1
+LIST
+

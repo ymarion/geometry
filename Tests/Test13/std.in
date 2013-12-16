@@ -7,4 +7,6 @@ R r2 0 0 20 20
 R r3 0 0 30 30
 # Clearing the model
 CLEAR
+# Should be empty
+LIST
 

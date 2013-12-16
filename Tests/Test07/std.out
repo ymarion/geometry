@@ -1,2 +1,6 @@
 OK
+C C1 0 0 10
+R R1 0 0 20 20
+L L1 0 0 20 20
+OA agg1 C1 R1 L1 PL1
 
