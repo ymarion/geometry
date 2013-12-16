@@ -1,0 +1,8 @@
+# Initializing the objects
+C c1 0 0 10
+R r1 0 0 20 20
+L l1 0 0 20 20
+PL pl1 0 0 0 15 15 15 15 0
+# And now, for something completely different, the enum !
+LIST
+

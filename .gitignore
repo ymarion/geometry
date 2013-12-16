@@ -11,3 +11,10 @@
 *.lai
 *.la
 *.a
+
+# Executables
+Tests/dummy
+
+# Swap Files
+*.swp
+*~
