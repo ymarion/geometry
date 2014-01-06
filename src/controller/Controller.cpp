@@ -25,13 +25,13 @@ Controller Controller::instance = Controller( );
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Controller::Méthode ( liste des paramètres )
-// Algorithme :
+// type Controller::Method ( parameter list )
+// Algorithm:
 //
 //{
-//} //----- Fin de Méthode
+//} //----- End of Method
 
-/* static */ Controller & Controller::GetInstance (  )
+/* static */ Controller & Controller::GetInstance ( )
 {
 	return Controller::instance;
 } //----- Fin de GetInstance

@@ -10,7 +10,7 @@
 #define ADDCOMMAND_H_
 
 //--------------------------------------------------- Interfaces utilisées
-#include "AbstractCommand.h"
+#include "../AbstractCommand.h"
 
 //------------------------------------------------------------- Constantes 
 

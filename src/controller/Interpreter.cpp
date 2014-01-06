@@ -31,6 +31,15 @@ Interpreter Interpreter::instance = Interpreter( );
 //{
 //} //----- Fin de Méthode
 
+/* static */ Interpreter & Interpreter::GetInstance ( )
+{
+	return Interpreter::instance;
+} //----- Fin de GetInstance
+
+void Interpreter::Interpret ( istream & rStream )
+{
+
+} // End of Interpret
 
 //------------------------------------------------- Surcharge d'opérateurs
 

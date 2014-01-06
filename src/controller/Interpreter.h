@@ -10,6 +10,8 @@
 #define INTERPRETER_H_
 
 //--------------------------------------------------- Interfaces utilisées
+#include <iostream>
+
 #include "Controller.h"
 
 //------------------------------------------------------------- Constantes 
@@ -34,13 +36,13 @@ public:
     // Contract :
     //
 
-    void Interpret (  );
+    void Interpret ( std::istream & rStream );
     // How to use:
     //
     // Contract :
     //
 
-	Interpreter & GetInstance ( );
+	static Interpreter & GetInstance ( );
 	// How to use:
 	// Returns the single instance of the interpreter.
 
