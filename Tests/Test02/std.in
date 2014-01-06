@@ -1,2 +1,4 @@
 LOAD test.txt
+# Checking if the file has been loaded
+LIST
 

@@ -1,0 +1,6 @@
+# Loading the file into the model
+LOAD loadFile.txt
+UNDO
+# Checking nothing has been loaded
+LIST
+

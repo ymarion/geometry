@@ -1,2 +1,8 @@
+# The loading OK message
 OK
+# The result of LIST should be the one of the file
+C C1 0 0 2
+L L1 0 0 20 20
+PL PL1 10 10 10 15 15 15 15 10
+R R1 0 0 20 20
 

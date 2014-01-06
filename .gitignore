@@ -18,3 +18,12 @@ Tests/dummy
 # Swap Files
 *.swp
 *~
+
+# Build files
+Debug/*
+
+# Eclipse files
+.*project
+
+# LibreOffice lock files
+.~lock*
