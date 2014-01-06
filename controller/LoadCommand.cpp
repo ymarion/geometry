@@ -29,11 +29,6 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-LoadCommand & LoadCommand::operator = ( const LoadCommand & unLoadCommand )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
 
 
 //-------------------------------------------- Constructeurs - destructeur

@@ -29,12 +29,6 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-Command & Command::operator = ( const Command & unCommand )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
 Command::Command ( const Command & unCommand )

@@ -29,12 +29,6 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-AddLine & AddLine::operator = ( const AddLine & unAddLine )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
 AddLine::AddLine ( const AddLine & unAddLine )

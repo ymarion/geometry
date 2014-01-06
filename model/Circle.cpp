@@ -29,12 +29,6 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-Circle & Circle::operator = ( const Circle & unCircle )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
 Circle::Circle ( const Circle & unCircle )

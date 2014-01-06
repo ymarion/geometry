@@ -29,12 +29,6 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-DeleteCommand & DeleteCommand::operator = ( const DeleteCommand & unDeleteCommand )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
 DeleteCommand::DeleteCommand ( const DeleteCommand & unDeleteCommand )

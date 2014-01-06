@@ -29,12 +29,6 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-ViewFigure & ViewFigure::operator = ( const ViewFigure & unViewFigure )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
 ViewFigure::ViewFigure ( const ViewFigure & unViewFigure )

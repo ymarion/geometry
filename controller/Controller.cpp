@@ -16,7 +16,11 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "Controller.h"
 
-//------------------------------------------------------------- Constantes
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
+Controller Controller::instance = Controller( );
+// Initialization of the singleton
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -27,25 +31,18 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
+/* static */ Controller & Controller::GetInstance (  )
+{
+	return Controller::instance;
+} //----- Fin de GetInstance
 
 //------------------------------------------------- Surcharge d'opérateurs
 
 
 //-------------------------------------------- Constructeurs - destructeur
 
-
-Controller::Controller ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de <Controller>" << endl;
-#endif
-} //----- Fin de Controller
-
-
 Controller::~Controller ( )
-// Algorithme :
+// Algorithm:
 //
 {
 #ifdef MAP
@@ -57,4 +54,14 @@ Controller::~Controller ( )
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
+
+Controller::Controller ( )
+// Algorithm:
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <Controller>" << endl;
+#endif
+} //----- Fin de Controller
+
 

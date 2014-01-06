@@ -29,12 +29,6 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-AddAggregate & AddAggregate::operator = ( const AddAggregate & unAddAggregate )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
 AddAggregate::AddAggregate ( const AddAggregate & unAddAggregate )

@@ -29,12 +29,6 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-AddPolyline & AddPolyline::operator = ( const AddPolyline & unAddPolyline )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
 AddPolyline::AddPolyline ( const AddPolyline & unAddPolyline )

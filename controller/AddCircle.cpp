@@ -29,12 +29,6 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-AddCircle & AddCircle::operator = ( const AddCircle & unAddCircle )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
 AddCircle::AddCircle ( const AddCircle & unAddCircle )

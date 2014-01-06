@@ -29,12 +29,6 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-ClearCommand & ClearCommand::operator = ( const ClearCommand & unClearCommand )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
 ClearCommand::ClearCommand ( const ClearCommand & unClearCommand )

@@ -29,12 +29,6 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-MoveCommand & MoveCommand::operator = ( const MoveCommand & unMoveCommand )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
 MoveCommand::MoveCommand ( const MoveCommand & unMoveCommand )

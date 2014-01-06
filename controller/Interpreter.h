@@ -10,6 +10,7 @@
 #define INTERPRETER_H_
 
 //--------------------------------------------------- Interfaces utilisées
+#include "Controller.h"
 
 //------------------------------------------------------------- Constantes 
 
@@ -27,33 +28,31 @@ class Interpreter
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
+    // type Method ( parameter list );
+    // How to use:
     //
-    // Contrat :
+    // Contract :
     //
+
+    void Interpret (  );
+    // How to use:
+    //
+    // Contract :
+    //
+
+	Interpreter & GetInstance ( );
+	// How to use:
+	// Returns the single instance of the interpreter.
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    Interpreter & operator = ( const Interpreter & unInterpreter );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+    Interpreter & operator = ( const Interpreter & rInterpreter );
+    // Not implemented: unauthorized.
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Interpreter ( const Interpreter & unInterpreter );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
-    Interpreter ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+    Interpreter ( const Interpreter & rInterpreter );
+    // Not implemented: unauthorized.
 
     virtual ~Interpreter ( );
     // Mode d'emploi :
@@ -66,8 +65,12 @@ public:
 protected:
 //----------------------------------------------------- Méthodes protégées
 
-//----------------------------------------------------- Attributs protégés
+    Interpreter ( );
+    // Because the interpreter is a singleton.
 
+//----------------------------------------------------- Attributs protégés
+    Controller & mrController;
+    static Interpreter instance;
 };
 
 //--------------------------- Autres définitions dépendantes de <Interpreter>

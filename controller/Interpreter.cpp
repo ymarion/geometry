@@ -16,7 +16,11 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "Interpreter.h"
 
-//------------------------------------------------------------- Constantes
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
+Interpreter Interpreter::instance = Interpreter( );
+// Initialization of the singleton
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -29,33 +33,8 @@ using namespace std;
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-Interpreter & Interpreter::operator = ( const Interpreter & unInterpreter )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
-Interpreter::Interpreter ( const Interpreter & unInterpreter )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Interpreter>" << endl;
-#endif
-} //----- Fin de Interpreter (constructeur de copie)
-
-
-Interpreter::Interpreter ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de <Interpreter>" << endl;
-#endif
-} //----- Fin de Interpreter
-
 
 Interpreter::~Interpreter ( )
 // Algorithme :
@@ -71,3 +50,10 @@ Interpreter::~Interpreter ( )
 
 //----------------------------------------------------- Méthodes protégées
 
+Interpreter::Interpreter ( )
+: mrController( Controller::GetInstance( ) )
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <Interpreter>" << endl;
+#endif
+} //----- Fin de Interpreter

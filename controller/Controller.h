@@ -27,22 +27,25 @@ class Controller
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
+    // type Method ( parameter list );
+    // How to use:
     //
-    // Contrat :
+    // Contract :
     //
 
+	static Controller & GetInstance ( );
+	// How to use:
+	// Returns the single instance of the controller.
 
 //------------------------------------------------- Surcharge d'opérateurs
+	Controller & operator = ( const Controller & rController );
+	// Not implemented: unauthorized.
 
 //-------------------------------------------- Constructeurs - destructeur
+	Controller ( const Controller & rController );
+	// Not implemented: unauthorized.
 
-    Controller ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+//-------------------------------------------- Constructeurs - destructeur
 
     virtual ~Controller ( );
     // Mode d'emploi :
@@ -55,7 +58,11 @@ public:
 protected:
 //----------------------------------------------------- Méthodes protégées
 
+    Controller ( );
+    // Because the controller is a singleton.
+
 //----------------------------------------------------- Attributs protégés
+    static Controller instance;
 
 };
 
