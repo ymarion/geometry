@@ -1,29 +1,33 @@
 # Compiled Object files
-*.slo
-*.lo
-*.o
+**/*.slo
+**/*.lo
+**/*.o
 
 # Compiled Dynamic libraries
-*.so
-*.dylib
+**/*.so
+**/*.dylib
 
 # Compiled Static libraries
-*.lai
-*.la
-*.a
+**/*.lai
+**/*.la
+**/*.a
 
 # Executables
 Tests/dummy
 
 # Swap Files
-*.swp
-*~
+**/*.swp
+**/*~
 
 # Build files
-Debug/*
+**/Debug/*
 
 # Eclipse files
-.*project
+**/.*project
+
+# XCode files
+**/*.xcodeproj/*
+**/*.1
 
 # LibreOffice lock files
-.~lock*
+**/.~lock*
