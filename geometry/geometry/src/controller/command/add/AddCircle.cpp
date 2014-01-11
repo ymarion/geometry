@@ -16,7 +16,9 @@ using namespace std;
 //------------------------------------------------------- Personal include
 #include "AddCircle.h"
 
-//-------------------------------------------------------------- Constants
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -28,38 +30,38 @@ using namespace std;
 //} //----- End of Method
 
 
+Command * AddCircle::GetNewObject( )
+{
+	return new AddCircle( );
+} //----- End of GetNewObject
+
+
+Command * AddCircle::GetNew( ) const
+{
+	return AddCircle::GetNewObject( );
+} //----- End of GetNew
+
+
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-AddCircle::AddCircle ( const AddCircle & anAddCircle )
-// Algorithm:
-//
-{
-#ifdef MAP
-    cout << "Calling copy constructor of <AddCircle>" << endl;
-#endif
-} //----- End of AddCircle (copy constructor)
-
-
 AddCircle::AddCircle ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling constructor of <AddCircle>" << endl;
+	cout << "Calling constructor of <AddCircle>" << endl;
 #endif
 } //----- End of AddCircle
-
 
 AddCircle::~AddCircle ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling destructor of <AddCircle>" << endl;
+	cout << "Calling destructor of <AddCircle>" << endl;
 #endif
 } //----- End of ~AddCircle
-
 
 //---------------------------------------------------------------- PRIVATE
 

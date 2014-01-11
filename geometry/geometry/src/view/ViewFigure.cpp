@@ -16,7 +16,9 @@ using namespace std;
 //------------------------------------------------------- Personal include
 #include "ViewFigure.h"
 
-//-------------------------------------------------------------- Constants
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -31,22 +33,12 @@ using namespace std;
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-ViewFigure::ViewFigure ( const ViewFigure & aViewFigure )
-// Algorithm:
-//
-{
-#ifdef MAP
-    cout << "Calling copy constructor of <ViewFigure>" << endl;
-#endif
-} //----- End of ViewFigure (copy constructor)
-
-
 ViewFigure::ViewFigure ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling constructor of <ViewFigure>" << endl;
+	cout << "Calling constructor of <ViewFigure>" << endl;
 #endif
 } //----- End of ViewFigure
 
@@ -56,7 +48,7 @@ ViewFigure::~ViewFigure ( )
 //
 {
 #ifdef MAP
-    cout << "Calling destructor of <ViewFigure>" << endl;
+	cout << "Calling destructor of <ViewFigure>" << endl;
 #endif
 } //----- End of ~ViewFigure
 

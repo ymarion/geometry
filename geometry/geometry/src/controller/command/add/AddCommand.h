@@ -10,59 +10,49 @@
 #define ADDCOMMAND_H_
 
 //-------------------------------------------------------- Interfaces used
-#include "../AbstractCommand.h"
+#include "../Command.h"
 
-//-------------------------------------------------------------- Constants 
+//------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------ Types 
-
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 // Class role of <AddCommand>
 //
 //
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
-class AddCommand : public AbstractCommand
+class AddCommand : public Command
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //--------------------------------------------------------- Public methods
-    // type Method ( parameter list );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// type Method ( parameter list );
+	// How to use:
+	//
+	// Contract:
+	//
 
 //--------------------------------------------------- Operator overloading
-    AddCommand & operator = ( const AddCommand & anAddCommand );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// AddCommand & operator = ( AddCommand const & anAddCommand );
+	// Default
 
 //---------------------------------------------- Constructors - destructor
-    AddCommand ( const AddCommand & anAddCommand );
-    // How to use (copy constructor):
-    //
-    // Contract:
-    //
+	// AddCommand ( AddCommand const & anAddCommand );
+	// Default
 
-    AddCommand ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	AddCommand ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-    virtual ~AddCommand ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	virtual ~AddCommand ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-//---------------------------------------------------------------- PRIVATE 
+//---------------------------------------------------------------- PRIVATE
 
 protected:
 //------------------------------------------------------ Protected methods

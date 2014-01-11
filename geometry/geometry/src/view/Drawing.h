@@ -11,15 +11,13 @@
 
 //-------------------------------------------------------- Interfaces used
 
-//-------------------------------------------------------------- Constants 
+//------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------ Types 
-
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 // Class role of <Drawing>
 //
 //
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
 class Drawing
 {
@@ -27,41 +25,34 @@ class Drawing
 
 public:
 //--------------------------------------------------------- Public methods
-    // type Method ( parameter list );
-    // How to use:
-    //
-    // Contract:
-    //
+	// type Method ( parameter list );
+	// How to use:
+	//
+	// Contract:
+	//
 
 
 //--------------------------------------------------- Operator overloading
-    Drawing & operator = ( const Drawing & aDrawing );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// Drawing & operator = ( Drawing const & aDrawing );
+	// Default
 
 //---------------------------------------------- Constructors - destructor
-    Drawing ( const Drawing & aDrawing );
-    // How to use (copy constructor):
-    //
-    // Contract:
-    //
+	// Drawing ( Drawing const & aDrawing );
+	// Default
 
-    Drawing ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	Drawing ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-    virtual ~Drawing ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	virtual ~Drawing ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-//---------------------------------------------------------------- PRIVATE 
+//---------------------------------------------------------------- PRIVATE
 
 protected:
 //------------------------------------------------------ Protected methods

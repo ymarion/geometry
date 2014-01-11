@@ -16,7 +16,9 @@ using namespace std;
 //------------------------------------------------------- Personal include
 #include "ClearCommand.h"
 
-//-------------------------------------------------------------- Constants
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -28,25 +30,27 @@ using namespace std;
 //} //----- End of Method
 
 
+Command * ClearCommand::GetNewObject( )
+{
+	return new ClearCommand( );
+} //----- End of GetNewObject
+
+
+Command * ClearCommand::GetNew( ) const
+{
+	return ClearCommand::GetNewObject( );
+} //----- End of GetNew
+
+
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-ClearCommand::ClearCommand ( const ClearCommand & aClearCommand )
-// Algorithm:
-//
-{
-#ifdef MAP
-    cout << "Calling copy constructor of <ClearCommand>" << endl;
-#endif
-} //----- End of ClearCommand (copy constructor)
-
-
 ClearCommand::ClearCommand ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling constructor of <ClearCommand>" << endl;
+	cout << "Calling constructor of <ClearCommand>" << endl;
 #endif
 } //----- End of ClearCommand
 
@@ -56,7 +60,7 @@ ClearCommand::~ClearCommand ( )
 //
 {
 #ifdef MAP
-    cout << "Calling destructor of <ClearCommand>" << endl;
+	cout << "Calling destructor of <ClearCommand>" << endl;
 #endif
 } //----- End of ~ClearCommand
 

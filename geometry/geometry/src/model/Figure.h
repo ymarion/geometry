@@ -11,15 +11,13 @@
 
 //-------------------------------------------------------- Interfaces used
 
-//-------------------------------------------------------------- Constants 
+//------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------ Types 
-
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 // Class role of <Figure>
 //
 //
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
 class Figure
 {
@@ -27,41 +25,33 @@ class Figure
 
 public:
 //--------------------------------------------------------- Public methods
-    // type Method ( parameter list );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// type Method ( parameter list );
+	// How to use:
+	//
+	// Contract:
+	//
 
 //--------------------------------------------------- Operator overloading
-    Figure & operator = ( const Figure & aFigure );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// Figure & operator = ( Figure const & aFigure );
+	// Default
 
 //---------------------------------------------- Constructors - destructor
-    Figure ( const Figure & aFigure );
-    // How to use (copy constructor):
-    //
-    // Contract:
-    //
+	// Figure ( Figure const & aFigure );
+	// Default
 
-    Figure ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	Figure ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-    virtual ~Figure ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	virtual ~Figure ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-//---------------------------------------------------------------- PRIVATE 
+//---------------------------------------------------------------- PRIVATE
 
 protected:
 //------------------------------------------------------ Protected methods

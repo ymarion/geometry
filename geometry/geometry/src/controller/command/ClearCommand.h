@@ -10,59 +10,61 @@
 #define CLEARCOMMAND_H_
 
 //-------------------------------------------------------- Interfaces used
-#include "AbstractCommand.h"
+#include "Command.h"
 
-//-------------------------------------------------------------- Constants 
+//------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------ Types 
-
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 // Class role of <ClearCommand>
 //
 //
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
-class ClearCommand : public AbstractCommand
+class ClearCommand : public Command
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //--------------------------------------------------------- Public methods
-    // type Method ( parameter list );
-    // How to use:
-    //
-    // Contract:
-    //
+	// type Method ( parameter list );
+	// How to use:
+	//
+	// Contract:
+	//
 
+	static Command * GetNewObject ( );
+	// How to use:
+	// Returns a pointer to a new object of this class.
+	// Contract:
+	// The memory MUST BE FREED BY THE CALLER, using delete.
+
+	virtual Command * GetNew ( ) const;
+	// How to use:
+	// Returns a pointer to a new object of this class.
+	// Contract:
+	// The memory MUST BE FREED BY THE CALLER, using delete.
 
 //--------------------------------------------------- Operator overloading
-    ClearCommand & operator = ( const ClearCommand & aClearCommand );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// ClearCommand & operator = ( ClearCommand const & aClearCommand );
+	// Default
 
 //---------------------------------------------- Constructors - destructor
-    ClearCommand ( const ClearCommand & aClearCommand );
-    // How to use (copy constructor):
-    //
-    // Contract:
-    //
+	// ClearCommand ( ClearCommand const & aClearCommand );
+	// Default
 
-    ClearCommand ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	ClearCommand ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-    virtual ~ClearCommand ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	virtual ~ClearCommand ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-//---------------------------------------------------------------- PRIVATE 
+//---------------------------------------------------------------- PRIVATE
 
 protected:
 //------------------------------------------------------ Protected methods

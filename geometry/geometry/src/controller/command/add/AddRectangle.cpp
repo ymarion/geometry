@@ -16,7 +16,9 @@ using namespace std;
 //------------------------------------------------------- Personal include
 #include "AddRectangle.h"
 
-//-------------------------------------------------------------- Constants
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -28,26 +30,28 @@ using namespace std;
 //} //----- End of Method
 
 
+Command * AddRectangle::GetNewObject( )
+{
+	return new AddRectangle( );
+} //----- End of GetNewObject
+
+
+Command * AddRectangle::GetNew( ) const
+{
+	return AddRectangle::GetNewObject( );
+} //----- End of GetNew
+
+
 //--------------------------------------------------- Operator overloading
 
 
 //---------------------------------------------- Constructors - destructor
-AddRectangle::AddRectangle ( const AddRectangle & anAddRectangle )
-// Algorithm:
-//
-{
-#ifdef MAP
-    cout << "Calling copy constructor of <AddRectangle>" << endl;
-#endif
-} //----- End of AddRectangle (copy constructor)
-
-
 AddRectangle::AddRectangle ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling constructor of <AddRectangle>" << endl;
+	cout << "Calling constructor of <AddRectangle>" << endl;
 #endif
 } //----- End of AddRectangle
 
@@ -57,7 +61,7 @@ AddRectangle::~AddRectangle ( )
 //
 {
 #ifdef MAP
-    cout << "Calling destructor of <AddRectangle>" << endl;
+	cout << "Calling destructor of <AddRectangle>" << endl;
 #endif
 } //----- End of ~AddRectangle
 

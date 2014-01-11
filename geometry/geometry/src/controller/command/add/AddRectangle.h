@@ -12,15 +12,13 @@
 //-------------------------------------------------------- Interfaces used
 #include "AddCommand.h"
 
-//-------------------------------------------------------------- Constants 
+//------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------ Types 
-
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 // Class role of <AddRectangle>
 //
 //
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
 class AddRectangle : public AddCommand
 {
@@ -28,41 +26,45 @@ class AddRectangle : public AddCommand
 
 public:
 //--------------------------------------------------------- Public methods
-    // type Method ( parameter list );
-    // How to use:
-    //
-    // Contract:
-    //
+	// type Method ( parameter list );
+	// How to use:
+	//
+	// Contract:
+	//
 
+	static Command * GetNewObject ( );
+	// How to use:
+	// Returns a pointer to a new object of this class.
+	// Contract:
+	// The memory MUST BE FREED BY THE CALLER, using delete.
 
+	virtual Command * GetNew ( ) const;
+	// How to use:
+	// Returns a pointer to a new object of this class.
+	// Contract:
+	// The memory MUST BE FREED BY THE CALLER, using delete.
+	
 //--------------------------------------------------- Operator overloading
-    AddRectangle & operator = ( const AddRectangle & anAddRectangle );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// AddRectangle & operator = ( AddRectangle const & anAddRectangle );
+	// Default
 
 //---------------------------------------------- Constructors - destructor
-    AddRectangle ( const AddRectangle & anAddRectangle );
-    // How to use (copy constructor):
-    //
-    // Contract:
-    //
+	// AddRectangle ( AddRectangle const & anAddRectangle );
+	// Default
 
-    AddRectangle ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	AddRectangle ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-    virtual ~AddRectangle ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	virtual ~AddRectangle ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-//---------------------------------------------------------------- PRIVATE 
+//---------------------------------------------------------------- PRIVATE
 
 protected:
 //------------------------------------------------------ Protected methods

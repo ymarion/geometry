@@ -11,15 +11,13 @@
 
 //-------------------------------------------------------- Interfaces used
 
-//-------------------------------------------------------------- Constants 
+//------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------ Types 
-
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 // Class role of <ViewFigure>
 //
 //
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
 class ViewFigure
 {
@@ -27,41 +25,38 @@ class ViewFigure
 
 public:
 //--------------------------------------------------------- Public methods
-    // type Method ( parameter list );
-    // How to use:
-    //
-    // Contract:
-    //
+	// type Method ( parameter list );
+	// How to use:
+	//
+	// Contract:
+	//
 
 
 //--------------------------------------------------- Operator overloading
-    ViewFigure & operator = ( const ViewFigure & unViewFigure );
-    // How to use:
-    //
-    // Contract:
-    //
+	// ViewFigure & operator = ( ViewFigure const & unViewFigure );
+	// Default
+	// How to use:
+	//
+	// Contract:
+	//
 
 
 //---------------------------------------------- Constructors - destructor
-    ViewFigure ( const ViewFigure & unViewFigure );
-    // How to use (copy constructor):
-    //
-    // Contract:
-    //
+	ViewFigure ( ViewFigure const & unViewFigure );
 
-    ViewFigure ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	ViewFigure ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-    virtual ~ViewFigure ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	virtual ~ViewFigure ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-//---------------------------------------------------------------- PRIVATE 
+//---------------------------------------------------------------- PRIVATE
 
 protected:
 //------------------------------------------------------ Protected methods

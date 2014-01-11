@@ -12,15 +12,13 @@
 //-------------------------------------------------------- Interfaces used
 #include "Figure.h"
 
-//-------------------------------------------------------------- Constants 
+//------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------ Types 
-
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 // Class role of <Circle>
 //
 //
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
 class Circle : public Figure
 {
@@ -28,41 +26,33 @@ class Circle : public Figure
 
 public:
 //--------------------------------------------------------- Public methods
-    // type Method ( parameter list );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// type Method ( parameter list );
+	// How to use:
+	//
+	// Contract:
+	//
 
 //--------------------------------------------------- Operator overloading
-    Circle & operator = ( const Circle & aCircle );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// Circle & operator = ( Circle const & aCircle );
+	// Default
 
 //---------------------------------------------- Constructors - destructor
-    Circle ( const Circle & aCircle );
-    // How to use (copy constructor):
-    //
-    // Contract:
-    //
+	// Circle ( Circle const & aCircle );
+	// Default
 
-    Circle ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	Circle ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-    virtual ~Circle ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	virtual ~Circle ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-//---------------------------------------------------------------- PRIVATE 
+//---------------------------------------------------------------- PRIVATE
 
 protected:
 //------------------------------------------------------ Protected methods

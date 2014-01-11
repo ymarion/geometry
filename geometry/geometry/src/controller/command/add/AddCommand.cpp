@@ -16,7 +16,9 @@ using namespace std;
 //------------------------------------------------------- Personal include
 #include "AddCommand.h"
 
-//-------------------------------------------------------------- Constants
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -31,22 +33,12 @@ using namespace std;
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-AddCommand::AddCommand ( const AddCommand & anAddCommand )
-// Algorithm:
-//
-{
-#ifdef MAP
-    cout << "Calling copy constructor of <AddCommand>" << endl;
-#endif
-} //----- End of AddCommand (copy constructor)
-
-
 AddCommand::AddCommand ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling constructor of <AddCommand>" << endl;
+	cout << "Calling constructor of <AddCommand>" << endl;
 #endif
 } //----- End of AddCommand
 
@@ -56,7 +48,7 @@ AddCommand::~AddCommand ( )
 //
 {
 #ifdef MAP
-    cout << "Calling destructor of <AddCommand>" << endl;
+	cout << "Calling destructor of <AddCommand>" << endl;
 #endif
 } //----- End of ~AddCommand
 

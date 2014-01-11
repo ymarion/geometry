@@ -1,11 +1,11 @@
 /*************************************************************************
-                           AbstractCommand  -  description
+                           SaveCommand  -  description
                              -------------------
     begin                : Jan 6 2014
     copyright            : (C) 2014 by Yannick Marion & Gustave A. Monod
 *************************************************************************/
 
-//---------- Realization of the class <AbstractCommand> (file AbstractCommand.cpp) -------
+//---------- Realization of the class <SaveCommand> (file SaveCommand.cpp) -------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -14,51 +14,56 @@
 using namespace std;
 
 //------------------------------------------------------- Personal include
-#include "AbstractCommand.h"
+#include "SaveCommand.h"
 
-//-------------------------------------------------------------- Constants
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
 
 //----------------------------------------------------------------- PUBLIC
 
 //--------------------------------------------------------- Public methods
-// type AbstractCommand::Method ( parameter list )
+// type SaveCommand::Method ( parameter list )
 // Algorithm:
 //
 //{
 //} //----- End of Method
 
 
-//--------------------------------------------------- Operator overloading
+Command * SaveCommand::GetNewObject( )
+{
+	return new SaveCommand( );
+} //----- End of GetNewObject
+
+
+Command * SaveCommand::GetNew( ) const
+{
+	return SaveCommand::GetNewObject( );
+} //----- End of GetNew
+
+
+//--------------------------------------------------- Operator overSaveing
+
 
 //---------------------------------------------- Constructors - destructor
-AbstractCommand::AbstractCommand ( const AbstractCommand & anAbstractCommand )
+SaveCommand::SaveCommand ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling copy constructor of <AbstractCommand>" << endl;
+	cout << "Calling constructor of <SaveCommand>" << endl;
 #endif
-} //----- End of AbstractCommand (copy constructor)
+} //----- End of SaveCommand
 
 
-AbstractCommand::AbstractCommand ( )
+SaveCommand::~SaveCommand ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling constructor of <AbstractCommand>" << endl;
+	cout << "Calling destructor of <SaveCommand>" << endl;
 #endif
-} //----- End of AbstractCommand
-
-
-AbstractCommand::~AbstractCommand ( )
-// Algorithm:
-//
-{
-#ifdef MAP
-    cout << "Calling destructor of <AbstractCommand>" << endl;
-#endif
-} //----- End of ~AbstractCommand
+} //----- End of ~SaveCommand
 
 
 //---------------------------------------------------------------- PRIVATE

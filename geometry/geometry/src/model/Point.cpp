@@ -16,7 +16,9 @@ using namespace std;
 //------------------------------------------------------- Personal include
 #include "Point.h"
 
-//-------------------------------------------------------------- Constants
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -31,22 +33,12 @@ using namespace std;
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-Point::Point ( const Point & aPoint )
-// Algorithm:
-//
-{
-#ifdef MAP
-    cout << "Calling copy constructor of <Point>" << endl;
-#endif
-} //----- End of Point (copy constructor)
-
-
 Point::Point ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling constructor of <Point>" << endl;
+	cout << "Calling constructor of <Point>" << endl;
 #endif
 } //----- End of Point
 
@@ -56,7 +48,7 @@ Point::~Point ( )
 //
 {
 #ifdef MAP
-    cout << "Calling destructor of <Point>" << endl;
+	cout << "Calling destructor of <Point>" << endl;
 #endif
 } //----- End of ~Point
 

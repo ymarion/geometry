@@ -16,7 +16,9 @@ using namespace std;
 //------------------------------------------------------- Personal include
 #include "Polyline.h"
 
-//-------------------------------------------------------------- Constants
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -31,22 +33,12 @@ using namespace std;
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-Polyline::Polyline ( const Polyline & aPolyline )
-// Algorithm:
-//
-{
-#ifdef MAP
-    cout << "Calling copy constructor of <Polyline>" << endl;
-#endif
-} //----- End of Polyline (copy constructor)
-
-
 Polyline::Polyline ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling constructor of <Polyline>" << endl;
+	cout << "Calling constructor of <Polyline>" << endl;
 #endif
 } //----- End of Polyline
 
@@ -56,7 +48,7 @@ Polyline::~Polyline ( )
 //
 {
 #ifdef MAP
-    cout << "Calling destructor of <Polyline>" << endl;
+	cout << "Calling destructor of <Polyline>" << endl;
 #endif
 } //----- End of ~Polyline
 

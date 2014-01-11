@@ -12,15 +12,13 @@
 //-------------------------------------------------------- Interfaces used
 #include "AddCommand.h"
 
-//-------------------------------------------------------------- Constants 
+//------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------ Types 
-
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 // Class role of <AddPolyline>
 //
 //
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
 class AddPolyline : public AddCommand
 {
@@ -28,41 +26,45 @@ class AddPolyline : public AddCommand
 
 public:
 //--------------------------------------------------------- Public methods
-    // type Method ( parameter list );
-    // How to use:
-    //
-    // Contract:
-    //
+	// type Method ( parameter list );
+	// How to use:
+	//
+	// Contract:
+	//
 
+	static Command * GetNewObject ( );
+	// How to use:
+	// Returns a pointer to a new object of this class.
+	// Contract:
+	// The memory MUST BE FREED BY THE CALLER, using delete.
 
+	virtual Command * GetNew ( ) const;
+	// How to use:
+	// Returns a pointer to a new object of this class.
+	// Contract:
+	// The memory MUST BE FREED BY THE CALLER, using delete.
+	
 //--------------------------------------------------- Operator overloading
-    AddPolyline & operator = ( const AddPolyline & anAddPolyline );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// AddPolyline & operator = ( AddPolyline const & anAddPolyline );
+	// Default
 
 //---------------------------------------------- Constructors - destructor
-    AddPolyline ( const AddPolyline & anAddPolyline );
-    // How to use (copy constructor):
-    //
-    // Contract:
-    //
+	// AddPolyline ( AddPolyline const & anAddPolyline );
+	// Default
 
-    AddPolyline ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	AddPolyline ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-    virtual ~AddPolyline ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	virtual ~AddPolyline ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-//---------------------------------------------------------------- PRIVATE 
+//---------------------------------------------------------------- PRIVATE
 
 protected:
 //------------------------------------------------------ Protected methods

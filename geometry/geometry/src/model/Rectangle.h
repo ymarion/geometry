@@ -12,15 +12,13 @@
 //-------------------------------------------------------- Interfaces used
 #include "Figure.h"
 
-//-------------------------------------------------------------- Constants 
+//------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------ Types 
-
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 // Class role of <Rectangle>
 //
 //
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
 class Rectangle : public Figure
 {
@@ -28,41 +26,33 @@ class Rectangle : public Figure
 
 public:
 //--------------------------------------------------------- Public methods
-    // type Method ( parameter list );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// type Method ( parameter list );
+	// How to use:
+	//
+	// Contract:
+	//
 
 //--------------------------------------------------- Operator overloading
-    Rectangle & operator = ( const Rectangle & aRectangle );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// Rectangle & operator = ( Rectangle const & aRectangle );
+	// Default
 
 //---------------------------------------------- Constructors - destructor
-    Rectangle ( const Rectangle & aRectangle );
-    // How to use (copy constructor):
-    //
-    // Contract:
-    //
+	// Rectangle ( Rectangle const & aRectangle );
+	// Default
 
-    Rectangle ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	Rectangle ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-    virtual ~Rectangle ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	virtual ~Rectangle ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-//---------------------------------------------------------------- PRIVATE 
+//---------------------------------------------------------------- PRIVATE
 
 protected:
 //------------------------------------------------------ Protected methods

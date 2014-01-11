@@ -16,7 +16,9 @@ using namespace std;
 //------------------------------------------------------- Personal include
 #include "AddPolyline.h"
 
-//-------------------------------------------------------------- Constants
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -28,25 +30,27 @@ using namespace std;
 //} //----- End of Method
 
 
+Command * AddPolyline::GetNewObject( )
+{
+	return new AddPolyline( );
+} //----- End of GetNewObject
+
+
+Command * AddPolyline::GetNew( ) const
+{
+	return AddPolyline::GetNewObject( );
+} //----- End of GetNew
+
+
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-AddPolyline::AddPolyline ( const AddPolyline & anAddPolyline )
-// Algorithm:
-//
-{
-#ifdef MAP
-    cout << "Calling copy constructor of <AddPolyline>" << endl;
-#endif
-} //----- End of AddPolyline (copy constructor)
-
-
 AddPolyline::AddPolyline ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling constructor of <AddPolyline>" << endl;
+	cout << "Calling constructor of <AddPolyline>" << endl;
 #endif
 } //----- End of AddPolyline
 
@@ -56,7 +60,7 @@ AddPolyline::~AddPolyline ( )
 //
 {
 #ifdef MAP
-    cout << "Calling destructor of <AddPolyline>" << endl;
+	cout << "Calling destructor of <AddPolyline>" << endl;
 #endif
 } //----- End of ~AddPolyline
 

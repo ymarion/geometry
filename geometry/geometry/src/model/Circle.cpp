@@ -16,7 +16,9 @@ using namespace std;
 //------------------------------------------------------- Personal include
 #include "Circle.h"
 
-//-------------------------------------------------------------- Constants
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -31,22 +33,12 @@ using namespace std;
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-Circle::Circle ( const Circle & aCircle )
-// Algorithm:
-//
-{
-#ifdef MAP
-    cout << "Calling copy constructor of <Circle>" << endl;
-#endif
-} //----- End of Circle (copy constructor)
-
-
 Circle::Circle ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling constructor of <Circle>" << endl;
+	cout << "Calling constructor of <Circle>" << endl;
 #endif
 } //----- End of Circle
 
@@ -56,7 +48,7 @@ Circle::~Circle ( )
 //
 {
 #ifdef MAP
-    cout << "Calling destructor of <Circle>" << endl;
+	cout << "Calling destructor of <Circle>" << endl;
 #endif
 } //----- End of ~Circle
 

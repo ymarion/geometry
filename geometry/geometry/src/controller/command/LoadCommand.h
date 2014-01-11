@@ -10,59 +10,61 @@
 #define LOADCOMMAND_H_
 
 //-------------------------------------------------------- Interfaces used
-#include "AbstractCommand.h"
+#include "Command.h"
 
-//-------------------------------------------------------------- Constants 
+//------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------ Types 
-
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 // Class role of <LoadCommand>
 //
 //
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
-class LoadCommand : public AbstractCommand
+class LoadCommand : public Command
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //--------------------------------------------------------- Public methods
-    // type Method ( parameter list );
-    // How to use:
-    //
-    // Contract:
-    //
+	// type Method ( parameter list );
+	// How to use:
+	//
+	// Contract:
+	//
 
+	static Command * GetNewObject ( );
+	// How to use:
+	// Returns a pointer to a new object of this class.
+	// Contract:
+	// The memory MUST BE FREED BY THE CALLER, using delete.
 
+	virtual Command * GetNew ( ) const;
+	// How to use:
+	// Returns a pointer to a new object of this class.
+	// Contract:
+	// The memory MUST BE FREED BY THE CALLER, using delete.
+	
 //--------------------------------------------------- Operator overloading
-    LoadCommand & operator = ( const LoadCommand & aLoadCommand );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// LoadCommand & operator = ( LoadCommand const & aLoadCommand );
+	// Default
 
 //---------------------------------------------- Constructors - destructor
-    LoadCommand ( const LoadCommand & aLoadCommand );
-    // How to use (copy constructor):
-    //
-    // Contract:
-    //
+	// LoadCommand ( LoadCommand const & aLoadCommand );
+	// Default
 
-    LoadCommand ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	LoadCommand ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-    virtual ~LoadCommand ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	virtual ~LoadCommand ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-//---------------------------------------------------------------- PRIVATE 
+//---------------------------------------------------------------- PRIVATE
 
 protected:
 //------------------------------------------------------ Protected methods

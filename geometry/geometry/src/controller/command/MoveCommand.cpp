@@ -16,7 +16,9 @@ using namespace std;
 //------------------------------------------------------- Personal include
 #include "MoveCommand.h"
 
-//-------------------------------------------------------------- Constants
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -28,25 +30,27 @@ using namespace std;
 //} //----- End of Method
 
 
+Command * MoveCommand::GetNewObject( )
+{
+	return new MoveCommand( );
+} //----- End of GetNewObject
+
+
+Command * MoveCommand::GetNew( ) const
+{
+	return MoveCommand::GetNewObject( );
+} //----- End of GetNew
+
+
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-MoveCommand::MoveCommand ( const MoveCommand & aMoveCommand )
-// Algorithm:
-//
-{
-#ifdef MAP
-    cout << "Calling copy constructor of <MoveCommand>" << endl;
-#endif
-} //----- End of MoveCommand (copy constructor)
-
-
 MoveCommand::MoveCommand ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling constructor of <MoveCommand>" << endl;
+	cout << "Calling constructor of <MoveCommand>" << endl;
 #endif
 } //----- End of MoveCommand
 
@@ -56,7 +60,7 @@ MoveCommand::~MoveCommand ( )
 //
 {
 #ifdef MAP
-    cout << "Calling destructor of <MoveCommand>" << endl;
+	cout << "Calling destructor of <MoveCommand>" << endl;
 #endif
 } //----- End of ~MoveCommand
 

@@ -12,15 +12,13 @@
 //-------------------------------------------------------- Interfaces used
 #include "Polyline.h"
 
-//-------------------------------------------------------------- Constants 
+//------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------ Types 
-
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 // Class role of <Line>
 //
 //
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
 class Line : public Polyline
 {
@@ -28,41 +26,33 @@ class Line : public Polyline
 
 public:
 //--------------------------------------------------------- Public methods
-    // type Method ( parameter list );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// type Method ( parameter list );
+	// How to use:
+	//
+	// Contract:
+	//
 
 //--------------------------------------------------- Operator overloading
-    Line & operator = ( const Line & aLine );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// Line & operator = ( Line const & aLine );
+	// Default
 
 //---------------------------------------------- Constructors - destructor
-    Line ( const Line & aLine );
-    // How to use (copy constructor):
-    //
-    // Contract:
-    //
+	// Line ( Line const & aLine );
+	// Default
 
-    Line ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	Line ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-    virtual ~Line ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	virtual ~Line ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-//---------------------------------------------------------------- PRIVATE 
+//---------------------------------------------------------------- PRIVATE
 
 protected:
 //------------------------------------------------------ Protected methods

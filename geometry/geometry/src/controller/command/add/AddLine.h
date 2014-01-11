@@ -12,15 +12,13 @@
 //-------------------------------------------------------- Interfaces used
 #include "AddCommand.h"
 
-//-------------------------------------------------------------- Constants 
+//------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------ Types 
-
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 // Class role of <AddLine>
 //
 //
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
 class AddLine : public AddCommand
 {
@@ -28,41 +26,45 @@ class AddLine : public AddCommand
 
 public:
 //--------------------------------------------------------- Public methods
-    // type Method ( parameter list );
-    // How to use:
-    //
-    // Contract:
-    //
+	// type Method ( parameter list );
+	// How to use:
+	//
+	// Contract:
+	//
 
+	static Command * GetNewObject ( );
+	// How to use:
+	// Returns a pointer to a new object of this class.
+	// Contract:
+	// The memory MUST BE FREED BY THE CALLER, using delete.
 
+	virtual Command * GetNew ( ) const;
+	// How to use:
+	// Returns a pointer to a new object of this class.
+	// Contract:
+	// The memory MUST BE FREED BY THE CALLER, using delete.
+	
 //--------------------------------------------------- Operator overloading
-    AddLine & operator = ( const AddLine & anAddLine );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// AddLine & operator = ( AddLine const & anAddLine );
+	// Default
 
 //---------------------------------------------- Constructors - destructor
-    AddLine ( const AddLine & anAddLine );
-    // How to use (copy constructor):
-    //
-    // Contract:
-    //
+	// AddLine ( AddLine const & anAddLine );
+	// Default
 
-    AddLine ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	AddLine ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-    virtual ~AddLine ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	virtual ~AddLine ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-//---------------------------------------------------------------- PRIVATE 
+//---------------------------------------------------------------- PRIVATE
 
 protected:
 //------------------------------------------------------ Protected methods

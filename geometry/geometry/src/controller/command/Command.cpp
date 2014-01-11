@@ -16,7 +16,9 @@ using namespace std;
 //------------------------------------------------------- Personal include
 #include "Command.h"
 
-//-------------------------------------------------------------- Constants
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -31,22 +33,13 @@ using namespace std;
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-Command::Command ( const Command & aCommand )
-// Algorithm:
-//
-{
-#ifdef MAP
-    cout << "Calling copy constructor of <Command>" << endl;
-#endif
-} //----- End of Command (copy constructor)
-
 
 Command::Command ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling constructor of <Command>" << endl;
+	cout << "Calling constructor of <Command>" << endl;
 #endif
 } //----- End of Command
 
@@ -56,7 +49,7 @@ Command::~Command ( )
 //
 {
 #ifdef MAP
-    cout << "Calling destructor of <Command>" << endl;
+	cout << "Calling destructor of <Command>" << endl;
 #endif
 } //----- End of ~Command
 

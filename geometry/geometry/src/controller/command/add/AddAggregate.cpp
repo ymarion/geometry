@@ -16,7 +16,9 @@ using namespace std;
 //------------------------------------------------------- Personal include
 #include "AddAggregate.h"
 
-//-------------------------------------------------------------- Constants
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -28,35 +30,36 @@ using namespace std;
 //} //----- End of Method
 
 
+Command * AddAggregate::GetNewObject( )
+{
+	return new AddAggregate( );
+} //----- End of GetNewObject
+
+
+Command * AddAggregate::GetNew( ) const
+{
+	return AddAggregate::GetNewObject( );
+} //----- End of GetNew
+
+
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-AddAggregate::AddAggregate ( const AddAggregate & anAddAggregate )
-// Algorithm:
-//
-{
-#ifdef MAP
-    cout << "Calling copy constructor of <AddAggregate>" << endl;
-#endif
-} //----- End of AddAggregate (copy constructor)
-
-
 AddAggregate::AddAggregate ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling constructor of <AddAggregate>" << endl;
+	cout << "Calling constructor of <AddAggregate>" << endl;
 #endif
 } //----- End of AddAggregate
-
 
 AddAggregate::~AddAggregate ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling destructor of <AddAggregate>" << endl;
+	cout << "Calling destructor of <AddAggregate>" << endl;
 #endif
 } //----- End of ~AddAggregate
 

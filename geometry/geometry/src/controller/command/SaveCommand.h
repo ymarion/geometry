@@ -1,25 +1,26 @@
 /*************************************************************************
-                           Point  -  description
+                           SaveCommand  -  description
                              -------------------
     begin                : Jan 6 2014
     copyright            : (C) 2014 by Yannick Marion & Gustave A. Monod
 *************************************************************************/
 
-//---------- Interface of the class <Point> (file Point.h) ------
-#if ! defined ( POINT_H_ )
-#define POINT_H_
+//---------- Interface of the class <SaveCommand> (file SaveCommand.h) ------
+#if ! defined ( SAVECOMMAND_H_ )
+#define SAVECOMMAND_H_
 
 //-------------------------------------------------------- Interfaces used
+#include "Command.h"
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Class role of <Point>
+// Class role of <SaveCommand>
 //
 //
 //------------------------------------------------------------------------
 
-class Point
+class SaveCommand : public Command
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -31,21 +32,33 @@ public:
 	// Contract:
 	//
 
-//--------------------------------------------------- Operator overloading
-	// Point & operator = ( Point const & aPoint );
+	static Command * GetNewObject ( );
+	// How to use:
+	// Returns a pointer to a new object of this class.
+	// Contract:
+	// The memory MUST BE FREED BY THE CALLER, using delete.
+
+	virtual Command * GetNew ( ) const;
+	// How to use:
+	// Returns a pointer to a new object of this class.
+	// Contract:
+	// The memory MUST BE FREED BY THE CALLER, using delete.
+	
+//--------------------------------------------------- Operator overSaveing
+	// SaveCommand & operator = ( SaveCommand const & aSaveCommand );
 	// Default
 
 //---------------------------------------------- Constructors - destructor
-	// Point ( Point const & aPoint );
+	// SaveCommand ( SaveCommand const & aSaveCommand );
 	// Default
 
-	Point ( );
+	SaveCommand ( );
 	// How to use:
 	//
 	// Contract:
 	//
 
-	virtual ~Point ( );
+	virtual ~SaveCommand ( );
 	// How to use:
 	//
 	// Contract:
@@ -60,7 +73,7 @@ protected:
 
 };
 
-//------------------------------ Other definitions depending on <Point>
+//------------------------------ Other definitions depending on <SaveCommand>
 
-#endif // POINT_H_
+#endif // SAVECOMMAND_H_
 

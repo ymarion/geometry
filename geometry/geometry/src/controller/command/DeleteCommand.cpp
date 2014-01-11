@@ -16,7 +16,9 @@ using namespace std;
 //------------------------------------------------------- Personal include
 #include "DeleteCommand.h"
 
-//-------------------------------------------------------------- Constants
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -28,25 +30,27 @@ using namespace std;
 //} //----- End of Method
 
 
+Command * DeleteCommand::GetNewObject( )
+{
+	return new DeleteCommand( );
+} //----- End of GetNewObject
+
+
+Command * DeleteCommand::GetNew( ) const
+{
+	return DeleteCommand::GetNewObject( );
+} //----- End of GetNew
+
+
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-DeleteCommand::DeleteCommand ( const DeleteCommand & aDeleteCommand )
-// Algorithm:
-//
-{
-#ifdef MAP
-    cout << "Calling copy constructor of <DeleteCommand>" << endl;
-#endif
-} //----- End of DeleteCommand (copy constructor)
-
-
 DeleteCommand::DeleteCommand ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling constructor of <DeleteCommand>" << endl;
+	cout << "Calling constructor of <DeleteCommand>" << endl;
 #endif
 } //----- End of DeleteCommand
 
@@ -56,7 +60,7 @@ DeleteCommand::~DeleteCommand ( )
 //
 {
 #ifdef MAP
-    cout << "Calling destructor of <DeleteCommand>" << endl;
+	cout << "Calling destructor of <DeleteCommand>" << endl;
 #endif
 } //----- End of ~DeleteCommand
 

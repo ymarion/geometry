@@ -12,15 +12,13 @@
 //-------------------------------------------------------- Interfaces used
 #include "AddCommand.h"
 
-//-------------------------------------------------------------- Constants 
+//------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------ Types 
-
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 // Class role of <AddCircle>
 //
 //
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
 class AddCircle : public AddCommand
 {
@@ -28,41 +26,45 @@ class AddCircle : public AddCommand
 
 public:
 //--------------------------------------------------------- Public methods
-    // type Method ( parameter list );
-    // How to use:
-    //
-    // Contract:
-    //
+	// type Method ( parameter list );
+	// How to use:
+	//
+	// Contract:
+	//
 
+	static Command * GetNewObject ( );
+	// How to use:
+	// Returns a pointer to a new object of this class.
+	// Contract:
+	// The memory MUST BE FREED BY THE CALLER, using delete.
 
+	virtual Command * GetNew ( ) const;
+	// How to use:
+	// Returns a pointer to a new object of this class.
+	// Contract:
+	// The memory MUST BE FREED BY THE CALLER, using delete.
+	
 //--------------------------------------------------- Operator overloading
-    AddCircle & operator = ( const AddCircle & anAddCircle );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// AddCircle & operator = ( AddCircle const & anAddCircle );
+	// Default
 
 //---------------------------------------------- Constructors - destructor
-    AddCircle ( const AddCircle & anAddCircle );
-    // How to use (copy constructor):
-    //
-    // Contract:
-    //
+	// AddCircle ( AddCircle const & anAddCircle );
+	// Default
 
-    AddCircle ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	AddCircle ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-    virtual ~AddCircle ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	virtual ~AddCircle ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-//---------------------------------------------------------------- PRIVATE 
+//---------------------------------------------------------------- PRIVATE
 
 protected:
 //------------------------------------------------------ Protected methods

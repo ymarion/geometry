@@ -16,7 +16,9 @@ using namespace std;
 //------------------------------------------------------- Personal include
 #include "Rectangle.h"
 
-//-------------------------------------------------------------- Constants
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -31,22 +33,12 @@ using namespace std;
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-Rectangle::Rectangle ( const Rectangle & aRectangle )
-// Algorithm:
-//
-{
-#ifdef MAP
-    cout << "Calling copy constructor of <Rectangle>" << endl;
-#endif
-} //----- End of Rectangle (copy constructor)
-
-
 Rectangle::Rectangle ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling constructor of <Rectangle>" << endl;
+	cout << "Calling constructor of <Rectangle>" << endl;
 #endif
 } //----- End of Rectangle
 
@@ -56,7 +48,7 @@ Rectangle::~Rectangle ( )
 //
 {
 #ifdef MAP
-    cout << "Calling destructor of <Rectangle>" << endl;
+	cout << "Calling destructor of <Rectangle>" << endl;
 #endif
 } //----- End of ~Rectangle
 

@@ -11,15 +11,13 @@
 
 //-------------------------------------------------------- Interfaces used
 
-//-------------------------------------------------------------- Constants 
+//------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------ Types 
-
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 // Class role of <Command>
 //
 //
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
 class Command
 {
@@ -27,41 +25,35 @@ class Command
 
 public:
 //--------------------------------------------------------- Public methods
-    // type Method ( parameter list );
-    // How to use:
-    //
-    // Contract:
-    //
+	// type Method ( parameter list );
+	// How to use:
+	//
+	// Contract:
+	//
 
+	virtual Command * GetNew ( ) const = 0;
 
 //--------------------------------------------------- Operator overloading
-    Command & operator = ( const Command & aCommand );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// Command & operator = ( Command const & aCommand );
+	// Default
 
 //---------------------------------------------- Constructors - destructor
-    Command ( const Command & aCommand );
-    // How to use (copy constructor):
-    //
-    // Contract:
-    //
+	// Command ( Command const & aCommand );
+	// Default
 
-    Command ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	Command ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-    virtual ~Command ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	virtual ~Command ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-//---------------------------------------------------------------- PRIVATE 
+//---------------------------------------------------------------- PRIVATE
 
 protected:
 //------------------------------------------------------ Protected methods

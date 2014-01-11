@@ -16,7 +16,9 @@ using namespace std;
 //------------------------------------------------------- Personal include
 #include "Figure.h"
 
-//-------------------------------------------------------------- Constants
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -31,22 +33,12 @@ using namespace std;
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-Figure::Figure ( const Figure & aFigure )
-// Algorithm:
-//
-{
-#ifdef MAP
-    cout << "Calling copy constructor of <Figure>" << endl;
-#endif
-} //----- End of Figure (copy constructor)
-
-
 Figure::Figure ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling constructor of <Figure>" << endl;
+	cout << "Calling constructor of <Figure>" << endl;
 #endif
 } //----- End of Figure
 
@@ -56,7 +48,7 @@ Figure::~Figure ( )
 //
 {
 #ifdef MAP
-    cout << "Calling destructor of <Figure>" << endl;
+	cout << "Calling destructor of <Figure>" << endl;
 #endif
 } //----- End of ~Figure
 

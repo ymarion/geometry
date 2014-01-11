@@ -16,7 +16,9 @@ using namespace std;
 //------------------------------------------------------- Personal include
 #include "Aggregate.h"
 
-//-------------------------------------------------------------- Constants
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -31,22 +33,12 @@ using namespace std;
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-Aggregate::Aggregate ( const Aggregate & anAggregate )
-// Algorithm:
-//
-{
-#ifdef MAP
-    cout << "Calling copy constructor of <Aggregate>" << endl;
-#endif
-} //----- End of Aggregate (copy constructor)
-
-
 Aggregate::Aggregate ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling constructor of <Aggregate>" << endl;
+	cout << "Calling constructor of <Aggregate>" << endl;
 #endif
 } //----- End of Aggregate
 
@@ -56,7 +48,7 @@ Aggregate::~Aggregate ( )
 //
 {
 #ifdef MAP
-    cout << "Calling destructor of <Aggregate>" << endl;
+	cout << "Calling destructor of <Aggregate>" << endl;
 #endif
 } //----- End of ~Aggregate
 

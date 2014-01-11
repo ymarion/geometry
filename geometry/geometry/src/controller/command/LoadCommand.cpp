@@ -16,7 +16,9 @@ using namespace std;
 //------------------------------------------------------- Personal include
 #include "LoadCommand.h"
 
-//-------------------------------------------------------------- Constants
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -28,26 +30,28 @@ using namespace std;
 //} //----- End of Method
 
 
+Command * LoadCommand::GetNewObject( )
+{
+	return new LoadCommand( );
+} //----- End of GetNewObject
+
+
+Command * LoadCommand::GetNew( ) const
+{
+	return LoadCommand::GetNewObject( );
+} //----- End of GetNew
+
+
 //--------------------------------------------------- Operator overloading
 
 
 //---------------------------------------------- Constructors - destructor
-LoadCommand::LoadCommand ( const LoadCommand & aLoadCommand )
-// Algorithm:
-//
-{
-#ifdef MAP
-    cout << "Calling copy constructor of <LoadCommand>" << endl;
-#endif
-} //----- End of LoadCommand (copy constructor)
-
-
 LoadCommand::LoadCommand ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling constructor of <LoadCommand>" << endl;
+	cout << "Calling constructor of <LoadCommand>" << endl;
 #endif
 } //----- End of LoadCommand
 
@@ -57,7 +61,7 @@ LoadCommand::~LoadCommand ( )
 //
 {
 #ifdef MAP
-    cout << "Calling destructor of <LoadCommand>" << endl;
+	cout << "Calling destructor of <LoadCommand>" << endl;
 #endif
 } //----- End of ~LoadCommand
 

@@ -16,7 +16,9 @@ using namespace std;
 //------------------------------------------------------- Personal include
 #include "Line.h"
 
-//-------------------------------------------------------------- Constants
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -31,22 +33,12 @@ using namespace std;
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-Line::Line ( const Line & aLine )
-// Algorithm:
-//
-{
-#ifdef MAP
-    cout << "Calling copy constructor of <Line>" << endl;
-#endif
-} //----- End of Line (copy constructor)
-
-
 Line::Line ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling constructor of <Line>" << endl;
+	cout << "Calling constructor of <Line>" << endl;
 #endif
 } //----- End of Line
 
@@ -56,7 +48,7 @@ Line::~Line ( )
 //
 {
 #ifdef MAP
-    cout << "Calling destructor of <Line>" << endl;
+	cout << "Calling destructor of <Line>" << endl;
 #endif
 } //----- End of ~Line
 

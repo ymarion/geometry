@@ -12,15 +12,13 @@
 //-------------------------------------------------------- Interfaces used
 #include "Figure.h"
 
-//-------------------------------------------------------------- Constants 
+//------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------ Types 
-
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 // Class role of <Polyline>
 //
 //
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
 class Polyline : public Figure
 {
@@ -28,41 +26,33 @@ class Polyline : public Figure
 
 public:
 //--------------------------------------------------------- Public methods
-    // type Method ( parameter list );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// type Method ( parameter list );
+	// How to use:
+	//
+	// Contract:
+	//
 
 //--------------------------------------------------- Operator overloading
-    Polyline & operator = ( const Polyline & aPolyline );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// Polyline & operator = ( Polyline const & aPolyline );
+	// Default
 
 //---------------------------------------------- Constructors - destructor
-    Polyline ( const Polyline & aPolyline );
-    // How to use (copy constructor):
-    //
-    // Contract:
-    //
+	// Polyline ( Polyline const & aPolyline );
+	// Default
 
-    Polyline ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	Polyline ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-    virtual ~Polyline ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	virtual ~Polyline ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-//---------------------------------------------------------------- PRIVATE 
+//---------------------------------------------------------------- PRIVATE
 
 protected:
 //------------------------------------------------------ Protected methods

@@ -11,15 +11,13 @@
 
 //-------------------------------------------------------- Interfaces used
 
-//-------------------------------------------------------------- Constants 
+//------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------ Types 
-
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 // Class role of <Controller>
 //
 //
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
 class Controller
 {
@@ -27,42 +25,42 @@ class Controller
 
 public:
 //--------------------------------------------------------- Public methods
-    // type Method ( parameter list );
-    // How to use:
-    //
-    // Contract :
-    //
+	// type Method ( parameter list );
+	// How to use:
+	//
+	// Contract:
+	//
 
 	static Controller & GetInstance ( );
 	// How to use:
 	// Returns the single instance of the controller.
 
 //--------------------------------------------------- Operator overloading
-	Controller & operator = ( const Controller & rController );
-	// Not implemented: unauthorized.
+	// Controller & operator = ( Controller const & rController );
+	// Default
 
 //---------------------------------------------- Constructors - destructor
-	Controller ( const Controller & rController );
-	// Not implemented: unauthorized.
+	// Controller ( Controller const & rController );
+	// Default
 
 //---------------------------------------------- Constructors - destructor
 
-    virtual ~Controller ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	virtual ~Controller ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-//---------------------------------------------------------------- PRIVATE 
+//---------------------------------------------------------------- PRIVATE
 
 protected:
 //------------------------------------------------------ Protected methods
 
-    Controller ( );
-    // Because the controller is a singleton.
+	Controller ( );
+	// Because the controller is a singleton.
 
 //--------------------------------------------------- Protected attributes
-    static Controller instance;
+	static Controller instance;
 
 };
 

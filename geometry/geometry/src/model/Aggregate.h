@@ -12,15 +12,13 @@
 //-------------------------------------------------------- Interfaces used
 #include "Figure.h"
 
-//-------------------------------------------------------------- Constants 
+//------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------ Types 
-
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 // Class role of <Aggregate>
 //
 //
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------------------
 
 class Aggregate : public Figure
 {
@@ -28,41 +26,33 @@ class Aggregate : public Figure
 
 public:
 //--------------------------------------------------------- Public methods
-    // type Method ( parameter list );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// type Method ( parameter list );
+	// How to use:
+	//
+	// Contract:
+	//
 
 //--------------------------------------------------- Operator overloading
-    Aggregate & operator = ( const Aggregate & anAggregate );
-    // How to use:
-    //
-    // Contract:
-    //
-
+	// Aggregate & operator = ( Aggregate const & anAggregate );
+	// Default
 
 //---------------------------------------------- Constructors - destructor
-    Aggregate ( const Aggregate & anAggregate );
-    // How to use (copy constructor):
-    //
-    // Contract:
-    //
+	// Aggregate ( Aggregate const & anAggregate );
+	// Default
 
-    Aggregate ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	Aggregate ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-    virtual ~Aggregate ( );
-    // How to use:
-    //
-    // Contract:
-    //
+	virtual ~Aggregate ( );
+	// How to use:
+	//
+	// Contract:
+	//
 
-//---------------------------------------------------------------- PRIVATE 
+//---------------------------------------------------------------- PRIVATE
 
 protected:
 //------------------------------------------------------ Protected methods

@@ -16,7 +16,9 @@ using namespace std;
 //------------------------------------------------------- Personal include
 #include "AddLine.h"
 
-//-------------------------------------------------------------- Constants
+//-------------------------------------------------------- Class constants
+
+//-------------------------------------------------------- Class variables
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -28,25 +30,27 @@ using namespace std;
 //} //----- End of Method
 
 
+Command * AddLine::GetNewObject( )
+{
+	return new AddLine( );
+} //----- End of GetNewObject
+
+
+Command * AddLine::GetNew( ) const
+{
+	return AddLine::GetNewObject( );
+} //----- End of GetNew
+
+
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-AddLine::AddLine ( const AddLine & anAddLine )
-// Algorithm:
-//
-{
-#ifdef MAP
-    cout << "Calling copy constructor of <AddLine>" << endl;
-#endif
-} //----- End of AddLine (copy constructor)
-
-
 AddLine::AddLine ( )
 // Algorithm:
 //
 {
 #ifdef MAP
-    cout << "Calling constructor of <AddLine>" << endl;
+	cout << "Calling constructor of <AddLine>" << endl;
 #endif
 } //----- End of AddLine
 
@@ -56,7 +60,7 @@ AddLine::~AddLine ( )
 //
 {
 #ifdef MAP
-    cout << "Calling destructor of <AddLine>" << endl;
+	cout << "Calling destructor of <AddLine>" << endl;
 #endif
 } //----- End of ~AddLine
 
