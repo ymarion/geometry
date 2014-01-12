@@ -31,10 +31,32 @@ Controller Controller::instance = Controller( );
 //{
 //} //----- End of Method
 
-/* static */ Controller & Controller::GetInstance ( )
+/* static */ Controller & Controller::GetInstance ( ostream & rStream )
 {
 	return Controller::instance;
 } //----- End of GetInstance
+
+
+streambuf * Controller::SetOutput( ostream & rStream )
+{
+	return mOutput.rdbuf( rStream.rdbuf( ) );
+} //----- End of SetOutput
+
+
+void Controller::SaveAndExecute( Command * const pCommand )
+{
+	cout << "# No save and execute possible yet." << endl;
+	cout << "# Deleting..." << endl;
+	delete pCommand;
+	cout << "# Deleted." << endl;
+} //----- End of Execute
+
+
+void Controller::PrintList ( )
+{
+	mOutput << "# No list available yet." << endl;
+} //----- End of PrintList
+
 
 //--------------------------------------------------- Operator overloading
 
@@ -45,7 +67,7 @@ Controller::~Controller ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling destructor of <Controller>" << endl;
 #endif
 } //----- End of ~Controller
@@ -55,11 +77,12 @@ Controller::~Controller ( )
 
 //------------------------------------------------------ Protected methods
 
-Controller::Controller ( )
+Controller::Controller ( ostream & rStream )
+: mOutput ( rStream )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling constructor of <Controller>" << endl;
 #endif
 } //----- End of Controller
