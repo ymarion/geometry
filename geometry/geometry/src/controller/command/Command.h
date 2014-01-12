@@ -70,6 +70,7 @@ protected:
 
 //--------------------------------------------------- Protected attributes
 	bool mValidState;
+	Drawing & rDrawing; // references to the drawing
 	string mCommandLine; // The command line the user has typed. First word determines nature of command
 };
 
