@@ -32,6 +32,14 @@ public:
 	// Contract:
 	//
 
+    virtual void execute( Drawing d );
+    // How to use:
+	//
+
+	virtual void undo ( Drawing d );
+    // How to use:
+	//
+
 	//--------------------------------------------------- Operator overMoveing
 	// AddAggregate & operator = ( AddAggregate const & aAddAggregate );
 	// Default
@@ -59,6 +67,7 @@ protected:
 
 	//--------------------------------------------------- Protected attributes
 	std::string mParameters;// TODO: parse string
+	list<Figure> mAggregateFig;// Filled during the string parsing
 };
 
 //------------------------------ Other definitions depending on <AddAggregate>

@@ -10,6 +10,7 @@
 #define COMMAND_H_
 
 //-------------------------------------------------------- Interfaces used
+#include <string>
 
 //------------------------------------------------------------------ Types
 
@@ -36,6 +37,14 @@ public:
 	// Returns the state of the command.
 	// (can be invalid mostly because of bad parameters)
 
+	virtual void execute( Drawing d );
+    // How to use:
+	//
+
+	virtual void undo ( Drawing d );
+    // How to use:
+	//
+
 //--------------------------------------------------- Operator overloading
 	// Command & operator = ( Command const & aCommand );
 	// Default
@@ -61,6 +70,7 @@ protected:
 
 //--------------------------------------------------- Protected attributes
 	bool mValidState;
+	string mCommandLine; // The command line the user has typed. First word determines nature of command
 };
 
 //------------------------------ Other definitions depending on <Command>

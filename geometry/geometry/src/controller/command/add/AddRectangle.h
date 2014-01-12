@@ -32,6 +32,14 @@ public:
 	// Contract:
 	//
 
+    virtual void execute( Drawing d );
+    // How to use:
+	//
+
+	virtual void undo ( Drawing d );
+    // How to use:
+	//
+
 //--------------------------------------------------- Operator overloading
 	// AddRectangle & operator = ( AddRectangle const & anAddRectangle );
 	// Default
@@ -59,6 +67,10 @@ protected:
 
 //--------------------------------------------------- Protected attributes
 	std::string mParameters;// TODO: parse string
+	int mPosx1;
+	int mPosy1;
+	int mPosx2;
+	int mPosy2;
 };
 
 //------------------------------ Other definitions depending on <AddRectangle>

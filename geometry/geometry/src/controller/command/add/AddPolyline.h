@@ -32,6 +32,14 @@ public:
 	// Contract:
 	//
 
+    virtual void execute( Drawing d );
+    // How to use:
+	//
+
+	virtual void undo ( Drawing d );
+    // How to use:
+	//
+
 	//--------------------------------------------------- Operator overMoveing
 	// AddPolyline & operator = ( AddPolyline const & aAddPolyline );
 	// Default
@@ -59,6 +67,8 @@ protected:
 
 	//--------------------------------------------------- Protected attributes
 	std::string mParameters;// TODO: parse string
+	list<int> mPosxList;
+	list<int> mPosyList;
 };
 
 //------------------------------ Other definitions depending on <AddPolyline>

@@ -32,6 +32,14 @@ public:
 	// Contract:
 	//
 
+    virtual void execute( Drawing d );
+    // How to use:
+	//
+
+	virtual void undo ( Drawing d );
+    // How to use:
+	//
+
 //--------------------------------------------------- Operator overloading
 	// AddCommand & operator = ( AddCommand const & anAddCommand );
 	// Default
@@ -56,7 +64,7 @@ protected:
 //------------------------------------------------------ Protected methods
 
 //--------------------------------------------------- Protected attributes
-
+string mFigureName;
 };
 
 //------------------------------ Other definitions depending on <AddCommand>

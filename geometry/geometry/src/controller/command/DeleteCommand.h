@@ -32,6 +32,14 @@ public:
 	// Contract:
 	//
 
+    virtual void execute( Drawing d );
+    // How to use:
+	//
+
+	virtual void undo ( Drawing d );
+    // How to use:
+	//
+
 //--------------------------------------------------- Operator overloading
 	// DeleteCommand & operator = ( DeleteCommand const & aDeleteCommand );
 	// Default

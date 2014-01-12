@@ -32,6 +32,14 @@ public:
 	// Contract:
 	//
 
+    virtual void execute( Drawing d );
+    // How to use:
+	//
+
+	virtual void undo ( Drawing d );
+    // How to use:
+	//
+
 	//--------------------------------------------------- Operator overMoveing
 	// AddCircle & operator = ( AddCircle const & aAddCircle );
 	// Default
@@ -59,6 +67,9 @@ protected:
 
 	//--------------------------------------------------- Protected attributes
 	std::string mParameters;// TODO: parse string
+	int mPosx;
+	int mPosy;
+	int mRadius;
 };
 
 //------------------------------ Other definitions depending on <AddCircle>
