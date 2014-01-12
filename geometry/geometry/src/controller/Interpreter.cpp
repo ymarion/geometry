@@ -27,7 +27,7 @@ string const Interpreter::STOP = "EXIT";
 string const Interpreter::LIST = "LIST";
 
 MapStringToCommand const Interpreter::COMMAND_TABLE =
-		CreateMap<string const, FactoryMethod>( )
+			CreateMap<string const, FactoryMethod>
 				( "OA", &CommandFactory::NewAddAggregate )
 				( "C" , &CommandFactory::NewAddCircle    )
 				( "L" , &CommandFactory::NewAddLine      )

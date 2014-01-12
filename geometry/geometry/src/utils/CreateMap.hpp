@@ -36,12 +36,6 @@ public:
 	//
 
 
-	CreateMap( )
-	{
-
-	}
-
-
 	// Important: Value val is COPIED HERE (allowing method pointers)!!!!
 	CreateMap( Key const & rKey, Value const val )
     {
