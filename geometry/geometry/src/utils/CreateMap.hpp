@@ -19,6 +19,7 @@
 // Class role of <CreateMap>
 //
 // Allows easy creation and initialization of a template map.
+// Important: COPIES the values in the map (no passage by reference).
 //------------------------------------------------------------------------
 
 template <typename Key, typename Value>
@@ -35,15 +36,23 @@ public:
 	//
 
 
-	CreateMap( Key const & rKey, Value const & rVal )
+	CreateMap( )
+	{
+
+	}
+
+
+	// Important: Value val is COPIED HERE (allowing method pointers)!!!!
+	CreateMap( Key const & rKey, Value const val )
     {
-        mMap[rKey] = rVal;
+        mMap[rKey] = val;
     } //----- End of CreateMap
 
 
-	CreateMap<Key, Value> & operator()( Key const & rKey, Value const & rVal )
+	// Important: Value val is COPIED HERE (allowing method pointers)!!!!
+	CreateMap<Key, Value> & operator()( Key const & rKey, Value const val )
     {
-        mMap[rKey] = rVal;
+        mMap[rKey] = val;
         return *this;
     } //----- End of CreateMap<Key, Value>
 

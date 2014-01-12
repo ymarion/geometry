@@ -15,8 +15,22 @@ using namespace std;
 
 //------------------------------------------------------- Personal include
 #include "Interpreter.h"
+#include "Command.h"
+
 
 //-------------------------------------------------------- Class constants
+char const Interpreter::DELIMITER = ' ';
+string const Interpreter::LIST = "LIST";
+		CreateMap<string const, FactoryMethod>( )
+				( "OA", &CommandFactory::NewAddAggregate )
+				( "L" , &CommandFactory::NewAddLine      )
+				( "PL", &CommandFactory::NewAddPolyline  )
+
+				( "MOVE"  , &CommandFactory::NewMoveCommand   )
+				( "DELETE", &CommandFactory::NewDeleteCommand )
+
+				( "CLEAR",  &CommandFactory::NewClearCommand )
+				( "LOAD" ,  &CommandFactory::NewLoadCommand  );
 
 //-------------------------------------------------------- Class variables
 Interpreter Interpreter::instance = Interpreter( );
@@ -49,8 +63,8 @@ Interpreter::~Interpreter ( )
 // Algorithm:
 //
 {
-#ifdef MAP
-    cout << "Calling destructor of <Interpreter>" << endl;
+#ifdef DEBUG
+	cout << "Calling destructor of <Interpreter>" << endl;
 #endif
 } //----- End of ~Interpreter
 
@@ -61,8 +75,10 @@ Interpreter::~Interpreter ( )
 
 Interpreter::Interpreter ( )
 : mrController( Controller::GetInstance( ) )
+: mrController( Controller::GetInstance( ) ), mFactory( )
 {
-#ifdef MAP
-    cout << "Calling constructor of <Interpreter>" << endl;
+#ifdef DEBUG
+	cout << "Calling constructor of <Interpreter>" << endl;
 #endif
 } //----- End of Interpreter
+
