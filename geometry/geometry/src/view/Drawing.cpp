@@ -37,7 +37,7 @@ Drawing::Drawing ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling constructor of <Drawing>" << endl;
 #endif
 } //----- End of Drawing
@@ -47,7 +47,7 @@ Drawing::~Drawing ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling destructor of <Drawing>" << endl;
 #endif
 } //----- End of ~Drawing

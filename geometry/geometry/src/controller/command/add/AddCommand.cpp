@@ -37,7 +37,7 @@ AddCommand::AddCommand ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling constructor of <AddCommand>" << endl;
 #endif
 } //----- End of AddCommand
@@ -47,7 +47,7 @@ AddCommand::~AddCommand ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling destructor of <AddCommand>" << endl;
 #endif
 } //----- End of ~AddCommand

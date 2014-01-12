@@ -50,7 +50,7 @@ AddRectangle::AddRectangle ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling constructor of <AddRectangle>" << endl;
 #endif
 } //----- End of AddRectangle
@@ -60,7 +60,7 @@ AddRectangle::~AddRectangle ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling destructor of <AddRectangle>" << endl;
 #endif
 } //----- End of ~AddRectangle

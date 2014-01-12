@@ -38,7 +38,7 @@ Command::Command ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling constructor of <Command>" << endl;
 #endif
 } //----- End of Command
@@ -48,7 +48,7 @@ Command::~Command ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling destructor of <Command>" << endl;
 #endif
 } //----- End of ~Command

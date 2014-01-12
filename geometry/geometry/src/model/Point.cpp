@@ -37,7 +37,7 @@ Point::Point ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling constructor of <Point>" << endl;
 #endif
 } //----- End of Point
@@ -47,7 +47,7 @@ Point::~Point ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling destructor of <Point>" << endl;
 #endif
 } //----- End of ~Point

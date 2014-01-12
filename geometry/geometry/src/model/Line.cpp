@@ -37,7 +37,7 @@ Line::Line ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling constructor of <Line>" << endl;
 #endif
 } //----- End of Line
@@ -47,7 +47,7 @@ Line::~Line ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling destructor of <Line>" << endl;
 #endif
 } //----- End of ~Line

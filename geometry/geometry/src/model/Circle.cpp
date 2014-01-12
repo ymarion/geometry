@@ -37,7 +37,7 @@ Circle::Circle ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling constructor of <Circle>" << endl;
 #endif
 } //----- End of Circle
@@ -47,7 +47,7 @@ Circle::~Circle ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling destructor of <Circle>" << endl;
 #endif
 } //----- End of ~Circle

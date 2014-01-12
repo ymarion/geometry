@@ -49,7 +49,7 @@ AddPolyline::AddPolyline ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling constructor of <AddPolyline>" << endl;
 #endif
 } //----- End of AddPolyline
@@ -59,7 +59,7 @@ AddPolyline::~AddPolyline ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling destructor of <AddPolyline>" << endl;
 #endif
 } //----- End of ~AddPolyline

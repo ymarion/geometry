@@ -37,7 +37,7 @@ Rectangle::Rectangle ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling constructor of <Rectangle>" << endl;
 #endif
 } //----- End of Rectangle
@@ -47,7 +47,7 @@ Rectangle::~Rectangle ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling destructor of <Rectangle>" << endl;
 #endif
 } //----- End of ~Rectangle

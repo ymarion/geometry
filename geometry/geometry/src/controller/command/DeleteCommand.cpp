@@ -49,7 +49,7 @@ DeleteCommand::DeleteCommand ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling constructor of <DeleteCommand>" << endl;
 #endif
 } //----- End of DeleteCommand
@@ -59,7 +59,7 @@ DeleteCommand::~DeleteCommand ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling destructor of <DeleteCommand>" << endl;
 #endif
 } //----- End of ~DeleteCommand

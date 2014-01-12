@@ -49,7 +49,7 @@ ClearCommand::ClearCommand ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling constructor of <ClearCommand>" << endl;
 #endif
 } //----- End of ClearCommand
@@ -59,7 +59,7 @@ ClearCommand::~ClearCommand ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling destructor of <ClearCommand>" << endl;
 #endif
 } //----- End of ~ClearCommand

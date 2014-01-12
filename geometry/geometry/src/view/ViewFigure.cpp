@@ -37,7 +37,7 @@ ViewFigure::ViewFigure ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling constructor of <ViewFigure>" << endl;
 #endif
 } //----- End of ViewFigure
@@ -47,7 +47,7 @@ ViewFigure::~ViewFigure ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling destructor of <ViewFigure>" << endl;
 #endif
 } //----- End of ~ViewFigure

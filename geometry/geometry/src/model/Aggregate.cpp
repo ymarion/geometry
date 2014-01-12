@@ -37,7 +37,7 @@ Aggregate::Aggregate ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling constructor of <Aggregate>" << endl;
 #endif
 } //----- End of Aggregate
@@ -47,7 +47,7 @@ Aggregate::~Aggregate ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling destructor of <Aggregate>" << endl;
 #endif
 } //----- End of ~Aggregate

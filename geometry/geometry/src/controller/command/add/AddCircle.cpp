@@ -58,7 +58,7 @@ AddCircle::~AddCircle ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling destructor of <AddCircle>" << endl;
 #endif
 } //----- End of ~AddCircle

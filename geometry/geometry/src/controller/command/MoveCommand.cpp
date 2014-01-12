@@ -49,7 +49,7 @@ MoveCommand::MoveCommand ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling constructor of <MoveCommand>" << endl;
 #endif
 } //----- End of MoveCommand
@@ -59,7 +59,7 @@ MoveCommand::~MoveCommand ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling destructor of <MoveCommand>" << endl;
 #endif
 } //----- End of ~MoveCommand

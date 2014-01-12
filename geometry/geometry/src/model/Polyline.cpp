@@ -37,7 +37,7 @@ Polyline::Polyline ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling constructor of <Polyline>" << endl;
 #endif
 } //----- End of Polyline
@@ -47,7 +47,7 @@ Polyline::~Polyline ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling destructor of <Polyline>" << endl;
 #endif
 } //----- End of ~Polyline

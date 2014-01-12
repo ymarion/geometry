@@ -37,7 +37,7 @@ Figure::Figure ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling constructor of <Figure>" << endl;
 #endif
 } //----- End of Figure
@@ -47,7 +47,7 @@ Figure::~Figure ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling destructor of <Figure>" << endl;
 #endif
 } //----- End of ~Figure

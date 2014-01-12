@@ -58,7 +58,7 @@ AddAggregate::~AddAggregate ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling destructor of <AddAggregate>" << endl;
 #endif
 } //----- End of ~AddAggregate

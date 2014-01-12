@@ -50,7 +50,7 @@ LoadCommand::LoadCommand ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling constructor of <LoadCommand>" << endl;
 #endif
 } //----- End of LoadCommand
@@ -60,7 +60,7 @@ LoadCommand::~LoadCommand ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling destructor of <LoadCommand>" << endl;
 #endif
 } //----- End of ~LoadCommand

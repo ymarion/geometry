@@ -6,6 +6,10 @@ using namespace std;
 
 int main()
 {
+#ifdef DEBUG
+	cout << "DEBUG defined" << endl;
+#endif
+	cout << "# Application launched." << endl;
 	Interpreter & interpreter = Interpreter::GetInstance( );
 	interpreter.Interpret( cin );
 

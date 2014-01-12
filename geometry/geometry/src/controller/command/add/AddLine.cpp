@@ -49,7 +49,7 @@ AddLine::AddLine ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling constructor of <AddLine>" << endl;
 #endif
 } //----- End of AddLine
@@ -59,7 +59,7 @@ AddLine::~AddLine ( )
 // Algorithm:
 //
 {
-#ifdef MAP
+#ifdef DEBUG
 	cout << "Calling destructor of <AddLine>" << endl;
 #endif
 } //----- End of ~AddLine
