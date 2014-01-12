@@ -23,39 +23,25 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //--------------------------------------------------------- Public methods
-// type DeleteCommand::Method ( parameter list )
+// type DeleteCommand::Method( parameter list )
 // Algorithm:
 //
 //{
 //} //----- End of Method
 
 
-Command * DeleteCommand::GetNewObject( )
-{
-	return new DeleteCommand( );
-} //----- End of GetNewObject
-
-
-Command * DeleteCommand::GetNew( ) const
-{
-	return DeleteCommand::GetNewObject( );
-} //----- End of GetNew
-
-
-//--------------------------------------------------- Operator overloading
-
-//---------------------------------------------- Constructors - destructor
-DeleteCommand::DeleteCommand ( )
-// Algorithm:
-//
+DeleteCommand::DeleteCommand( string const & rParameters )
+: Command( false ), mParameters( rParameters )
 {
 #ifdef DEBUG
 	cout << "Calling constructor of <DeleteCommand>" << endl;
 #endif
 } //----- End of DeleteCommand
 
+//--------------------------------------------------- Operator overloading
 
-DeleteCommand::~DeleteCommand ( )
+//---------------------------------------------- Constructors - destructor
+DeleteCommand::~DeleteCommand( )
 // Algorithm:
 //
 {

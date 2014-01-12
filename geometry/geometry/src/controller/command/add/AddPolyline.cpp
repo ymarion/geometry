@@ -30,24 +30,8 @@ using namespace std;
 //} //----- End of Method
 
 
-Command * AddPolyline::GetNewObject( )
-{
-	return new AddPolyline( );
-} //----- End of GetNewObject
-
-
-Command * AddPolyline::GetNew( ) const
-{
-	return AddPolyline::GetNewObject( );
-} //----- End of GetNew
-
-
-//--------------------------------------------------- Operator overloading
-
-//---------------------------------------------- Constructors - destructor
-AddPolyline::AddPolyline ( )
-// Algorithm:
-//
+AddPolyline::AddPolyline( string const & rParameters )
+: AddCommand( false ), mParameters( rParameters )
 {
 #ifdef DEBUG
 	cout << "Calling constructor of <AddPolyline>" << endl;
@@ -55,6 +39,9 @@ AddPolyline::AddPolyline ( )
 } //----- End of AddPolyline
 
 
+//--------------------------------------------------- Operator overloading
+
+//---------------------------------------------- Constructors - destructor
 AddPolyline::~AddPolyline ( )
 // Algorithm:
 //

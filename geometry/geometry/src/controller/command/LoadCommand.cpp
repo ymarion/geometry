@@ -30,25 +30,8 @@ using namespace std;
 //} //----- End of Method
 
 
-Command * LoadCommand::GetNewObject( )
-{
-	return new LoadCommand( );
-} //----- End of GetNewObject
-
-
-Command * LoadCommand::GetNew( ) const
-{
-	return LoadCommand::GetNewObject( );
-} //----- End of GetNew
-
-
-//--------------------------------------------------- Operator overloading
-
-
-//---------------------------------------------- Constructors - destructor
-LoadCommand::LoadCommand ( )
-// Algorithm:
-//
+LoadCommand::LoadCommand( string const & rParameters )
+: Command( false ), mParameters( rParameters )
 {
 #ifdef DEBUG
 	cout << "Calling constructor of <LoadCommand>" << endl;
@@ -56,6 +39,9 @@ LoadCommand::LoadCommand ( )
 } //----- End of LoadCommand
 
 
+//--------------------------------------------------- Operator overloading
+
+//---------------------------------------------- Constructors - destructor
 LoadCommand::~LoadCommand ( )
 // Algorithm:
 //

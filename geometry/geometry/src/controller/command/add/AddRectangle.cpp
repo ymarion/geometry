@@ -30,25 +30,8 @@ using namespace std;
 //} //----- End of Method
 
 
-Command * AddRectangle::GetNewObject( )
-{
-	return new AddRectangle( );
-} //----- End of GetNewObject
-
-
-Command * AddRectangle::GetNew( ) const
-{
-	return AddRectangle::GetNewObject( );
-} //----- End of GetNew
-
-
-//--------------------------------------------------- Operator overloading
-
-
-//---------------------------------------------- Constructors - destructor
-AddRectangle::AddRectangle ( )
-// Algorithm:
-//
+AddRectangle::AddRectangle( string const & rParameters )
+: AddCommand( false ), mParameters( rParameters )
 {
 #ifdef DEBUG
 	cout << "Calling constructor of <AddRectangle>" << endl;
@@ -56,6 +39,9 @@ AddRectangle::AddRectangle ( )
 } //----- End of AddRectangle
 
 
+//--------------------------------------------------- Operator overloading
+
+//---------------------------------------------- Constructors - destructor
 AddRectangle::~AddRectangle ( )
 // Algorithm:
 //

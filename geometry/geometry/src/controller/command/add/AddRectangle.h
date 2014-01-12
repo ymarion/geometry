@@ -32,18 +32,6 @@ public:
 	// Contract:
 	//
 
-	static Command * GetNewObject ( );
-	// How to use:
-	// Returns a pointer to a new object of this class.
-	// Contract:
-	// The memory MUST BE FREED BY THE CALLER, using delete.
-
-	virtual Command * GetNew ( ) const;
-	// How to use:
-	// Returns a pointer to a new object of this class.
-	// Contract:
-	// The memory MUST BE FREED BY THE CALLER, using delete.
-	
 //--------------------------------------------------- Operator overloading
 	// AddRectangle & operator = ( AddRectangle const & anAddRectangle );
 	// Default
@@ -52,11 +40,11 @@ public:
 	// AddRectangle ( AddRectangle const & anAddRectangle );
 	// Default
 
-	AddRectangle ( );
+	AddRectangle ( std::string const & rParameters );
 	// How to use:
-	//
+	// Instanciates an AddRectangle which parameters will be parsed.
 	// Contract:
-	//
+	// If the parameters are wrongly formatted, isValid() will return false.
 
 	virtual ~AddRectangle ( );
 	// How to use:
@@ -70,7 +58,7 @@ protected:
 //------------------------------------------------------ Protected methods
 
 //--------------------------------------------------- Protected attributes
-
+	std::string mParameters;// TODO: parse string
 };
 
 //------------------------------ Other definitions depending on <AddRectangle>

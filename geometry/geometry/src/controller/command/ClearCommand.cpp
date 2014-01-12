@@ -30,24 +30,11 @@ using namespace std;
 //} //----- End of Method
 
 
-Command * ClearCommand::GetNewObject( )
-{
-	return new ClearCommand( );
-} //----- End of GetNewObject
-
-
-Command * ClearCommand::GetNew( ) const
-{
-	return ClearCommand::GetNewObject( );
-} //----- End of GetNew
-
-
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-ClearCommand::ClearCommand ( )
-// Algorithm:
-//
+ClearCommand::ClearCommand ( string const & rParameters )
+: Command ( false ), mParameters( rParameters )
 {
 #ifdef DEBUG
 	cout << "Calling constructor of <ClearCommand>" << endl;

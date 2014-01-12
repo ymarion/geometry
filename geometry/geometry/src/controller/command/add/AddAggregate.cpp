@@ -30,30 +30,18 @@ using namespace std;
 //} //----- End of Method
 
 
-Command * AddAggregate::GetNewObject( )
+AddAggregate::AddAggregate( string const & rParameters )
+: AddCommand( false ), mParameters( rParameters )
 {
-	return new AddAggregate( );
-} //----- End of GetNewObject
-
-
-Command * AddAggregate::GetNew( ) const
-{
-	return AddAggregate::GetNewObject( );
-} //----- End of GetNew
+#ifdef DEBUG
+	cout << "Calling constructor of <AddAggregate>" << endl;
+#endif
+} //----- End of AddAggregate
 
 
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-AddAggregate::AddAggregate ( )
-// Algorithm:
-//
-{
-#ifdef MAP
-	cout << "Calling constructor of <AddAggregate>" << endl;
-#endif
-} //----- End of AddAggregate
-
 AddAggregate::~AddAggregate ( )
 // Algorithm:
 //

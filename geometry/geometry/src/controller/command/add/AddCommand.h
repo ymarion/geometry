@@ -40,11 +40,9 @@ public:
 	// AddCommand ( AddCommand const & anAddCommand );
 	// Default
 
-	AddCommand ( );
+	AddCommand ( bool validState );
 	// How to use:
-	//
-	// Contract:
-	//
+	// Sets the validState flag.
 
 	virtual ~AddCommand ( );
 	// How to use:

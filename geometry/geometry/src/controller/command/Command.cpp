@@ -34,9 +34,8 @@ using namespace std;
 
 //---------------------------------------------- Constructors - destructor
 
-Command::Command ( )
-// Algorithm:
-//
+Command::Command ( bool validState )
+: mValidState( validState )
 {
 #ifdef DEBUG
 	cout << "Calling constructor of <Command>" << endl;

@@ -32,18 +32,6 @@ public:
 	// Contract:
 	//
 
-	static Command * GetNewObject ( );
-	// How to use:
-	// Returns a pointer to a new object of this class.
-	// Contract:
-	// The memory MUST BE FREED BY THE CALLER, using delete.
-
-	virtual Command * GetNew ( ) const;
-	// How to use:
-	// Returns a pointer to a new object of this class.
-	// Contract:
-	// The memory MUST BE FREED BY THE CALLER, using delete.
-	
 //--------------------------------------------------- Operator overloading
 	// LoadCommand & operator = ( LoadCommand const & aLoadCommand );
 	// Default
@@ -52,11 +40,11 @@ public:
 	// LoadCommand ( LoadCommand const & aLoadCommand );
 	// Default
 
-	LoadCommand ( );
+	LoadCommand ( std::string const & rParameters );
 	// How to use:
-	//
+	// Instanciates a LoadCommand which parameters will be parsed.
 	// Contract:
-	//
+	// If the parameters are wrongly formatted, isValid() will return false.
 
 	virtual ~LoadCommand ( );
 	// How to use:
@@ -70,7 +58,7 @@ protected:
 //------------------------------------------------------ Protected methods
 
 //--------------------------------------------------- Protected attributes
-
+	std::string mParameters;// TODO: parse string
 };
 
 //------------------------------ Other definitions depending on <LoadCommand>

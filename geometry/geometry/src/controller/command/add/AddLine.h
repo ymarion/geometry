@@ -22,41 +22,29 @@
 
 class AddLine : public AddCommand
 {
-//----------------------------------------------------------------- PUBLIC
+	//----------------------------------------------------------------- PUBLIC
 
 public:
-//--------------------------------------------------------- Public methods
+	//--------------------------------------------------------- Public methods
 	// type Method ( parameter list );
 	// How to use:
 	//
 	// Contract:
 	//
 
-	static Command * GetNewObject ( );
-	// How to use:
-	// Returns a pointer to a new object of this class.
-	// Contract:
-	// The memory MUST BE FREED BY THE CALLER, using delete.
-
-	virtual Command * GetNew ( ) const;
-	// How to use:
-	// Returns a pointer to a new object of this class.
-	// Contract:
-	// The memory MUST BE FREED BY THE CALLER, using delete.
-	
-//--------------------------------------------------- Operator overloading
-	// AddLine & operator = ( AddLine const & anAddLine );
+	//--------------------------------------------------- Operator overMoveing
+	// AddLine & operator = ( AddLine const & aAddLine );
 	// Default
 
-//---------------------------------------------- Constructors - destructor
-	// AddLine ( AddLine const & anAddLine );
+	//---------------------------------------------- Constructors - destructor
+	// AddLine ( AddLine const & aAddLine );
 	// Default
 
-	AddLine ( );
+	AddLine ( std::string const & rParameters );
 	// How to use:
-	//
+	// Instanciates an AddLine which parameters will be parsed.
 	// Contract:
-	//
+	// If the parameters are wrongly formatted, isValid() will return false.
 
 	virtual ~AddLine ( );
 	// How to use:
@@ -64,13 +52,13 @@ public:
 	// Contract:
 	//
 
-//---------------------------------------------------------------- PRIVATE
+	//---------------------------------------------------------------- PRIVATE
 
 protected:
-//------------------------------------------------------ Protected methods
+	//------------------------------------------------------ Protected methods
 
-//--------------------------------------------------- Protected attributes
-
+	//--------------------------------------------------- Protected attributes
+	std::string mParameters;// TODO: parse string
 };
 
 //------------------------------ Other definitions depending on <AddLine>

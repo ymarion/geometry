@@ -33,9 +33,8 @@ using namespace std;
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-AddCommand::AddCommand ( )
-// Algorithm:
-//
+AddCommand::AddCommand ( bool validState )
+: Command ( validState )
 {
 #ifdef DEBUG
 	cout << "Calling constructor of <AddCommand>" << endl;

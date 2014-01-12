@@ -22,41 +22,29 @@
 
 class AddCircle : public AddCommand
 {
-//----------------------------------------------------------------- PUBLIC
+	//----------------------------------------------------------------- PUBLIC
 
 public:
-//--------------------------------------------------------- Public methods
+	//--------------------------------------------------------- Public methods
 	// type Method ( parameter list );
 	// How to use:
 	//
 	// Contract:
 	//
 
-	static Command * GetNewObject ( );
-	// How to use:
-	// Returns a pointer to a new object of this class.
-	// Contract:
-	// The memory MUST BE FREED BY THE CALLER, using delete.
-
-	virtual Command * GetNew ( ) const;
-	// How to use:
-	// Returns a pointer to a new object of this class.
-	// Contract:
-	// The memory MUST BE FREED BY THE CALLER, using delete.
-	
-//--------------------------------------------------- Operator overloading
-	// AddCircle & operator = ( AddCircle const & anAddCircle );
+	//--------------------------------------------------- Operator overMoveing
+	// AddCircle & operator = ( AddCircle const & aAddCircle );
 	// Default
 
-//---------------------------------------------- Constructors - destructor
-	// AddCircle ( AddCircle const & anAddCircle );
+	//---------------------------------------------- Constructors - destructor
+	// AddCircle ( AddCircle const & aAddCircle );
 	// Default
 
-	AddCircle ( );
+	AddCircle ( std::string const & rParameters );
 	// How to use:
-	//
+	// Instanciates an AddCircle which parameters will be parsed.
 	// Contract:
-	//
+	// If the parameters are wrongly formatted, isValid() will return false.
 
 	virtual ~AddCircle ( );
 	// How to use:
@@ -64,13 +52,13 @@ public:
 	// Contract:
 	//
 
-//---------------------------------------------------------------- PRIVATE
+	//---------------------------------------------------------------- PRIVATE
 
 protected:
-//------------------------------------------------------ Protected methods
+	//------------------------------------------------------ Protected methods
 
-//--------------------------------------------------- Protected attributes
-
+	//--------------------------------------------------- Protected attributes
+	std::string mParameters;// TODO: parse string
 };
 
 //------------------------------ Other definitions depending on <AddCircle>

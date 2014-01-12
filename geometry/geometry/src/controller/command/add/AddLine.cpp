@@ -30,24 +30,8 @@ using namespace std;
 //} //----- End of Method
 
 
-Command * AddLine::GetNewObject( )
-{
-	return new AddLine( );
-} //----- End of GetNewObject
-
-
-Command * AddLine::GetNew( ) const
-{
-	return AddLine::GetNewObject( );
-} //----- End of GetNew
-
-
-//--------------------------------------------------- Operator overloading
-
-//---------------------------------------------- Constructors - destructor
-AddLine::AddLine ( )
-// Algorithm:
-//
+AddLine::AddLine( string const & rParameters )
+: AddCommand( false ), mParameters( rParameters )
 {
 #ifdef DEBUG
 	cout << "Calling constructor of <AddLine>" << endl;
@@ -55,6 +39,9 @@ AddLine::AddLine ( )
 } //----- End of AddLine
 
 
+//--------------------------------------------------- Operator overloading
+
+//---------------------------------------------- Constructors - destructor
 AddLine::~AddLine ( )
 // Algorithm:
 //

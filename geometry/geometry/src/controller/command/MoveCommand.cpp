@@ -30,24 +30,8 @@ using namespace std;
 //} //----- End of Method
 
 
-Command * MoveCommand::GetNewObject( )
-{
-	return new MoveCommand( );
-} //----- End of GetNewObject
-
-
-Command * MoveCommand::GetNew( ) const
-{
-	return MoveCommand::GetNewObject( );
-} //----- End of GetNew
-
-
-//--------------------------------------------------- Operator overloading
-
-//---------------------------------------------- Constructors - destructor
-MoveCommand::MoveCommand ( )
-// Algorithm:
-//
+MoveCommand::MoveCommand( string const & rParameters )
+: Command( false ), mParameters( rParameters )
 {
 #ifdef DEBUG
 	cout << "Calling constructor of <MoveCommand>" << endl;
@@ -55,6 +39,9 @@ MoveCommand::MoveCommand ( )
 } //----- End of MoveCommand
 
 
+//--------------------------------------------------- Operator overloading
+
+//---------------------------------------------- Constructors - destructor
 MoveCommand::~MoveCommand ( )
 // Algorithm:
 //

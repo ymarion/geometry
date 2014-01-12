@@ -31,7 +31,10 @@ public:
 	// Contract:
 	//
 
-	virtual Command * GetNew ( ) const = 0;
+	bool isValid ( );
+	// How to use:
+	// Returns the state of the command.
+	// (can be invalid mostly because of bad parameters)
 
 //--------------------------------------------------- Operator overloading
 	// Command & operator = ( Command const & aCommand );
@@ -41,11 +44,9 @@ public:
 	// Command ( Command const & aCommand );
 	// Default
 
-	Command ( );
+	Command ( bool validState );
 	// How to use:
-	//
-	// Contract:
-	//
+	// Sets the validState flag.
 
 	virtual ~Command ( );
 	// How to use:
@@ -59,7 +60,7 @@ protected:
 //------------------------------------------------------ Protected methods
 
 //--------------------------------------------------- Protected attributes
-
+	bool mValidState;
 };
 
 //------------------------------ Other definitions depending on <Command>
