@@ -71,7 +71,6 @@ protected:
 
 //--------------------------------------------------- Protected attributes
 	bool mValidState;
-	string mCommandLine; // The command line the user has typed. First word determines nature of command
 };
 
 //------------------------------ Other definitions depending on <Command>

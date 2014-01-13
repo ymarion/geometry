@@ -12,6 +12,7 @@
 //-------------------------------------------------------- Interfaces used
 #include "Command.h"
 #include "../../view/Drawing.h"
+#include "../../model/Point.h"
 
 //------------------------------------------------------------------ Types
 
@@ -67,7 +68,8 @@ protected:
 	//------------------------------------------------------ Protected methods
 
 	//--------------------------------------------------- Protected attributes
-	std::string mParameters;// TODO: parse string
+	string mFigName;
+	Point mVect;
 };
 
 //------------------------------ Other definitions depending on <MoveCommand>

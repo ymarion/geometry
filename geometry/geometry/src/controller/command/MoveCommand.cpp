@@ -11,6 +11,7 @@
 
 //--------------------------------------------------------- System include
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 //------------------------------------------------------- Personal include
@@ -31,8 +32,15 @@ using namespace std;
 
 
 MoveCommand::MoveCommand( string const & rParameters )
-: Command( false ), mParameters( rParameters )
+: Command( false )
 {
+	stringstream ss( rParameters );
+	ss >> mFigName;
+	long x, y;
+	ss >> x;
+	ss >> y;
+	mVect( x, y );
+	mValidState = true;
 #ifdef DEBUG
 	cout << "Calling constructor of <MoveCommand>" << endl;
 #endif

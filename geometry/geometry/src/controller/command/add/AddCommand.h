@@ -65,7 +65,7 @@ protected:
 //------------------------------------------------------ Protected methods
 
 //--------------------------------------------------- Protected attributes
-string mFigureName;
+	string mFigureName;
 };
 
 //------------------------------ Other definitions depending on <AddCommand>

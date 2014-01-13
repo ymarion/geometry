@@ -12,6 +12,7 @@
 //-------------------------------------------------------- Interfaces used
 #include "AddCommand.h"
 #include "../../../view/Drawing.h"
+#include "../../../model/Point.h"
 
 //------------------------------------------------------------------ Types
 
@@ -68,10 +69,8 @@ protected:
 
 	//--------------------------------------------------- Protected attributes
 	std::string mParameters;// TODO: parse string
-	int mPosx1;
-	int mPosy1;
-	int mPosx2;
-	int mPosy2;
+	Point mBegin;
+	Point mEnd;
 };
 
 //------------------------------ Other definitions depending on <AddLine>
