@@ -33,12 +33,12 @@ using namespace std;
 
 /*virtual*/ void MoveCommand::Execute ( Drawing & rDrawing )
 {
-	// TODO
+	rDrawing.Move( mFigureName , mVector );
 }
 
 /*virtual*/ void MoveCommand::Undo ( Drawing & rDrawing )
 {
-	// TODO
+	rDrawing.Move( mFigureName , -mVector );
 }
 
 
@@ -49,9 +49,9 @@ MoveCommand::MoveCommand ( string const & rParameters )
 : Command( false ), mVect( 0, 0 )
 {
 	stringstream ss( rParameters );
-	ss >> mFigName;
-	ss >> mVect.x;
-	ss >> mVect.y;
+	ss >> mFigureName;
+	ss >> mVector.x;
+	ss >> mVector.y;
 	mValidState = true;
 
 #ifdef DEBUG

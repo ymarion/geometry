@@ -38,11 +38,14 @@ public:
 	// Point & operator = ( Point const & aPoint );
 	// Default
 
-	Point operator + ( Point const & rPoint );
+	Point operator + ( Point const & rPoint ) const;
 	// Adds the four coordinates so that result is (x1 + x2, y1 + y2)
 
 	Point & operator += ( Point const & rVector );
 	// Moves the coordinates of the point by vector rVector
+
+	Point operator - () const;
+	// Returns a point with negated coordinates (ie. returns the inverted vector)
 
 //---------------------------------------------- Constructors - destructor
 	// Point ( Point const & aPoint );

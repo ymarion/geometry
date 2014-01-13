@@ -68,8 +68,8 @@ protected:
 	//------------------------------------------------------ Protected methods
 
 	//--------------------------------------------------- Protected attributes
-	string mFigName;
-	Point mVect;
+	string mFigureName;
+	Point mVector;
 };
 
 //------------------------------ Other definitions depending on <MoveCommand>

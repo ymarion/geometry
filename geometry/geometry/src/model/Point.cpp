@@ -31,7 +31,7 @@ using namespace std;
 
 
 //--------------------------------------------------- Operator overloading
-Point Point::operator + ( Point const & rPoint )
+Point Point::operator + ( Point const & rPoint ) const
 {
 	return Point (x + rPoint.x, y + rPoint.y );
 }
@@ -42,6 +42,11 @@ Point & Point::operator += ( Point const & rVector )
 	x += rVector.x;
 	y += rVector.y;
 	return *this;
+}
+
+Point Point::operator - () const
+{
+	return Point ( -x, -y );
 }
 
 

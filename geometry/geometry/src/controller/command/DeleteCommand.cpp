@@ -31,9 +31,11 @@ using namespace std;
 //} //----- End of Method
 
 
+*pFigure;
+
 /*virtual*/ void DeleteCommand::Execute ( Drawing & rDrawing )
 {
-	// TODO
+	rDrawing.Remove( "" );
 }
 
 /*virtual*/ void DeleteCommand::Undo ( Drawing & rDrawing )
