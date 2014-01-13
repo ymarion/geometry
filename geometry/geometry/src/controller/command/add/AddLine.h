@@ -11,6 +11,7 @@
 
 //-------------------------------------------------------- Interfaces used
 #include "AddCommand.h"
+#include "../../../view/Drawing.h"
 
 //------------------------------------------------------------------ Types
 
@@ -32,11 +33,11 @@ public:
 	// Contract:
 	//
 
-    virtual void execute( Drawing d );
+    virtual void execute( Drawing & rDrawing );
     // How to use:
 	//
 
-	virtual void undo ( Drawing d );
+	virtual void undo( Drawing & rDrawing );
     // How to use:
 	//
 

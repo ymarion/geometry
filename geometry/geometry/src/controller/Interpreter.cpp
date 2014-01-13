@@ -15,10 +15,9 @@ using namespace std;
 
 //------------------------------------------------------- Personal include
 #include "Interpreter.h"
-#include "Command.h"
 #include "../utils/CreateMap.hpp"
 
-#include "ConcreteCommands.h" // Includes all header files of the commands
+#include "command/ConcreteCommands.h" // Includes all header files of the commands
 
 //-------------------------------------------------------- Class constants
 char const Interpreter::ENDL = '\n';

@@ -13,8 +13,8 @@
 #include <iostream>
 #include <map>
 
-#include "Command.h"
-#include "CommandFactory.h"
+#include "command/Command.h"
+#include "command/CommandFactory.h"
 #include "Controller.h"
 
 //------------------------------------------------------------------ Types

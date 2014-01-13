@@ -10,7 +10,7 @@
 #define CONTROLLER_H_
 
 //-------------------------------------------------------- Interfaces used
-#include "Command.h"
+#include "command/Command.h"
 
 //------------------------------------------------------------------ Types
 

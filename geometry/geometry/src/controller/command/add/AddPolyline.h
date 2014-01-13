@@ -11,6 +11,8 @@
 
 //-------------------------------------------------------- Interfaces used
 #include "AddCommand.h"
+#include "../../../view/Drawing.h"
+#include "../../../model/Point.h"
 
 //------------------------------------------------------------------ Types
 
@@ -32,11 +34,11 @@ public:
 	// Contract:
 	//
 
-    virtual void execute( Drawing d );
+    virtual void execute( Drawing & rDrawing );
     // How to use:
 	//
 
-	virtual void undo ( Drawing d );
+	virtual void undo( Drawing & rDrawing );
     // How to use:
 	//
 
@@ -67,8 +69,7 @@ protected:
 
 	//--------------------------------------------------- Protected attributes
 	std::string mParameters;// TODO: parse string
-	list<int> mPosxList;
-	list<int> mPosyList;
+	//list<Point> mPoint
 };
 
 //------------------------------ Other definitions depending on <AddPolyline>

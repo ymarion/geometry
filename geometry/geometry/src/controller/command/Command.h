@@ -11,6 +11,7 @@
 
 //-------------------------------------------------------- Interfaces used
 #include <string>
+#include "../../view/Drawing.h"
 
 //------------------------------------------------------------------ Types
 
@@ -37,11 +38,11 @@ public:
 	// Returns the state of the command.
 	// (can be invalid mostly because of bad parameters)
 
-	virtual void execute( Drawing d );
+	virtual void execute ( Drawing & rDrawing ) = 0;
     // How to use:
 	//
 
-	virtual void undo ( Drawing d );
+	virtual void undo ( Drawing & rDrawing ) = 0;
     // How to use:
 	//
 
@@ -70,7 +71,6 @@ protected:
 
 //--------------------------------------------------- Protected attributes
 	bool mValidState;
-	Drawing & rDrawing; // references to the drawing
 	string mCommandLine; // The command line the user has typed. First word determines nature of command
 };
 
