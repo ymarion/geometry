@@ -30,7 +30,21 @@ using namespace std;
 //} //----- End of Method
 
 
-AddLine::AddLine( string const & rParameters )
+/*virtual*/ void AddLine::Execute ( Drawing & rDrawing )
+{
+	// TODO
+}
+
+/*virtual*/ void AddLine::Undo ( Drawing & rDrawing )
+{
+	// TODO
+}
+
+
+//--------------------------------------------------- Operator overloading
+
+//---------------------------------------------- Constructors - destructor
+AddLine::AddLine ( string const & rParameters )
 : AddCommand( false ), mParameters( rParameters )
 {
 #ifdef DEBUG
@@ -39,9 +53,6 @@ AddLine::AddLine( string const & rParameters )
 } //----- End of AddLine
 
 
-//--------------------------------------------------- Operator overloading
-
-//---------------------------------------------- Constructors - destructor
 AddLine::~AddLine ( )
 // Algorithm:
 //

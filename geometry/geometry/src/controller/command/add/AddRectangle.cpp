@@ -30,7 +30,21 @@ using namespace std;
 //} //----- End of Method
 
 
-AddRectangle::AddRectangle( string const & rParameters )
+/*virtual*/ void AddRectangle::Execute ( Drawing & rDrawing )
+{
+	// TODO
+}
+
+/*virtual*/ void AddRectangle::Undo ( Drawing & rDrawing )
+{
+	// TODO
+}
+
+
+//--------------------------------------------------- Operator overloading
+
+//---------------------------------------------- Constructors - destructor
+AddRectangle::AddRectangle ( string const & rParameters )
 : AddCommand( false ), mParameters( rParameters )
 {
 #ifdef DEBUG
@@ -39,9 +53,6 @@ AddRectangle::AddRectangle( string const & rParameters )
 } //----- End of AddRectangle
 
 
-//--------------------------------------------------- Operator overloading
-
-//---------------------------------------------- Constructors - destructor
 AddRectangle::~AddRectangle ( )
 // Algorithm:
 //

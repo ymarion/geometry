@@ -33,9 +33,10 @@ using namespace std;
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-Point::Point ( )
+Point::Point ( long xParam, long yParam )
 // Algorithm:
 //
+: x( xParam ), y( yParam )
 {
 #ifdef DEBUG
 	cout << "Calling constructor of <Point>" << endl;

@@ -33,7 +33,6 @@ using namespace std;
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-
 Command::Command ( bool validState )
 : mValidState( validState )
 {

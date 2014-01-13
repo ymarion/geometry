@@ -30,7 +30,21 @@ using namespace std;
 //} //----- End of Method
 
 
-DeleteCommand::DeleteCommand( string const & rParameters )
+/*virtual*/ void DeleteCommand::Execute ( Drawing & rDrawing )
+{
+	// TODO
+}
+
+/*virtual*/ void DeleteCommand::Undo ( Drawing & rDrawing )
+{
+	// TODO
+}
+
+
+//--------------------------------------------------- Operator overloading
+
+//---------------------------------------------- Constructors - destructor
+DeleteCommand::DeleteCommand ( string const & rParameters )
 : Command( false ), mParameters( rParameters )
 {
 #ifdef DEBUG
@@ -38,9 +52,7 @@ DeleteCommand::DeleteCommand( string const & rParameters )
 #endif
 } //----- End of DeleteCommand
 
-//--------------------------------------------------- Operator overloading
 
-//---------------------------------------------- Constructors - destructor
 DeleteCommand::~DeleteCommand( )
 // Algorithm:
 //

@@ -33,11 +33,11 @@ public:
 	// Contract:
 	//
 
-    virtual void execute( Drawing & rDrawing );
+    virtual void Execute ( Drawing & rDrawing );
     // How to use:
 	//
 
-	virtual void undo( Drawing & rDrawing );
+	virtual void Undo ( Drawing & rDrawing );
     // How to use:
 	//
 
@@ -51,7 +51,7 @@ public:
 
 	LoadCommand ( std::string const & rParameters );
 	// How to use:
-	// Instanciates a LoadCommand which parameters will be parsed.
+	// Instantiates a LoadCommand which parameters will be parsed.
 	// Contract:
 	// If the parameters are wrongly formatted, isValid() will return false.
 

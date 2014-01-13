@@ -16,14 +16,17 @@
 //------------------------------------------------------------------------
 // Class role of <Point>
 //
-//
+// Container of two long attributes (x and y position).
 //------------------------------------------------------------------------
 
-class Point
+struct Point
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
+//------------------------------------------------------ Public attributes
+	long x;
+	long y;
 //--------------------------------------------------------- Public methods
 	// type Method ( parameter list );
 	// How to use:
@@ -39,7 +42,7 @@ public:
 	// Point ( Point const & aPoint );
 	// Default
 
-	Point ( );
+	Point ( long x, long y );
 	// How to use:
 	//
 	// Contract:

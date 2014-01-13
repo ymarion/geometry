@@ -30,7 +30,21 @@ using namespace std;
 //} //----- End of Method
 
 
-AddPolyline::AddPolyline( string const & rParameters )
+/*virtual*/ void AddPolyline::Execute ( Drawing & rDrawing )
+{
+	// TODO
+}
+
+/*virtual*/ void AddPolyline::Undo ( Drawing & rDrawing )
+{
+	// TODO
+}
+
+
+//--------------------------------------------------- Operator overloading
+
+//---------------------------------------------- Constructors - destructor
+AddPolyline::AddPolyline ( string const & rParameters )
 : AddCommand( false ), mParameters( rParameters )
 {
 #ifdef DEBUG
@@ -39,9 +53,6 @@ AddPolyline::AddPolyline( string const & rParameters )
 } //----- End of AddPolyline
 
 
-//--------------------------------------------------- Operator overloading
-
-//---------------------------------------------- Constructors - destructor
 AddPolyline::~AddPolyline ( )
 // Algorithm:
 //

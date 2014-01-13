@@ -31,7 +31,21 @@ using namespace std;
 //} //----- End of Method
 
 
-MoveCommand::MoveCommand( string const & rParameters )
+/*virtual*/ void MoveCommand::Execute ( Drawing & rDrawing )
+{
+	// TODO
+}
+
+/*virtual*/ void MoveCommand::Undo ( Drawing & rDrawing )
+{
+	// TODO
+}
+
+
+//--------------------------------------------------- Operator overloading
+
+//---------------------------------------------- Constructors - destructor
+MoveCommand::MoveCommand ( string const & rParameters )
 : Command( false )
 {
 	stringstream ss( rParameters );
@@ -47,9 +61,6 @@ MoveCommand::MoveCommand( string const & rParameters )
 } //----- End of MoveCommand
 
 
-//--------------------------------------------------- Operator overloading
-
-//---------------------------------------------- Constructors - destructor
 MoveCommand::~MoveCommand ( )
 // Algorithm:
 //
