@@ -51,7 +51,7 @@ public:
 
 	DeleteCommand ( std::string const & rParameters );
 	// How to use:
-	// Instanciates a DeleteCommand which parameters will be parsed.
+	// Instantiates a DeleteCommand which parameters will be parsed.
 	// Contract:
 	// If the parameters are wrongly formatted, isValid() will return false.
 

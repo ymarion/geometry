@@ -51,7 +51,7 @@ public:
 
 	MoveCommand ( std::string const & rParameters );
 	// How to use:
-	// Instanciates a MoveCommand which parameters will be parsed.
+	// Instantiates a MoveCommand which parameters will be parsed.
 	// Contract:
 	// If the parameters are wrongly formatted, isValid() will return false.
 

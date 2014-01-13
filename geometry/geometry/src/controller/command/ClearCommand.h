@@ -51,7 +51,7 @@ public:
 
 	ClearCommand ( std::string const & rParameters );
 	// How to use:
-	// Instanciates a ClearCommand which parameters will be parsed.
+	// Instantiates a ClearCommand which parameters will be parsed.
 	// Contract:
 	// If the parameters are wrongly formatted, isValid() will return false.
 

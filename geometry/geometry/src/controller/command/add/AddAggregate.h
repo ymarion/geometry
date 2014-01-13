@@ -51,7 +51,7 @@ public:
 
 	AddAggregate ( std::string const & rParameters );
 	// How to use:
-	// Instanciates an AddAggregate which parameters will be parsed.
+	// Instantiates an AddAggregate which parameters will be parsed.
 	// Contract:
 	// If the parameters are wrongly formatted, isValid() will return false.
 

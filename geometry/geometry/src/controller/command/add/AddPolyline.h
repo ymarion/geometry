@@ -52,7 +52,7 @@ public:
 
 	AddPolyline ( std::string const & rParameters );
 	// How to use:
-	// Instanciates an AddPolyline which parameters will be parsed.
+	// Instantiates an AddPolyline which parameters will be parsed.
 	// Contract:
 	// If the parameters are wrongly formatted, isValid() will return false.
 

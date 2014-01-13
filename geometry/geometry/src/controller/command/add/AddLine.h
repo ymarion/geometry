@@ -51,7 +51,7 @@ public:
 
 	AddLine ( std::string const & rParameters );
 	// How to use:
-	// Instanciates an AddLine which parameters will be parsed.
+	// Instantiates an AddLine which parameters will be parsed.
 	// Contract:
 	// If the parameters are wrongly formatted, isValid() will return false.
 
