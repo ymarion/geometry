@@ -68,7 +68,6 @@ protected:
 	//------------------------------------------------------ Protected methods
 
 	//--------------------------------------------------- Protected attributes
-	std::string mParameters;// TODO: parse string
 	Point mBegin;
 	Point mEnd;
 };

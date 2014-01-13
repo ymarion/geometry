@@ -49,7 +49,7 @@ public:
 	// AddCommand ( AddCommand const & anAddCommand );
 	// Default
 
-	AddCommand ( bool validState );
+	AddCommand ( bool validState, std::string const & rParameters );
 	// How to use:
 	// Sets the validState flag.
 
@@ -65,7 +65,8 @@ protected:
 //------------------------------------------------------ Protected methods
 
 //--------------------------------------------------- Protected attributes
-	string mFigureName;
+	std::string mFigureName;
+	std::string mParameters;
 };
 
 //------------------------------ Other definitions depending on <AddCommand>

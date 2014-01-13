@@ -45,8 +45,14 @@ using namespace std;
 
 //---------------------------------------------- Constructors - destructor
 AddLine::AddLine ( string const & rParameters )
-: AddCommand( false ), mParameters( rParameters )
+: AddCommand( false, rParameters ), mBegin( 0, 0 ), mEnd( 0, 0 )
 {
+	stringstream ss( mParameters );
+	ss >> mBegin.x;
+	ss >> mBegin.y;
+	ss >> mBegin.x;
+	ss >> mBegin.y;
+	mValidState = true;
 #ifdef DEBUG
 	cout << "Calling constructor of <AddLine>" << endl;
 #endif
