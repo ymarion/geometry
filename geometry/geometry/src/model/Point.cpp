@@ -31,6 +31,19 @@ using namespace std;
 
 
 //--------------------------------------------------- Operator overloading
+Point Point::operator + ( Point const & rPoint )
+{
+	return Point (x + rPoint.x, y + rPoint.y );
+}
+
+
+Point & Point::operator += ( Point const & rVector )
+{
+	x += rVector.x;
+	y += rVector.y;
+	return *this;
+}
+
 
 //---------------------------------------------- Constructors - destructor
 Point::Point ( long xParam, long yParam )

@@ -11,6 +11,7 @@
 
 //-------------------------------------------------------- Interfaces used
 #include "Figure.h"
+#include "Point.h"
 
 //------------------------------------------------------------------ Types
 
@@ -32,6 +33,8 @@ public:
 	// Contract:
 	//
 
+	virtual void Move ( Point const & rVector );
+
 //--------------------------------------------------- Operator overloading
 	// Circle & operator = ( Circle const & aCircle );
 	// Default
@@ -40,7 +43,7 @@ public:
 	// Circle ( Circle const & aCircle );
 	// Default
 
-	Circle ( );
+	Circle ( Point center, long radius );
 	// How to use:
 	//
 	// Contract:
@@ -58,7 +61,8 @@ protected:
 //------------------------------------------------------ Protected methods
 
 //--------------------------------------------------- Protected attributes
-
+	Point mCenter;
+	long mRadius;
 };
 
 //------------------------------ Other definitions depending on <Circle>

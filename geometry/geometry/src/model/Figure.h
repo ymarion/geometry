@@ -10,6 +10,7 @@
 #define FIGURE_H_
 
 //-------------------------------------------------------- Interfaces used
+#include "Point.h"
 
 //------------------------------------------------------------------ Types
 
@@ -30,6 +31,8 @@ public:
 	//
 	// Contract:
 	//
+
+	virtual void Move ( Point const & rVector ) = 0;
 
 //--------------------------------------------------- Operator overloading
 	// Figure & operator = ( Figure const & aFigure );

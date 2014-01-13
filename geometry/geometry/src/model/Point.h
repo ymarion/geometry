@@ -38,6 +38,12 @@ public:
 	// Point & operator = ( Point const & aPoint );
 	// Default
 
+	Point operator + ( Point const & rPoint );
+	// Adds the four coordinates so that result is (x1 + x2, y1 + y2)
+
+	Point & operator += ( Point const & rVector );
+	// Moves the coordinates of the point by vector rVector
+
 //---------------------------------------------- Constructors - destructor
 	// Point ( Point const & aPoint );
 	// Default
