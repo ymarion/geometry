@@ -10,6 +10,8 @@
 #define LOADCOMMAND_H_
 
 //-------------------------------------------------------- Interfaces used
+#include <fstream>
+
 #include "Command.h"
 #include "../../view/Drawing.h"
 
@@ -67,7 +69,7 @@ protected:
 //------------------------------------------------------ Protected methods
 
 //--------------------------------------------------- Protected attributes
-	std::istream mInFile;
+	std::ifstream mInFile;
 };
 
 //------------------------------ Other definitions depending on <LoadCommand>

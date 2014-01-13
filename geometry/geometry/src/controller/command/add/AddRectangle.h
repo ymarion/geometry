@@ -12,7 +12,7 @@
 //-------------------------------------------------------- Interfaces used
 #include "AddCommand.h"
 #include "../../../view/Drawing.h"
-#include "Point.h"
+#include "../../../model/Point.h"
 
 //------------------------------------------------------------------ Types
 

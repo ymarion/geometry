@@ -10,6 +10,8 @@
 #define DELETECOMMAND_H_
 
 //-------------------------------------------------------- Interfaces used
+#include <vector>
+
 #include "Command.h"
 #include "../../view/Drawing.h"
 

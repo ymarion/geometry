@@ -15,7 +15,7 @@ using namespace std;
 
 //------------------------------------------------------- Personal include
 #include "AddCommand.h"
-#include "Interpreter.h"
+#include "../../Interpreter.h"
 
 //-------------------------------------------------------- Class constants
 

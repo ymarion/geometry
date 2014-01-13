@@ -11,6 +11,7 @@
 
 //--------------------------------------------------------- System include
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 //------------------------------------------------------- Personal include
