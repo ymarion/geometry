@@ -30,7 +30,21 @@ using namespace std;
 //} //----- End of Method
 
 
-AddCircle::AddCircle( string const & rParameters )
+/*virtual*/ void AddCircle::Execute ( Drawing & rDrawing )
+{
+	// TODO
+}
+
+/*virtual*/ void AddCircle::Undo ( Drawing & rDrawing )
+{
+	// TODO
+}
+
+
+//--------------------------------------------------- Operator overloading
+
+//---------------------------------------------- Constructors - destructor
+AddCircle::AddCircle ( string const & rParameters )
 : AddCommand( false ), mParameters( rParameters )
 {
 #ifdef DEBUG
@@ -39,9 +53,6 @@ AddCircle::AddCircle( string const & rParameters )
 } //----- End of AddCircle
 
 
-//--------------------------------------------------- Operator overloading
-
-//---------------------------------------------- Constructors - destructor
 AddCircle::~AddCircle ( )
 // Algorithm:
 //

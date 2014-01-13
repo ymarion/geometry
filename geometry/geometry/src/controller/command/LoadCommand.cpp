@@ -30,7 +30,21 @@ using namespace std;
 //} //----- End of Method
 
 
-LoadCommand::LoadCommand( string const & rParameters )
+/*virtual*/ void LoadCommand::Execute ( Drawing & rDrawing )
+{
+	// TODO
+}
+
+/*virtual*/ void LoadCommand::Undo ( Drawing & rDrawing )
+{
+	// TODO
+}
+
+
+//--------------------------------------------------- Operator overloading
+
+//---------------------------------------------- Constructors - destructor
+LoadCommand::LoadCommand ( string const & rParameters )
 : Command( false ), mParameters( rParameters )
 {
 #ifdef DEBUG
@@ -39,9 +53,6 @@ LoadCommand::LoadCommand( string const & rParameters )
 } //----- End of LoadCommand
 
 
-//--------------------------------------------------- Operator overloading
-
-//---------------------------------------------- Constructors - destructor
 LoadCommand::~LoadCommand ( )
 // Algorithm:
 //

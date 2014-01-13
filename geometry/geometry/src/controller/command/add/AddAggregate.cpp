@@ -30,7 +30,21 @@ using namespace std;
 //} //----- End of Method
 
 
-AddAggregate::AddAggregate( string const & rParameters )
+/*virtual*/ void AddAggregate::Execute ( Drawing & rDrawing )
+{
+	// TODO
+}
+
+/*virtual*/ void AddAggregate::Undo ( Drawing & rDrawing )
+{
+	// TODO
+}
+
+
+//--------------------------------------------------- Operator overloading
+
+//---------------------------------------------- Constructors - destructor
+AddAggregate::AddAggregate ( string const & rParameters )
 : AddCommand( false ), mParameters( rParameters )
 {
 #ifdef DEBUG
@@ -39,9 +53,6 @@ AddAggregate::AddAggregate( string const & rParameters )
 } //----- End of AddAggregate
 
 
-//--------------------------------------------------- Operator overloading
-
-//---------------------------------------------- Constructors - destructor
 AddAggregate::~AddAggregate ( )
 // Algorithm:
 //

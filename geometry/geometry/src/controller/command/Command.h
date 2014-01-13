@@ -38,11 +38,11 @@ public:
 	// Returns the state of the command.
 	// (can be invalid mostly because of bad parameters)
 
-	virtual void execute ( Drawing & rDrawing ) = 0;
+	virtual void Execute ( Drawing & rDrawing ) = 0;
     // How to use:
 	//
 
-	virtual void undo ( Drawing & rDrawing ) = 0;
+	virtual void Undo ( Drawing & rDrawing ) = 0;
     // How to use:
 	//
 

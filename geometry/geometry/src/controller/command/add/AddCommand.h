@@ -33,11 +33,11 @@ public:
 	// Contract:
 	//
 
-    virtual void execute ( Drawing & rDrawing ) = 0;
+    virtual void Execute ( Drawing & rDrawing ) = 0;
     // How to use:
 	//
 
-	virtual void undo ( Drawing & rDrawing ) = 0;
+	virtual void Undo ( Drawing & rDrawing ) = 0;
     // How to use:
 	//
 

@@ -30,6 +30,17 @@ using namespace std;
 //} //----- End of Method
 
 
+/*virtual*/ void ClearCommand::Execute ( Drawing & rDrawing )
+{
+	// TODO
+}
+
+/*virtual*/ void ClearCommand::Undo ( Drawing & rDrawing )
+{
+	// TODO
+}
+
+
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
