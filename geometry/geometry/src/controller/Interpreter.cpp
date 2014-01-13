@@ -74,6 +74,7 @@ bool Interpreter::InterpretCommand( string const & rLine )
 {
 	if ( STOP == rLine )
 	{
+		mrController.DeInit();
 		cout << "# Bye." << endl;
 		return true;
 	}

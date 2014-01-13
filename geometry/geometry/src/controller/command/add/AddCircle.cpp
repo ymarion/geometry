@@ -33,7 +33,7 @@ using namespace std;
 
 /*virtual*/ void AddCircle::Execute ( Drawing & rDrawing )
 {
-	// TODO
+	//rDrawing.AddFigure( new Circle( mCenter, mRadius ) );
 }
 
 /*virtual*/ void AddCircle::Undo ( Drawing & rDrawing )

@@ -45,11 +45,50 @@ streambuf * Controller::SetOutput( ostream & rStream )
 
 void Controller::SaveAndExecute( Command * const pCommand )
 {
-	cout << "# No save and execute possible yet." << endl;
-	cout << "# Deleting..." << endl;
-	delete pCommand;
-	cout << "# Deleted." << endl;
+	if ( !pCommand->isValid( ) )
+	{
+		cout << "ERR: Arguments are not valid" << endl;
+#ifdef DEBUG
+		cout << "# Command will be deleted" << endl;
+#endif
+		delete pCommand;
+		pCommand = 0;
+#ifdef DEBUG
+		cout << "# Command Deleted." << endl;
+#endif
+	}
+	else if ( mCommands.size() == MAX_UNDO_REDOS )
+	{
+		cout << "# Undo/Redo list is full." << endl;
+		cout << "# Oldest Command will be deleted" << endl;
+		delete *( mCommands.begin( ) );
+		*( mCommands.begin( ) ) = 0;
+		mCommands.pop_front( );
+		mCommands.push_back( pCommand );
+	}
+	else
+	{
+		mCommands.push_back( pCommand );
+	}
+
+
 } //----- End of Execute
+
+void Controller::DeInit ( )
+{
+#ifdef DEBUG
+	cout << "# Emptying command list" << endl;
+#endif
+	while ( !mCommands.empty( ) )
+	{
+		delete *( mCommands.begin( ) );
+		*( mCommands.begin( ) ) = 0;
+		mCommands.pop_front( );
+	}
+#ifdef DEBUG
+	cout << "# Emptied list" << endl;
+#endif
+}
 
 
 void Controller::PrintList ( )

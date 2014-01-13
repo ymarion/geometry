@@ -10,6 +10,8 @@
 #define CONTROLLER_H_
 
 //-------------------------------------------------------- Interfaces used
+#include <list>
+
 #include "command/Command.h"
 
 //------------------------------------------------------------------ Types
@@ -25,6 +27,8 @@ class Controller
 //----------------------------------------------------------------- PUBLIC
 
 public:
+	static int const MAX_UNDO_REDOS = 30;
+
 //--------------------------------------------------------- Public methods
 	// type Method ( parameter list );
 	// How to use:
@@ -50,6 +54,10 @@ public:
 	void PrintList ( );
 	// How to use:
 	// Prints the list of the figures currently in the drawing on the stream.
+
+	void DeInit ( );
+	// How to use:
+	// Free all the commands currently in the undo/redo list (mCommands)
 
 //--------------------------------------------------- Operator overloading
 	// Controller & operator = ( Controller const & rController );
@@ -79,6 +87,7 @@ protected:
 	static Controller instance;
 
 	std::ostream & mOutput;
+	std::list<Command const *> mCommands;
 };
 
 //------------------------------ Other definitions depending on <Controller>
