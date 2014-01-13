@@ -30,6 +30,12 @@ using namespace std;
 //} //----- End of Method
 
 
+/*virtual*/ void Line::Move ( Point const & rVector )
+{
+	
+}
+
+
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor

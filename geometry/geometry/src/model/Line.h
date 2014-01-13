@@ -10,7 +10,10 @@
 #define LINE_H_
 
 //-------------------------------------------------------- Interfaces used
+#include <vector>
+
 #include "Polyline.h"
+#include "Point.h"
 
 //------------------------------------------------------------------ Types
 
@@ -31,6 +34,8 @@ public:
 	//
 	// Contract:
 	//
+
+	virtual void Move ( Point const & rVector );
 
 //--------------------------------------------------- Operator overloading
 	// Line & operator = ( Line const & aLine );
@@ -58,7 +63,7 @@ protected:
 //------------------------------------------------------ Protected methods
 
 //--------------------------------------------------- Protected attributes
-
+	std::vector<Point> mPoints;
 };
 
 //------------------------------ Other definitions depending on <Line>

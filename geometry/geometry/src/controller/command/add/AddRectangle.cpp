@@ -55,7 +55,6 @@ AddRectangle::AddRectangle ( string const & rParameters )
 	ss >> mEnd.y;
 	mValidState = true;
 
-{
 #ifdef DEBUG
 	cout << "Calling constructor of <AddRectangle>" << endl;
 #endif

@@ -15,6 +15,7 @@ using namespace std;
 
 //------------------------------------------------------- Personal include
 #include "AddCommand.h"
+#include "Interpreter.h"
 
 //-------------------------------------------------------- Class constants
 
@@ -36,7 +37,7 @@ using namespace std;
 AddCommand::AddCommand ( bool validState, string const & rParameters )
 : Command ( validState ), mParameters ( rParameters )
 {
-	int pos = rParameters.find( Interpreter::DELIMITER );
+	long pos = rParameters.find( Interpreter::DELIMITER );
 	mFigureName = rParameters.substr( 0, pos );
 	mParameters = rParameters.substr( pos + 1 );
 
