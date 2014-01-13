@@ -30,10 +30,17 @@ using namespace std;
 //} //----- End of Method
 
 
+/*virtual*/ void Circle::Move ( Point const & rVector )
+{
+	mCenter += rVector;
+}
+
+
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-Circle::Circle ( )
+Circle::Circle ( Point center, long radius )
+: mCenter( center ), mRadius( radius )
 // Algorithm:
 //
 {
