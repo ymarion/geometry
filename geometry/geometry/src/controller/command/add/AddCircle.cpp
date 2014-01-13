@@ -16,6 +16,7 @@ using namespace std;
 
 //------------------------------------------------------- Personal include
 #include "AddCircle.h"
+#include "../../../model/Circle.h"
 
 //-------------------------------------------------------- Class constants
 
@@ -33,12 +34,12 @@ using namespace std;
 
 /*virtual*/ void AddCircle::Execute ( Drawing & rDrawing )
 {
-	//rDrawing.AddFigure( new Circle( mCenter, mRadius ) );
+	rDrawing.AddFigure( mFigureName, new Circle( mCenter, mRadius ) );
 }
 
 /*virtual*/ void AddCircle::Undo ( Drawing & rDrawing )
 {
-	// TODO
+	rDrawing.RemoveFigure( mFigureName );
 }
 
 

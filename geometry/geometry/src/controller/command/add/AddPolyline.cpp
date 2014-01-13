@@ -16,6 +16,7 @@ using namespace std;
 
 //------------------------------------------------------- Personal include
 #include "AddPolyline.h"
+#include "../../../model/Polyline.h"
 
 //-------------------------------------------------------- Class constants
 
@@ -33,12 +34,12 @@ using namespace std;
 
 /*virtual*/ void AddPolyline::Execute ( Drawing & rDrawing )
 {
-	// TODO
+	rDrawing.AddFigure( mFigureName, new Polyline( mPointList ) );
 }
 
 /*virtual*/ void AddPolyline::Undo ( Drawing & rDrawing )
 {
-	// TODO
+	rDrawing.RemoveFigure( mFigureName );
 }
 
 

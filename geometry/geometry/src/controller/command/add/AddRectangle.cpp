@@ -16,6 +16,7 @@ using namespace std;
 
 //------------------------------------------------------- Personal include
 #include "AddRectangle.h"
+#include "../../../model/Rectangle.h"
 
 //-------------------------------------------------------- Class constants
 
@@ -33,12 +34,12 @@ using namespace std;
 
 /*virtual*/ void AddRectangle::Execute ( Drawing & rDrawing )
 {
-	// TODO
+	rDrawing.AddFigure( mFigureName, new Rectangle( mBegin, mEnd ) );
 }
 
 /*virtual*/ void AddRectangle::Undo ( Drawing & rDrawing )
 {
-	// TODO
+	rDrawing.RemoveFigure( mFigureName );
 }
 
 

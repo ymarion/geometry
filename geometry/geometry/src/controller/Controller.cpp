@@ -56,8 +56,10 @@ void Controller::SaveAndExecute( Command * const pCommand )
 #ifdef DEBUG
 		cout << "# Command Deleted." << endl;
 #endif
+		return;
 	}
-	else if ( mCommands.size() == MAX_UNDO_REDOS )
+
+	if ( mCommands.size() == MAX_UNDO_REDOS )
 	{
 		cout << "# Undo/Redo list is full." << endl;
 		cout << "# Oldest Command will be deleted" << endl;
@@ -65,12 +67,10 @@ void Controller::SaveAndExecute( Command * const pCommand )
 		*( mCommands.begin( ) ) = 0;
 		mCommands.pop_front( );
 		mCommands.push_back( pCommand );
-	}
-	else
-	{
-		mCommands.push_back( pCommand );
+		return;
 	}
 
+	mCommands.push_back( pCommand );
 
 } //----- End of Execute
 

@@ -16,6 +16,7 @@ using namespace std;
 
 //------------------------------------------------------- Personal include
 #include "AddAggregate.h"
+#include "../../../model/Aggregate.h"
 
 //-------------------------------------------------------- Class constants
 
@@ -33,12 +34,12 @@ using namespace std;
 
 /*virtual*/ void AddAggregate::Execute ( Drawing & rDrawing )
 {
-	// TODO
+	rDrawing.AddFigure( mFigureName, new Aggregate( mAggregateFig ) );
 }
 
 /*virtual*/ void AddAggregate::Undo ( Drawing & rDrawing )
 {
-	// TODO
+	rDrawing.RemoveFigure( mFigureName );
 }
 
 

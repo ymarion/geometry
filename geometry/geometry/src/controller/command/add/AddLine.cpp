@@ -16,6 +16,7 @@ using namespace std;
 
 //------------------------------------------------------- Personal include
 #include "AddLine.h"
+#include "../../../model/Line.h"
 
 //-------------------------------------------------------- Class constants
 
@@ -33,12 +34,12 @@ using namespace std;
 
 /*virtual*/ void AddLine::Execute ( Drawing & rDrawing )
 {
-	// TODO
+	rDrawing.AddFigure( mFigureName, new Line( mBegin, mEnd ) );
 }
 
 /*virtual*/ void AddLine::Undo ( Drawing & rDrawing )
 {
-	// TODO
+	rDrawing.RemoveFigure( mFigureName );
 }
 
 
