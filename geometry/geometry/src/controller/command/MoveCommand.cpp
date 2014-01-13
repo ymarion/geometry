@@ -53,6 +53,7 @@ MoveCommand::MoveCommand ( string const & rParameters )
 	ss >> mVect.x;
 	ss >> mVect.y;
 	mValidState = true;
+
 #ifdef DEBUG
 	cout << "Calling constructor of <MoveCommand>" << endl;
 #endif

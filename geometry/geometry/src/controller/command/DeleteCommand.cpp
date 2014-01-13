@@ -11,6 +11,7 @@
 
 //--------------------------------------------------------- System include
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 //------------------------------------------------------- Personal include
@@ -45,8 +46,16 @@ using namespace std;
 
 //---------------------------------------------- Constructors - destructor
 DeleteCommand::DeleteCommand ( string const & rParameters )
-: Command( false ), mParameters( rParameters )
+: Command( false )
 {
+	stringstream ss( rParameters );
+	while ( ss.good() )
+	{
+		string fName;
+		ss >> fName;
+		mDeleteList.push_back(fName);
+	}
+
 #ifdef DEBUG
 	cout << "Calling constructor of <DeleteCommand>" << endl;
 #endif

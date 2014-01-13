@@ -67,7 +67,7 @@ protected:
 //------------------------------------------------------ Protected methods
 
 //--------------------------------------------------- Protected attributes
-	std::string mParameters;// TODO: parse string
+	std::istream mInFile;
 };
 
 //------------------------------ Other definitions depending on <LoadCommand>

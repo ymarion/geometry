@@ -67,7 +67,7 @@ protected:
 //------------------------------------------------------ Protected methods
 
 //--------------------------------------------------- Protected attributes
-	std::string mParameters;// TODO: parse string
+	std::vector<std::string> mDeleteList;
 };
 
 //------------------------------ Other definitions depending on <DeleteCommand>

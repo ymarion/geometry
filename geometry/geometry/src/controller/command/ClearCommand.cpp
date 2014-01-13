@@ -47,6 +47,12 @@ using namespace std;
 ClearCommand::ClearCommand ( string const & rParameters )
 : Command ( false ), mParameters( rParameters )
 {
+	stringstream ss( rParameters );
+	ss >> ws;
+	// skipping whitespaces
+
+	mValidState = ( "" == ss.str( ) );
+
 #ifdef DEBUG
 	cout << "Calling constructor of <ClearCommand>" << endl;
 #endif

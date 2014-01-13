@@ -11,6 +11,7 @@
 
 //--------------------------------------------------------- System include
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 //------------------------------------------------------- Personal include
@@ -45,8 +46,9 @@ using namespace std;
 
 //---------------------------------------------- Constructors - destructor
 LoadCommand::LoadCommand ( string const & rParameters )
-: Command( false ), mParameters( rParameters )
+: Command( false ), mInFile( rParameters.c_str( ) )
 {
+	mValidState = mInFile.good( );
 #ifdef DEBUG
 	cout << "Calling constructor of <LoadCommand>" << endl;
 #endif
