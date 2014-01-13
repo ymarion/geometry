@@ -11,6 +11,7 @@
 
 //--------------------------------------------------------- System include
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 //------------------------------------------------------- Personal include
@@ -45,7 +46,15 @@ using namespace std;
 
 //---------------------------------------------- Constructors - destructor
 AddRectangle::AddRectangle ( string const & rParameters )
-: AddCommand( false ), mParameters( rParameters )
+: AddCommand( false, rParameters ), mBegin( 0, 0 ), mEnd( 0, 0 )
+{
+	stringstream ss( mParameters );
+	ss >> mBegin.x;
+	ss >> mBegin.y;
+	ss >> mEnd.x;
+	ss >> mEnd.y;
+	mValidState = true;
+
 {
 #ifdef DEBUG
 	cout << "Calling constructor of <AddRectangle>" << endl;

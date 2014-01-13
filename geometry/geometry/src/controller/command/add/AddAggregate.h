@@ -10,6 +10,8 @@
 #define ADDAGGREGATE_H_
 
 //-------------------------------------------------------- Interfaces used
+#include <vector>
+
 #include "AddCommand.h"
 #include "../../../view/Drawing.h"
 
@@ -67,8 +69,7 @@ protected:
 	//------------------------------------------------------ Protected methods
 
 	//--------------------------------------------------- Protected attributes
-	std::string mParameters;// TODO: parse string
-	//list<Figure> mAggregateFig;// Filled during the string parsing
+	std::vector<std::string> mAggregateFig;// Filled during the string parsing
 };
 
 //------------------------------ Other definitions depending on <AddAggregate>

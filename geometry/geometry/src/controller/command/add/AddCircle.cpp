@@ -11,6 +11,7 @@
 
 //--------------------------------------------------------- System include
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 //------------------------------------------------------- Personal include
@@ -45,8 +46,14 @@ using namespace std;
 
 //---------------------------------------------- Constructors - destructor
 AddCircle::AddCircle ( string const & rParameters )
-: AddCommand( false ), mParameters( rParameters )
+: AddCommand( false, rParameters ), mCenter( 0, 0 )
 {
+	stringstream ss( mParameters );
+	ss >> mCenter.x;
+	ss >> mCenter.y;
+	ss >> mRadius;
+	mValidState = true;
+
 #ifdef DEBUG
 	cout << "Calling constructor of <AddCircle>" << endl;
 #endif

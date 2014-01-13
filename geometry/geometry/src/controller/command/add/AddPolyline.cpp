@@ -11,6 +11,7 @@
 
 //--------------------------------------------------------- System include
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 //------------------------------------------------------- Personal include
@@ -45,8 +46,19 @@ using namespace std;
 
 //---------------------------------------------- Constructors - destructor
 AddPolyline::AddPolyline ( string const & rParameters )
-: AddCommand( false ), mParameters( rParameters )
+: AddCommand( false, rParameters )
 {
+	stringstream ss( mParameters );
+	long x, y;
+	while ( ss.good() )
+	{
+		ss >> x;
+		ss >> y;
+		Point aPoint( x, y );
+		mPointList.push_back(aPoint);
+	}
+	mValidState = true;
+
 #ifdef DEBUG
 	cout << "Calling constructor of <AddPolyline>" << endl;
 #endif

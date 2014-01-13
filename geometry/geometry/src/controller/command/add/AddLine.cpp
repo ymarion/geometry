@@ -50,9 +50,10 @@ AddLine::AddLine ( string const & rParameters )
 	stringstream ss( mParameters );
 	ss >> mBegin.x;
 	ss >> mBegin.y;
-	ss >> mBegin.x;
-	ss >> mBegin.y;
+	ss >> mEnd.x;
+	ss >> mEnd.y;
 	mValidState = true;
+
 #ifdef DEBUG
 	cout << "Calling constructor of <AddLine>" << endl;
 #endif

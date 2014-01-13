@@ -11,6 +11,7 @@
 
 //--------------------------------------------------------- System include
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 //------------------------------------------------------- Personal include
@@ -45,8 +46,16 @@ using namespace std;
 
 //---------------------------------------------- Constructors - destructor
 AddAggregate::AddAggregate ( string const & rParameters )
-: AddCommand( false ), mParameters( rParameters )
+: AddCommand( false, rParameters )
 {
+	stringstream ss( mParameters );
+	while ( ss.good( ) )
+	{
+		string fName;
+		ss >> fName;
+		mAggregateFig.push_back( fName );
+	}
+	mValidState = true;
 #ifdef DEBUG
 	cout << "Calling constructor of <AddAggregate>" << endl;
 #endif

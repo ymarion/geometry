@@ -10,6 +10,8 @@
 #define ADDPOLYLINE_H_
 
 //-------------------------------------------------------- Interfaces used
+#include <vector>
+
 #include "AddCommand.h"
 #include "../../../view/Drawing.h"
 #include "../../../model/Point.h"
@@ -68,8 +70,7 @@ protected:
 	//------------------------------------------------------ Protected methods
 
 	//--------------------------------------------------- Protected attributes
-	std::string mParameters;// TODO: parse string
-	//list<Point> mPoint
+	std::vector<Point> mPointList;
 };
 
 //------------------------------ Other definitions depending on <AddPolyline>

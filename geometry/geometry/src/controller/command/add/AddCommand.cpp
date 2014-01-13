@@ -39,6 +39,7 @@ AddCommand::AddCommand ( bool validState, string const & rParameters )
 	int pos = rParameters.find( Interpreter::DELIMITER );
 	mFigureName = rParameters.substr( 0, pos );
 	mParameters = rParameters.substr( pos + 1 );
+
 #ifdef DEBUG
 	cout << "Calling constructor of <AddCommand>" << endl;
 #endif
