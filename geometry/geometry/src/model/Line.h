@@ -10,9 +10,6 @@
 #define LINE_H_
 
 //-------------------------------------------------------- Interfaces used
-#include <vector>
-
-#include "Polyline.h"
 #include "Point.h"
 
 //------------------------------------------------------------------ Types
@@ -23,7 +20,7 @@
 //
 //------------------------------------------------------------------------
 
-class Line : public Polyline
+class Line
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -36,6 +33,8 @@ public:
 	//
 
 	virtual void Move ( Point const & rVector );
+	// How to use:
+	// Moves the object along the vector rVector.
 
 //--------------------------------------------------- Operator overloading
 	// Line & operator = ( Line const & aLine );
@@ -45,11 +44,9 @@ public:
 	// Line ( Line const & aLine );
 	// Default
 
-	Line ( );
+	Line ( Point const & beginCopy, Point const & endCopy );
 	// How to use:
-	//
-	// Contract:
-	//
+	// Creates a line going from point begin to end. Points are copied.
 
 	virtual ~Line ( );
 	// How to use:
@@ -63,7 +60,8 @@ protected:
 //------------------------------------------------------ Protected methods
 
 //--------------------------------------------------- Protected attributes
-	std::vector<Point> mPoints;
+	Point mBegin;
+	Point mEnd;
 };
 
 //------------------------------ Other definitions depending on <Line>

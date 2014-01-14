@@ -39,9 +39,8 @@ using namespace std;
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-Line::Line ( )
-// Algorithm:
-//
+Line::Line ( Point const & beginCopy, Point const & endCopy )
+: mBegin ( beginCopy ), mEnd ( endCopy )
 {
 #ifdef DEBUG
 	cout << "Calling constructor of <Line>" << endl;

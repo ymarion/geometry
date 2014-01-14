@@ -11,6 +11,7 @@
 
 //--------------------------------------------------------- System include
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 //------------------------------------------------------- Personal include
@@ -30,12 +31,18 @@ using namespace std;
 //} //----- End of Method
 
 
+/*virtual*/ void Polyline::Move ( Point const & rVector )
+{
+	struct MovePoint movePoint( rVector );
+	for_each( mPointList.begin( ), mPointList.end( ), movePoint );
+}
+
+
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-Polyline::Polyline ( )
-// Algorithm:
-//
+Polyline::Polyline ( vector<Point> const & rPointList )
+: mPointList( rPointList )
 {
 #ifdef DEBUG
 	cout << "Calling constructor of <Polyline>" << endl;

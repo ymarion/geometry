@@ -10,7 +10,10 @@
 #define POLYLINE_H_
 
 //-------------------------------------------------------- Interfaces used
+#include <vector>
+
 #include "Figure.h"
+#include "Point.h"
 
 //------------------------------------------------------------------ Types
 
@@ -32,6 +35,14 @@ public:
 	// Contract:
 	//
 
+	static void MovePoint (Point & rP, Point const & rVector );
+	// How to use:
+	// Moves a single point.
+
+	virtual void Move ( Point const & rVector );
+	// How to use:
+	// Moves the object along the vector rVector.
+
 //--------------------------------------------------- Operator overloading
 	// Polyline & operator = ( Polyline const & aPolyline );
 	// Default
@@ -40,11 +51,9 @@ public:
 	// Polyline ( Polyline const & aPolyline );
 	// Default
 
-	Polyline ( );
+	Polyline ( std::vector<Point> const & rPointList );
 	// How to use:
-	//
-	// Contract:
-	//
+	// The point list will be copied.
 
 	virtual ~Polyline ( );
 	// How to use:
@@ -58,7 +67,18 @@ protected:
 //------------------------------------------------------ Protected methods
 
 //--------------------------------------------------- Protected attributes
+	struct MovePoint
+	{
+		MovePoint ( Point const & rVector )
+		: mrVector ( rVector ) { }
 
+		void operator () ( Point & rP )
+		{    rP += mrVector;    }
+
+		Point const & mrVector;
+	};
+
+	std::vector<Point> mPointList;
 };
 
 //------------------------------ Other definitions depending on <Polyline>

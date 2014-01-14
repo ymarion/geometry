@@ -69,6 +69,17 @@ protected:
 //------------------------------------------------------ Protected methods
 
 //--------------------------------------------------- Protected attributes
+	struct RemoveFigure
+	{
+		RemoveFigure ( Drawing & rDrawing )
+		: mrDrawing ( rDrawing ) { }
+
+		void operator () ( std::string const & rFigName )
+		{    mrDrawing.RemoveFigure( rFigName );    }
+
+		Drawing & mrDrawing;
+	};
+
 	std::vector<std::string> mDeleteList;
 };
 

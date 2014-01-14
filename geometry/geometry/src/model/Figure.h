@@ -33,6 +33,8 @@ public:
 	//
 
 	virtual void Move ( Point const & rVector ) = 0;
+	// How to use:
+	// Moves the object along the vector rVector.
 
 //--------------------------------------------------- Operator overloading
 	// Figure & operator = ( Figure const & aFigure );

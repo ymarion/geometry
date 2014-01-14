@@ -34,6 +34,8 @@ public:
 	//
 
 	virtual void Move ( Point const & rVector );
+	// How to use:
+	// Moves the object along the vector rVector.
 
 //--------------------------------------------------- Operator overloading
 	// Circle & operator = ( Circle const & aCircle );
