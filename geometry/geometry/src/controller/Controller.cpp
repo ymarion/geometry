@@ -47,12 +47,12 @@ void Controller::SaveAndExecute( Command * const pCommand )
 {
 	if ( !pCommand->isValid( ) )
 	{
-		cout << "ERR: Arguments are not valid" << endl;
+		cout << "ERR: " << pCommand->ErrorMessage( ) << endl;
 #ifdef DEBUG
 		cout << "# Command will be deleted" << endl;
 #endif
 		delete pCommand;
-		pCommand = 0;
+//		pCommand = 0;
 #ifdef DEBUG
 		cout << "# Command Deleted." << endl;
 #endif
@@ -71,8 +71,13 @@ void Controller::SaveAndExecute( Command * const pCommand )
 	}
 
 	mCommands.push_back( pCommand );
+	// Adds the command to the undo/redo list
+
+	pCommand->Execute( );
+	// Executes it
 
 } //----- End of Execute
+
 
 void Controller::DeInit ( )
 {
@@ -88,7 +93,7 @@ void Controller::DeInit ( )
 #ifdef DEBUG
 	cout << "# Emptied list" << endl;
 #endif
-}
+} //----- End of DeInit
 
 
 void Controller::PrintList ( )

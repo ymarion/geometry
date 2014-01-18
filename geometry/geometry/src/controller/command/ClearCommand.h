@@ -33,11 +33,11 @@ public:
 	// Contract:
 	//
 
-    virtual void Execute ( Drawing & rDrawing );
+    virtual void Execute ( );
     // How to use:
 	//
 
-	virtual void Undo ( Drawing & rDrawing );
+	virtual void Undo ( );
     // How to use:
 	//
 
@@ -49,7 +49,7 @@ public:
 	// ClearCommand ( ClearCommand const & aClearCommand );
 	// Default
 
-	ClearCommand ( std::string const & rParameters );
+	ClearCommand ( Drawing & rDrawing, std::string const & rParameters );
 	// How to use:
 	// Instantiates a ClearCommand which parameters will be parsed.
 	// Contract:

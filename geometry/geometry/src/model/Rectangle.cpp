@@ -30,12 +30,18 @@ using namespace std;
 //} //----- End of Method
 
 
+/*virtual*/ void Rectangle::Move ( Point const & rVector )
+{
+	mTopLeftCorner += rVector;
+	mBottomRightCorner += rVector;
+} //----- End of Move
+
+
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-Rectangle::Rectangle ( )
-// Algorithm:
-//
+Rectangle::Rectangle ( Point const & rTopLeft, Point const & rBottomRight )
+: mTopLeftCorner( rTopLeft ), mBottomRightCorner( rBottomRight )
 {
 #ifdef DEBUG
 	cout << "Calling constructor of <Rectangle>" << endl;

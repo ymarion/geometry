@@ -35,11 +35,11 @@ public:
 	// Contract:
 	//
 
-    virtual void Execute ( Drawing & rDrawing );
+    virtual void Execute ( );
     // How to use:
 	//
 
-	virtual void Undo ( Drawing & rDrawing );
+	virtual void Undo ( );
     // How to use:
 	//
 
@@ -51,7 +51,7 @@ public:
 	// DeleteCommand ( DeleteCommand const & aDeleteCommand );
 	// Default
 
-	DeleteCommand ( std::string const & rParameters );
+	DeleteCommand ( Drawing & rDrawing, std::string const & rParameters );
 	// How to use:
 	// Instantiates a DeleteCommand which parameters will be parsed.
 	// Contract:

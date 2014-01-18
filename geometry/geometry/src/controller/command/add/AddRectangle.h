@@ -34,11 +34,11 @@ public:
 	// Contract:
 	//
 
-    virtual void Execute ( Drawing & rDrawing );
+    virtual void Execute ( );
     // How to use:
 	//
 
-	virtual void Undo ( Drawing & rDrawing );
+	virtual void Undo ( );
     // How to use:
 	//
 
@@ -50,7 +50,7 @@ public:
 	// AddRectangle ( AddRectangle const & anAddRectangle );
 	// Default
 
-	AddRectangle ( std::string const & rParameters );
+	AddRectangle ( Drawing & rDrawing, std::string const & rParameters );
 	// How to use:
 	// Instantiates an AddRectangle which parameters will be parsed.
 	// Contract:

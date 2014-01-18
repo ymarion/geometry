@@ -34,11 +34,22 @@ using namespace std;
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-AddCommand::AddCommand ( bool validState, string const & rParameters )
-: Command ( validState ), mParameters ( rParameters )
+AddCommand::AddCommand ( Drawing & rDrawing, bool validState,
+						 string const & rParameters )
+: Command ( rDrawing, validState ), mParameters ( rParameters )
 {
 	long pos = rParameters.find( Interpreter::DELIMITER );
 	mFigureName = rParameters.substr( 0, pos );
+	mpFigure = mrDrawing.FindFigure( mFigureName );
+
+	bool error = 0 != mpFigure; // A figure already exists under this name
+	if ( !mError && error )
+	// No error but the last one
+	{
+		mError = true;
+		mErrorMessage = "Figure \"" + mFigureName + "\" already exists";
+	}
+
 	mParameters = rParameters.substr( pos + 1 );
 
 #ifdef DEBUG

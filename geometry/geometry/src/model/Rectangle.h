@@ -32,6 +32,10 @@ public:
 	// Contract:
 	//
 
+	virtual void Move ( Point const & rVector );
+	// How to use:
+	// Moves the object along the vector rVector.
+
 //--------------------------------------------------- Operator overloading
 	// Rectangle & operator = ( Rectangle const & aRectangle );
 	// Default
@@ -40,7 +44,7 @@ public:
 	// Rectangle ( Rectangle const & aRectangle );
 	// Default
 
-	Rectangle ( );
+	Rectangle ( Point const & rTopLeft, Point const & rBottomRight );
 	// How to use:
 	//
 	// Contract:
@@ -58,7 +62,8 @@ protected:
 //------------------------------------------------------ Protected methods
 
 //--------------------------------------------------- Protected attributes
-
+	Point mTopLeftCorner;
+	Point mBottomRightCorner;
 };
 
 //------------------------------ Other definitions depending on <Rectangle>

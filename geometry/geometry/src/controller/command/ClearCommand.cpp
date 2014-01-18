@@ -31,28 +31,30 @@ using namespace std;
 //} //----- End of Method
 
 
-/*virtual*/ void ClearCommand::Execute ( Drawing & rDrawing )
+/*virtual*/ void ClearCommand::Execute ( )
 {
 	// TODO
-}
+} //----- End of Execute
 
-/*virtual*/ void ClearCommand::Undo ( Drawing & rDrawing )
+
+/*virtual*/ void ClearCommand::Undo ( )
 {
 	// TODO
-}
+} //----- End of Undo
 
 
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-ClearCommand::ClearCommand ( string const & rParameters )
-: Command ( false ), mParameters( rParameters )
+ClearCommand::ClearCommand ( Drawing & rDrawing, string const & rParameters )
+: Command ( rDrawing, false ), mParameters( rParameters )
 {
-	stringstream ss( rParameters );
-	ss >> ws;
-	// skipping whitespaces
-
-	mValidState = ( "" == ss.str( ) );
+	bool error = ( "" == rParameters ); // TODO accept whitespaces
+	if ( !mError && error )
+	{
+		mError = true;
+		mErrorMessage = "CLEAR takes no parameter";
+	}
 
 #ifdef DEBUG
 	cout << "Calling constructor of <ClearCommand>" << endl;

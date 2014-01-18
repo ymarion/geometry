@@ -32,28 +32,38 @@ using namespace std;
 //} //----- End of Method
 
 
-/*virtual*/ void AddCircle::Execute ( Drawing & rDrawing )
+/*virtual*/ void AddCircle::Execute ( )
 {
-	rDrawing.AddFigure( mFigureName, new Circle( mCenter, mRadius ) );
-}
+	mrDrawing.AddFigure( mFigureName, new Circle( mCenter, mRadius ) );
+} //----- End of Execute
 
-/*virtual*/ void AddCircle::Undo ( Drawing & rDrawing )
+
+/*virtual*/ void AddCircle::Undo ( )
 {
-	rDrawing.RemoveFigure( mFigureName );
-}
+	mrDrawing.RemoveFigure( mFigureName );
+} //----- End of Undo
 
 
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-AddCircle::AddCircle ( string const & rParameters )
-: AddCommand( false, rParameters ), mCenter( 0, 0 )
+AddCircle::AddCircle ( Drawing & rDrawing, string const & rParameters )
+: AddCommand( rDrawing, false, rParameters ), mCenter( 0, 0 )
 {
+	bool error;
 	stringstream ss( mParameters );
+
 	ss >> mCenter.x;
 	ss >> mCenter.y;
 	ss >> mRadius;
-	mValidState = true;
+
+	error = ss.fail( );
+	if ( !mError && error )
+	// No error yet except for the last one
+	{
+		mError = true;
+		mErrorMessage = "Impossible to parse coordinates or radius";
+	}
 
 #ifdef DEBUG
 	cout << "Calling constructor of <AddCircle>" << endl;

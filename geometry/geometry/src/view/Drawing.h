@@ -11,10 +11,17 @@
 
 //-------------------------------------------------------- Interfaces used
 #include <map>
+#include <vector>
 
 #include "../model/Figure.h"
+#include "../model/Point.h"
 
 //------------------------------------------------------------------ Types
+typedef std::map   <string const, Figure *> FiguresAlpha;
+typedef std::vector<Figure *>               FiguresCreation;
+
+typedef std::pair<FiguresAlpha    const * const,
+				  FiguresCreation const * const> DrawingFigureList;
 
 //------------------------------------------------------------------------
 // Class role of <Drawing>
@@ -34,12 +41,22 @@ public:
 	// Contract:
 	//
 
+	static Drawing & GetInstance ( );
+	// How to use:
+	// Returns the single instance of the interpreter.
+
 	void AddFigure ( std::string const & rName, Figure * pFigure );
 	// How to use:
 	// Adds a figure to the dictionary, so that it may later on be modified
 	// thanks to the other methods of Drawing.
 
-	Figure * const FindFigure ( std::string const & rName );
+	void AddFigureLists ( DrawingFigureList const & rListsToCopy );
+	// How to use:
+	// Copies the two figure lists and adds all figures to the drawing.
+	// Contract:
+	// The two lists MUST be coherent (same pointers, different order).
+
+	Figure * const FindFigure ( std::string const & rName ) const;
 	// How to use:
 	// Gives the pointer to a Figure currently saved in the Drawing.
 	// Returns 0 if the figure is not found.
@@ -48,6 +65,18 @@ public:
 	// using the method RemoveFigure.
 	// Notes:
 	// DeleteFigure both removes AND deletes the figure it finds.
+
+	DrawingFigureList const GetFigureLists ( ) const;
+	// How to use:
+	// Returns the two current figure lists of the drawing.
+	// Contract:
+	// The lists are coherent (same pointers, different order)
+
+	bool MoveFigure ( std::string const & rName, Point const & rVector );
+	// How to use:
+	// Moves a figure along the vector rVector.
+	// Contract:
+	// Returns false if figure not found.
 
 	bool DeleteFigure ( std::string const & rName );
 	// How to use:
@@ -76,16 +105,14 @@ public:
 	// or add them back with AddFigure so that there is no memory leak.
 
 //--------------------------------------------------- Operator overloading
-	Drawing & operator = ( Drawing const & aDrawing );
+	// Drawing & operator = ( Drawing const & aDrawing );
 	// Deep copy, deleting the original value.
+	// Not necessary for singleton.
 
 //---------------------------------------------- Constructors - destructor
-	Drawing ( Drawing const & aDrawing );
+	// Drawing ( Drawing const & aDrawing );
 	// Deep copy, keeping the original value.
-
-	Drawing ( );
-	// How to use:
-	// Creates an empty drawing.
+	// Not necessary for singleton.
 
 	virtual ~Drawing ( );
 	// How to use:
@@ -96,9 +123,17 @@ public:
 
 protected:
 //------------------------------------------------------ Protected methods
+	Drawing ( );
+	// Because the Drawing is a singleton.
 
 //--------------------------------------------------- Protected attributes
-//	std::map<std::string const &, Figure *> mFigures;
+	static Drawing instance;
+
+	FiguresAlpha mFiguresAlpha;
+	// All figures ordered by name
+
+	FiguresCreation mFiguresCreation;
+	// Figures ordered by creation order
 };
 
 //------------------------------ Other definitions depending on <Drawing>

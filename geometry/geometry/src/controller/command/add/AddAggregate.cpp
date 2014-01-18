@@ -32,31 +32,43 @@ using namespace std;
 //} //----- End of Method
 
 
-/*virtual*/ void AddAggregate::Execute ( Drawing & rDrawing )
+/*virtual*/ void AddAggregate::Execute ( )
 {
-	rDrawing.AddFigure( mFigureName, new Aggregate( mAggregateFig ) );
-}
+	mpAggregate = new Aggregate ( mFigures );
+	mrDrawing.AddFigure( mFigureName, new Aggregate( mFigures ) );
+} //----- End of Execute
 
-/*virtual*/ void AddAggregate::Undo ( Drawing & rDrawing )
+/*virtual*/ void AddAggregate::Undo ( )
 {
-	rDrawing.RemoveFigure( mFigureName );
-}
+	mrDrawing.RemoveFigure( mFigureName );
+} //----- End of Undo
 
 
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-AddAggregate::AddAggregate ( string const & rParameters )
-: AddCommand( false, rParameters )
+AddAggregate::AddAggregate ( Drawing & rDrawing, string const & rParameters )
+: AddCommand( rDrawing, false, rParameters )
 {
 	stringstream ss( mParameters );
 	while ( ss.good( ) )
 	{
-		string fName;
-		ss >> fName;
-		mAggregateFig.push_back( fName );
+		string figureName;
+		ss >> figureName;
+		Figure * pFigure = mrDrawing.FindFigure( figureName );
+		if ( 0 != pFigure )
+		// Figure is found
+		{
+			mFigures.insert( make_pair( figureName, pFigure ) );
+		}
+		else if ( !mError )
+		// No error yet
+		{
+			mError = true;
+			mErrorMessage = "Figure \"" + figureName + "\" doesn't exist";
+			break;
+		}
 	}
-	mValidState = true;
 #ifdef DEBUG
 	cout << "Calling constructor of <AddAggregate>" << endl;
 #endif

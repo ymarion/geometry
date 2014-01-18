@@ -30,11 +30,23 @@ using namespace std;
 //} //----- End of Method
 
 
+bool Command::isValid ( ) const
+{
+	return !mError;
+} //----- End of isValid
+
+
+string const & Command::ErrorMessage ( ) const
+{
+	return mErrorMessage;
+} //----- End of ErrorMessage
+
+
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-Command::Command ( bool validState )
-: mValidState( validState )
+Command::Command ( Drawing & rDrawing, bool validState, bool executed )
+: mError( validState ), mrDrawing( rDrawing ), mWasExecuted( executed )
 {
 #ifdef DEBUG
 	cout << "Calling constructor of <Command>" << endl;

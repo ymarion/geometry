@@ -33,7 +33,7 @@ using namespace std;
 /*virtual*/ void Circle::Move ( Point const & rVector )
 {
 	mCenter += rVector;
-}
+} //----- End of Move
 
 
 //--------------------------------------------------- Operator overloading

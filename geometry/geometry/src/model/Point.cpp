@@ -34,7 +34,7 @@ using namespace std;
 Point Point::operator + ( Point const & rPoint ) const
 {
 	return Point (x + rPoint.x, y + rPoint.y );
-}
+} //----- End of operator +
 
 
 Point & Point::operator += ( Point const & rVector )
@@ -42,12 +42,13 @@ Point & Point::operator += ( Point const & rVector )
 	x += rVector.x;
 	y += rVector.y;
 	return *this;
-}
+} //----- End of operator +=
+
 
 Point Point::operator - () const
 {
 	return Point ( -x, -y );
-}
+} //----- End of operator -
 
 
 //---------------------------------------------- Constructors - destructor

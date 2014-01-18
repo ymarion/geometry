@@ -14,6 +14,7 @@
 
 #include "AddCommand.h"
 #include "../../../view/Drawing.h"
+#include "../../../model/Aggregate.h"
 
 //------------------------------------------------------------------ Types
 
@@ -25,51 +26,52 @@
 
 class AddAggregate : public AddCommand
 {
-	//----------------------------------------------------------------- PUBLIC
+//----------------------------------------------------------------- PUBLIC
 
 public:
-	//--------------------------------------------------------- Public methods
+//--------------------------------------------------------- Public methods
 	// type Method ( parameter list );
 	// How to use:
 	//
 	// Contract:
 	//
 
-    virtual void Execute ( Drawing & rDrawing );
+    virtual void Execute ( );
     // How to use:
 	//
 
-	virtual void Undo ( Drawing & rDrawing );
+	virtual void Undo ( );
     // How to use:
 	//
 
-	//--------------------------------------------------- Operator overMoveing
+//--------------------------------------------------- Operator overloading
 	// AddAggregate & operator = ( AddAggregate const & aAddAggregate );
 	// Default
 
-	//---------------------------------------------- Constructors - destructor
+//---------------------------------------------- Constructors - destructor
 	// AddAggregate ( AddAggregate const & aAddAggregate );
 	// Default
 
-	AddAggregate ( std::string const & rParameters );
+	AddAggregate ( Drawing & rDrawing, std::string const & rParameters );
 	// How to use:
 	// Instantiates an AddAggregate which parameters will be parsed.
 	// Contract:
-	// If the parameters are wrongly formatted, isValid() will return false.
+	// If the parameters are wrong (format/logic), isValid() will return false.
 
 	virtual ~AddAggregate ( );
 	// How to use:
 	//
 	// Contract:
-	//
+	// Destroys the Aggregate it is pointing to
 
-	//---------------------------------------------------------------- PRIVATE
+//---------------------------------------------------------------- PRIVATE
 
 protected:
-	//------------------------------------------------------ Protected methods
+//------------------------------------------------------ Protected methods
 
-	//--------------------------------------------------- Protected attributes
-	std::vector<std::string> mAggregateFig;// Filled during the string parsing
+//--------------------------------------------------- Protected attributes
+	AggregatedFigures mFigures;// Filled during the string parsing
+	Aggregate * mpAggregate;
 };
 
 //------------------------------ Other definitions depending on <AddAggregate>

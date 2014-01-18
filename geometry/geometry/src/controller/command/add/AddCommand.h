@@ -33,11 +33,11 @@ public:
 	// Contract:
 	//
 
-    virtual void Execute ( Drawing & rDrawing ) = 0;
+    virtual void Execute ( ) = 0;
     // How to use:
 	//
 
-	virtual void Undo ( Drawing & rDrawing ) = 0;
+	virtual void Undo ( ) = 0;
     // How to use:
 	//
 
@@ -49,7 +49,8 @@ public:
 	// AddCommand ( AddCommand const & anAddCommand );
 	// Default
 
-	AddCommand ( bool validState, std::string const & rParameters );
+	AddCommand ( Drawing & rDrawing, bool validState,
+				 std::string const & rParameters );
 	// How to use:
 	// Sets the validState flag.
 
@@ -66,6 +67,7 @@ protected:
 
 //--------------------------------------------------- Protected attributes
 	std::string mFigureName;
+	Figure *mpFigure;
 	std::string mParameters;
 };
 

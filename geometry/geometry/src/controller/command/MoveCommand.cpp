@@ -31,28 +31,46 @@ using namespace std;
 //} //----- End of Method
 
 
-/*virtual*/ void MoveCommand::Execute ( Drawing & rDrawing )
+/*virtual*/ void MoveCommand::Execute ( )
 {
-	rDrawing.Move( mFigureName , mVector );
-}
+	mpFigure->Move( mVector );
+} //----- End of Execute
 
-/*virtual*/ void MoveCommand::Undo ( Drawing & rDrawing )
+
+/*virtual*/ void MoveCommand::Undo ( )
 {
-	rDrawing.Move( mFigureName , -mVector );
-}
+	mpFigure->Move( -mVector );
+} //----- End of Undo
 
 
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-MoveCommand::MoveCommand ( string const & rParameters )
-: Command( false ), mVect( 0, 0 )
+MoveCommand::MoveCommand ( Drawing & rDrawing, string const & rParameters )
+: Command( rDrawing, false ), mVector( 0, 0 )
 {
-	stringstream ss( rParameters );
-	ss >> mFigureName;
-	ss >> mVector.x;
-	ss >> mVector.y;
-	mValidState = true;
+	istringstream iss( rParameters );
+	string figureName;
+	iss >> figureName;
+	mpFigure = mrDrawing.FindFigure( figureName );
+	bool error = 0 == mpFigure;
+	if ( !mError && error )
+	{
+		mError = true;
+		mErrorMessage = "Figure \"" + figureName + "\" doesn't exist";
+	}
+	else
+	{
+		iss >> mVector.x;
+		iss >> mVector.y;
+		// TODO check parsing
+		error = iss.fail( );
+		if ( !mError && error )
+		{
+			mError = true;
+			mErrorMessage = "Impossible to parse coordinates of vector";
+		}
+	}
 
 #ifdef DEBUG
 	cout << "Calling constructor of <MoveCommand>" << endl;

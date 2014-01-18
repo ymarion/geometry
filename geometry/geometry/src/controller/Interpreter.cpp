@@ -99,7 +99,8 @@ bool Interpreter::InterpretCommand( string const & rLine )
 	}
 	else
 	{
-		Command * pCommand = ( mFactory.*( it->second ) ) ( parameters );
+		Command * pCommand = ( mFactory.*( it->second ) )
+				( Drawing::GetInstance( ), parameters );
 		// Creating a command and passing it its arguments
 
 		mrController.SaveAndExecute( pCommand );

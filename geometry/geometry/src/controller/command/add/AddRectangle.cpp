@@ -32,29 +32,36 @@ using namespace std;
 //} //----- End of Method
 
 
-/*virtual*/ void AddRectangle::Execute ( Drawing & rDrawing )
+/*virtual*/ void AddRectangle::Execute ( )
 {
-	rDrawing.AddFigure( mFigureName, new Rectangle( mBegin, mEnd ) );
-}
+	mrDrawing.AddFigure( mFigureName, new Rectangle( mBegin, mEnd ) );
+} //----- End of Execute
 
-/*virtual*/ void AddRectangle::Undo ( Drawing & rDrawing )
+
+/*virtual*/ void AddRectangle::Undo ( )
 {
-	rDrawing.RemoveFigure( mFigureName );
-}
+	mrDrawing.RemoveFigure( mFigureName );
+} //----- End of Undo
 
 
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-AddRectangle::AddRectangle ( string const & rParameters )
-: AddCommand( false, rParameters ), mBegin( 0, 0 ), mEnd( 0, 0 )
+AddRectangle::AddRectangle ( Drawing & rDrawing, string const & rParameters )
+: AddCommand( rDrawing, false, rParameters ), mBegin( 0, 0 ), mEnd( 0, 0 )
 {
-	stringstream ss( mParameters );
-	ss >> mBegin.x;
-	ss >> mBegin.y;
-	ss >> mEnd.x;
-	ss >> mEnd.y;
-	mValidState = true;
+	istringstream iss( mParameters );
+	iss >> mBegin.x;
+	iss >> mBegin.y;
+	iss >> mEnd.x;
+	iss >> mEnd.y;
+
+	bool error = iss.fail( );
+	if ( !mError && error )
+	{
+		mError = true;
+		mErrorMessage = "Impossible to parse coordinates";
+	}
 
 #ifdef DEBUG
 	cout << "Calling constructor of <AddRectangle>" << endl;

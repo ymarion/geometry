@@ -35,57 +35,66 @@ public:
 	// Contract:
 	//
 
-	Command * NewAddAggregate  ( std::string const & rParameters ) const;
+	Command * NewAddAggregate  ( Drawing & rDrawing,
+								 std::string const & rParameters ) const;
 	// How to use:
 	// Returns a pointer to a new object of the appropriate class.
 	// Contract:
 	// The memory MUST BE FREED BY THE CALLER, using Clear.
 
-	Command * NewAddCircle     ( std::string const & rParameters ) const;
+	Command * NewAddCircle     ( Drawing & rDrawing,
+								 std::string const & rParameters ) const;
 	// How to use:
 	// Returns a pointer to a new object of the appropriate class.
 	// Contract:
 	// The memory MUST BE FREED BY THE CALLER, using Clear.
 
-	Command * NewAddLine       ( std::string const & rParameters ) const;
+	Command * NewAddLine       ( Drawing & rDrawing,
+								 std::string const & rParameters ) const;
 	// How to use:
 	// Returns a pointer to a new object of the appropriate class.
 	// Contract:
 	// The memory MUST BE FREED BY THE CALLER, using Clear.
 
-	Command * NewAddPolyline   ( std::string const & rParameters ) const;
+	Command * NewAddPolyline   ( Drawing & rDrawing,
+								 std::string const & rParameters ) const;
 	// How to use:
 	// Returns a pointer to a new object of the appropriate class.
 	// Contract:
 	// The memory MUST BE FREED BY THE CALLER, using Clear.
 
-	Command * NewAddRectangle  ( std::string const & rParameters ) const;
-	// How to use:
-	// Returns a pointer to a new object of the appropriate class.
-	// Contract:
-	// The memory MUST BE FREED BY THE CALLER, using Clear.
-
-
-	Command * NewMoveCommand   ( std::string const & rParameters ) const;
-	// How to use:
-	// Returns a pointer to a new object of the appropriate class.
-	// Contract:
-	// The memory MUST BE FREED BY THE CALLER, using Clear.
-
-	Command * NewDeleteCommand ( std::string const & rParameters ) const;
+	Command * NewAddRectangle  ( Drawing & rDrawing,
+								 std::string const & rParameters ) const;
 	// How to use:
 	// Returns a pointer to a new object of the appropriate class.
 	// Contract:
 	// The memory MUST BE FREED BY THE CALLER, using Clear.
 
 
-	Command * NewClearCommand  ( std::string const & rParameters ) const;
+	Command * NewMoveCommand   ( Drawing & rDrawing,
+								 std::string const & rParameters ) const;
 	// How to use:
 	// Returns a pointer to a new object of the appropriate class.
 	// Contract:
 	// The memory MUST BE FREED BY THE CALLER, using Clear.
 
-	Command * NewLoadCommand   ( std::string const & rParameters ) const;
+	Command * NewDeleteCommand ( Drawing & rDrawing,
+								 std::string const & rParameters ) const;
+	// How to use:
+	// Returns a pointer to a new object of the appropriate class.
+	// Contract:
+	// The memory MUST BE FREED BY THE CALLER, using Clear.
+
+
+	Command * NewClearCommand  ( Drawing & rDrawing,
+								 std::string const & rParameters ) const;
+	// How to use:
+	// Returns a pointer to a new object of the appropriate class.
+	// Contract:
+	// The memory MUST BE FREED BY THE CALLER, using Clear.
+
+	Command * NewLoadCommand   ( Drawing & rDrawing,
+								 std::string const & rParameters ) const;
 	// How to use:
 	// Returns a pointer to a new object of the appropriate class.
 	// Contract:

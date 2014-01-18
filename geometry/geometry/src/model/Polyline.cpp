@@ -35,7 +35,7 @@ using namespace std;
 {
 	struct MovePoint movePoint( rVector );
 	for_each( mPointList.begin( ), mPointList.end( ), movePoint );
-}
+} //----- End of Move
 
 
 //--------------------------------------------------- Operator overloading

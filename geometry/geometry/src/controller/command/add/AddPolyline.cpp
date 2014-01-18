@@ -32,33 +32,43 @@ using namespace std;
 //} //----- End of Method
 
 
-/*virtual*/ void AddPolyline::Execute ( Drawing & rDrawing )
+/*virtual*/ void AddPolyline::Execute ( )
 {
-	rDrawing.AddFigure( mFigureName, new Polyline( mPointList ) );
-}
+	mrDrawing.AddFigure( mFigureName, new Polyline( mPointList ) );
+} //----- End of Execute
 
-/*virtual*/ void AddPolyline::Undo ( Drawing & rDrawing )
+
+/*virtual*/ void AddPolyline::Undo ( )
 {
-	rDrawing.RemoveFigure( mFigureName );
-}
+	mrDrawing.RemoveFigure( mFigureName );
+} //----- End of Undo
 
 
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-AddPolyline::AddPolyline ( string const & rParameters )
-: AddCommand( false, rParameters )
+AddPolyline::AddPolyline ( Drawing & rDrawing, string const & rParameters )
+: AddCommand( rDrawing, false, rParameters )
 {
-	stringstream ss( mParameters );
+	istringstream iss( mParameters );
 	long x, y;
-	while ( ss.good() )
+	bool error = true;
+	while ( iss.good() )
 	{
-		ss >> x;
-		ss >> y;
+		iss >> x;
+		iss >> y;
+
+		error = iss.fail( );
+		if ( !mError && error )
+		{
+			mError = true;
+			mErrorMessage = "Impossible to parse coordinates";
+			break;
+		}
+
 		Point aPoint( x, y );
 		mPointList.push_back(aPoint);
 	}
-	mValidState = true;
 
 #ifdef DEBUG
 	cout << "Calling constructor of <AddPolyline>" << endl;

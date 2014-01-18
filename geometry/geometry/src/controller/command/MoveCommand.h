@@ -34,11 +34,11 @@ public:
 	// Contract:
 	//
 
-    virtual void Execute ( Drawing & rDrawing );
+    virtual void Execute ( );
     // How to use:
 	//
 
-	virtual void Undo ( Drawing & rDrawing );
+	virtual void Undo ( );
     // How to use:
 	//
 
@@ -50,7 +50,7 @@ public:
 	// MoveCommand ( MoveCommand const & aMoveCommand );
 	// Default
 
-	MoveCommand ( std::string const & rParameters );
+	MoveCommand ( Drawing & rDrawing, std::string const & rParameters );
 	// How to use:
 	// Instantiates a MoveCommand which parameters will be parsed.
 	// Contract:
@@ -68,7 +68,7 @@ protected:
 	//------------------------------------------------------ Protected methods
 
 	//--------------------------------------------------- Protected attributes
-	string mFigureName;
+	Figure *mpFigure;
 	Point mVector;
 };
 

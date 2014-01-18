@@ -31,31 +31,38 @@ using namespace std;
 //} //----- End of Method
 
 
-*pFigure;
-
-/*virtual*/ void DeleteCommand::Execute ( Drawing & rDrawing )
+/*virtual*/ void DeleteCommand::Execute ( )
 {
-	rDrawing.Remove( "" );
-}
+	mrDrawing.RemoveFigure( "" );
+} //----- End of Execute
 
-/*virtual*/ void DeleteCommand::Undo ( Drawing & rDrawing )
+
+/*virtual*/ void DeleteCommand::Undo ( )
 {
 	// TODO
-}
+} //----- End of Undo
 
 
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-DeleteCommand::DeleteCommand ( string const & rParameters )
-: Command( false )
+DeleteCommand::DeleteCommand ( Drawing & rDrawing, string const & rParameters )
+: Command( rDrawing, false )
 {
 	stringstream ss( rParameters );
-	while ( ss.good() )
+	bool error = true;
+	while ( ss.good( ) )
 	{
-		string fName;
-		ss >> fName;
-		mDeleteList.push_back(fName);
+		string figureName;
+		ss >> figureName;
+		error = 0 == mrDrawing.FindFigure( figureName );
+		if ( !mError && error )
+		{
+			mError = true;
+			mErrorMessage = "Figure \"" + figureName + "\" doesn't exist";
+			break;
+		}
+		mDeleteList.push_back(figureName);
 	}
 
 #ifdef DEBUG

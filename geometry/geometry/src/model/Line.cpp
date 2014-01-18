@@ -33,7 +33,7 @@ using namespace std;
 /*virtual*/ void Line::Move ( Point const & rVector )
 {
 	
-}
+} //----- End of Move
 
 
 //--------------------------------------------------- Operator overloading

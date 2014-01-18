@@ -33,16 +33,23 @@ public:
 	// Contract:
 	//
 
-	bool isValid ( );
+	bool isValid ( ) const;
 	// How to use:
 	// Returns the state of the command.
 	// (can be invalid mostly because of bad parameters)
+	// Contract:
+	// A invalid command should NEVER be used.
+	// After instantiating, YOU should ALWAYS verify that a Command is valid.
 
-	virtual void Execute ( Drawing & rDrawing ) = 0;
+	std::string const & ErrorMessage ( ) const;
+	// How to use:
+	// Returns the error message if the command is invalid, empty otherwise.
+
+	virtual void Execute ( ) = 0;
     // How to use:
 	//
 
-	virtual void Undo ( Drawing & rDrawing ) = 0;
+	virtual void Undo ( ) = 0;
     // How to use:
 	//
 
@@ -54,7 +61,7 @@ public:
 	// Command ( Command const & aCommand );
 	// Default
 
-	Command ( bool validState );
+	Command ( Drawing & rDrawing, bool validState, bool executed = false );
 	// How to use:
 	// Sets the validState flag.
 
@@ -70,7 +77,10 @@ protected:
 //------------------------------------------------------ Protected methods
 
 //--------------------------------------------------- Protected attributes
-	bool mValidState;
+	bool mError;
+	std::string mErrorMessage;
+	bool mWasExecuted;
+	Drawing & mrDrawing;
 };
 
 //------------------------------ Other definitions depending on <Command>

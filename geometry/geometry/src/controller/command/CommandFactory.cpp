@@ -30,57 +30,66 @@ using namespace std;
 //} //----- End of Method
 
 
-Command * CommandFactory::NewAddAggregate( string const & rParameters ) const
+Command * CommandFactory::NewAddAggregate( Drawing & rDrawing,
+										   string const & rParameters ) const
 {
-	return new AddAggregate( rParameters );
+	return new AddAggregate( rDrawing, rParameters );
 } //----- End of NewAddAggregate
 
 
-Command * CommandFactory::NewAddCircle( string const & rParameters ) const
+Command * CommandFactory::NewAddCircle( Drawing & rDrawing,
+									    string const & rParameters ) const
 {
-	return new AddCircle( rParameters );
+	return new AddCircle( rDrawing, rParameters );
 } //----- End of NewAddCircle
 
 
-Command * CommandFactory::NewAddLine( string const & rParameters ) const
+Command * CommandFactory::NewAddLine( Drawing & rDrawing,
+									  string const & rParameters ) const
 {
-	return new AddLine( rParameters );
+	return new AddLine( rDrawing, rParameters );
 } //----- End of NewAddLine
 
 
-Command * CommandFactory::NewAddPolyline( string const & rParameters ) const
+Command * CommandFactory::NewAddPolyline( Drawing & rDrawing,
+										  string const & rParameters ) const
 {
-	return new AddPolyline( rParameters );
+	return new AddPolyline( rDrawing, rParameters );
 } //----- End of NewAddPolyline
 
 
-Command * CommandFactory::NewAddRectangle( string const & rParameters ) const
+Command * CommandFactory::NewAddRectangle( Drawing & rDrawing,
+										   string const & rParameters ) const
 {
-	return new AddRectangle( rParameters );
+	return new AddRectangle( rDrawing, rParameters );
 } //----- End of NewAddRectangle
 
 
-Command * CommandFactory::NewMoveCommand( string const & rParameters ) const
+Command * CommandFactory::NewMoveCommand( Drawing & rDrawing,
+										  string const & rParameters ) const
 {
-	return new MoveCommand( rParameters );
+	return new MoveCommand( rDrawing, rParameters );
 } //----- End of NewMoveCommand
 
 
-Command * CommandFactory::NewDeleteCommand( string const & rParameters ) const
+Command * CommandFactory::NewDeleteCommand( Drawing & rDrawing,
+										    string const & rParameters ) const
 {
-	return new DeleteCommand( rParameters );
+	return new DeleteCommand( rDrawing, rParameters );
 } //----- End of NewDeleteCommand
 
 
-Command * CommandFactory::NewClearCommand( string const & rParameters ) const
+Command * CommandFactory::NewClearCommand( Drawing & rDrawing,
+										   string const & rParameters ) const
 {
-	return new ClearCommand( rParameters );
+	return new ClearCommand( rDrawing, rParameters );
 } //----- End of NewClearCommand
 
 
-Command * CommandFactory::NewLoadCommand( string const & rParameters ) const
+Command * CommandFactory::NewLoadCommand( Drawing & rDrawing,
+										  string const & rParameters ) const
 {
-	return new LoadCommand( rParameters );
+	return new LoadCommand( rDrawing, rParameters );
 } //----- End of NewLoadCommand
 
 

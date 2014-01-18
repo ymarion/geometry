@@ -20,7 +20,7 @@
 //------------------------------------------------------------------ Types
 //typedef Command * ( CommandFactory::*FactoryMethod )( std::string const & );
 typedef Command * ( CommandFactory::*FactoryMethod )
-									( std::string const & ) const;
+							( Drawing & rDrawing, std::string const & ) const;
 typedef std::map<string const, FactoryMethod> MapStringToCommand;
 
 //------------------------------------------------------------------------

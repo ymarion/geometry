@@ -31,24 +31,31 @@ using namespace std;
 //} //----- End of Method
 
 
-/*virtual*/ void LoadCommand::Execute ( Drawing & rDrawing )
+/*virtual*/ void LoadCommand::Execute ( )
 {
 	// TODO
-}
+} //----- End of Execute
 
-/*virtual*/ void LoadCommand::Undo ( Drawing & rDrawing )
+
+/*virtual*/ void LoadCommand::Undo ( )
 {
 	// TODO
-}
+} //----- End of Undo
 
 
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-LoadCommand::LoadCommand ( string const & rParameters )
-: Command( false ), mInFile( rParameters.c_str( ) )
+LoadCommand::LoadCommand ( Drawing & rDrawing, string const & rParameters )
+: Command( rDrawing, false ), mInFile( rParameters.c_str( ) )
 {
-	mValidState = mInFile.good( );
+	bool error = !mInFile.good( );
+	if ( !mError && error )
+	{
+		mError = true;
+		mErrorMessage = "File \"" + rParameters + "\" could not be opened";
+	}
+
 #ifdef DEBUG
 	cout << "Calling constructor of <LoadCommand>" << endl;
 #endif

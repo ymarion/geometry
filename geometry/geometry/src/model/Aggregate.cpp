@@ -10,7 +10,10 @@
 //---------------------------------------------------------------- INCLUDE
 
 //--------------------------------------------------------- System include
+#include <set>
 #include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 //------------------------------------------------------- Personal include
@@ -30,12 +33,40 @@ using namespace std;
 //} //----- End of Method
 
 
+Aggregate::MoveFigure::MoveFigure ( Point const & rVector )
+: mrVector ( rVector ), mMovedFigures( /*empty*/ )
+{
+} //----- End of Aggregate::MoveFigure
+
+
+void Aggregate::MoveFigure::operator () ( StringFigurePair & rPair )
+// Algorithm:
+// For each figure, moves it if it is not found in the mMovedFigures list
+{
+	set<Figure *>::const_iterator it = mMovedFigures.find( rPair.second );
+
+	if ( mMovedFigures.end( ) == it )
+	// Figure not moved yet
+	{
+		(*it)->Move( mrVector );
+		mMovedFigures.insert( rPair.second );
+	}
+} //----- End of MoveFigure::operator ()
+
+
+/*virtual*/ void Aggregate::Move ( Point const & rVector )
+// Moves each Figure once
+{
+	for_each( mAggregatedFigures.begin( ), mAggregatedFigures.end( ),
+			MoveFigure( rVector ) );
+} //----- End of Move
+
+
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-Aggregate::Aggregate ( )
-// Algorithm:
-//
+Aggregate::Aggregate ( AggregatedFigures const & rFiguresToCopy )
+: mAggregatedFigures( rFiguresToCopy )
 {
 #ifdef DEBUG
 	cout << "Calling constructor of <Aggregate>" << endl;
