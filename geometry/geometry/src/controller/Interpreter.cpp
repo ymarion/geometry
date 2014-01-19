@@ -25,6 +25,9 @@ char const Interpreter::DELIMITER = ' ';
 string const Interpreter::STOP = "EXIT";
 string const Interpreter::LIST = "LIST";
 
+string const Interpreter::UNDO = "UNDO";
+string const Interpreter::REDO = "REDO";
+
 MapStringToCommand const Interpreter::COMMAND_TABLE =
 			CreateMap<string const, FactoryMethod>
 				( "OA", &CommandFactory::NewAddAggregate )
@@ -83,6 +86,16 @@ bool Interpreter::InterpretCommand( string const & rLine )
 		mrController.PrintList( );
 		return false;
 	}
+	if ( UNDO == rLine )
+    {
+        mrController.UndoRedo(0);
+        return false;
+    }
+    if ( REDO == rLine )
+    {
+        mrController.UndoRedo(1);
+        return false;
+    }
 
 	string code( rLine.substr( 0, rLine.find( DELIMITER ) ) );
 	// All characters until first DELIMITER

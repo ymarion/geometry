@@ -46,12 +46,12 @@ public:
 	// Returns the error message if the command is invalid, empty otherwise.
 
 	virtual void Execute ( ) = 0;
-    // How to use:
-	//
+    // Contract:
+	// A command cannot be executed if already executed
 
 	virtual void Undo ( ) = 0;
-    // How to use:
-	//
+    // Contract:
+	// A command cannot be undone if not already executed
 
 //--------------------------------------------------- Operator overloading
 	// Command & operator = ( Command const & aCommand );

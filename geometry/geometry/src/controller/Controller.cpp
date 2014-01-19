@@ -59,6 +59,24 @@ void Controller::SaveAndExecute( Command * const pCommand )
 		return;
 	}
 
+	if ( iCommandIterator != mCommands.end() )
+    {
+#ifdef DEBUG
+		cout << "# New command after undoing" << endl;
+		cout << "# All the commands after the last executed one will be deleted" << endl;
+#endif
+        while( iCommandIterator != mCommands.end() )
+        {
+            // This loop will delete every command that has been undone and cancelled by the new command
+            delete *( mCommands.end( ) );
+            *( mCommands.end( ) ) = 0;
+            mCommands.pop_back( );
+        }
+        mCommands.push_back( pCommand );
+        pCommand->Execute( );
+        return;
+    }
+
 	if ( mCommands.size() == MAX_UNDO_REDOS )
 	{
 		cout << "# Undo/Redo list is full." << endl;
@@ -67,6 +85,7 @@ void Controller::SaveAndExecute( Command * const pCommand )
 		*( mCommands.begin( ) ) = 0;
 		mCommands.pop_front( );
 		mCommands.push_back( pCommand );
+		pCommand->Execute( );
 		return;
 	}
 
@@ -75,6 +94,8 @@ void Controller::SaveAndExecute( Command * const pCommand )
 
 	pCommand->Execute( );
 	// Executes it
+
+	iCommandIterator = mCommands.end();
 
 } //----- End of Execute
 
@@ -101,6 +122,39 @@ void Controller::PrintList ( )
 	mOutput << "# No list available yet." << endl;
 } //----- End of PrintList
 
+void Controller::UndoRedo ( bool whichOne )
+{
+    if(!whichOne)
+    {
+        if( iCommandIterator != mCommands.begin() )
+        {
+#ifdef DEBUG
+		cout << "# Undoing command" << endl;
+#endif
+            *iCommandIterator.Undo( );
+            iCommandIterator--;
+        }
+        else
+        {
+            cout << "# End of undo list. Cannot undo more" << endl;
+        }
+    }
+    else
+    {
+        if( iCommandIterator != mCommands.end() )
+        {
+#ifdef DEBUG
+            cout << "# Redoing command" << endl;
+#endif
+            *iCommandIterator.Execute( );
+            iCommandIterator++;
+        }
+        else
+        {
+            cout << "# End of Redo list. Cannot redo more" << endl;
+        }
+    }
+} //----- End of UndoRedo
 
 //--------------------------------------------------- Operator overloading
 

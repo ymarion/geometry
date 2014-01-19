@@ -59,6 +59,12 @@ public:
 	// How to use:
 	// Free all the commands currently in the undo/redo list (mCommands)
 
+	void UndoRedo ( bool whichOne );
+	// How to use:
+	// Moves the undo/redo iterator in the undo/redo list.
+	// Contract :
+	// 0 = undo, 1 = redo
+
 //--------------------------------------------------- Operator overloading
 	// Controller & operator = ( Controller const & rController );
 	// Default
@@ -88,6 +94,7 @@ protected:
 
 	std::ostream & mOutput;
 	std::list<Command const *> mCommands;
+	std::list<Command const *>::iterator iCommandIterator;
 };
 
 //------------------------------ Other definitions depending on <Controller>

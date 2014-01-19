@@ -33,13 +33,21 @@ using namespace std;
 
 /*virtual*/ void MoveCommand::Execute ( )
 {
-	mpFigure->Move( mVector );
+    if( !mWasExecuted )
+    {
+        mWasExecuted = true;
+        mpFigure->Move( mVector );
+    }
 } //----- End of Execute
 
 
 /*virtual*/ void MoveCommand::Undo ( )
 {
-	mpFigure->Move( -mVector );
+    if( mWasExecuted )
+    {
+        mWasExecuted = false;
+        mpFigure->Move( -mVector );
+    }
 } //----- End of Undo
 
 
