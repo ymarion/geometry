@@ -34,13 +34,21 @@ using namespace std;
 
 /*virtual*/ void AddPolyline::Execute ( )
 {
-	mrDrawing.AddFigure( mFigureName, new Polyline( mPointList ) );
+    if( !mWasExecuted )
+    {
+        mWasExecuted = true;
+        mrDrawing.AddFigure( mFigureName, new Polyline( mPointList ) );
+    }
 } //----- End of Execute
 
 
 /*virtual*/ void AddPolyline::Undo ( )
 {
-	mrDrawing.RemoveFigure( mFigureName );
+    if( mWasExecuted )
+    {
+        mWasExecuted = false;
+        mrDrawing.RemoveFigure( mFigureName );
+    }
 } //----- End of Undo
 
 
@@ -83,6 +91,10 @@ AddPolyline::~AddPolyline ( )
 #ifdef DEBUG
 	cout << "Calling destructor of <AddPolyline>" << endl;
 #endif
+    if ( !mWasExecuted )
+    {
+        mrDrawing.DeleteFigure( mFigureName );
+    }
 } //----- End of ~AddPolyline
 
 

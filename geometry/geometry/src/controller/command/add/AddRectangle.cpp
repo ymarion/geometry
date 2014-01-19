@@ -34,13 +34,22 @@ using namespace std;
 
 /*virtual*/ void AddRectangle::Execute ( )
 {
-	mrDrawing.AddFigure( mFigureName, new Rectangle( mBegin, mEnd ) );
+        if( !mWasExecuted )
+    {
+        mWasExecuted = true;
+        mrDrawing.AddFigure( mFigureName, new Rectangle( mBegin, mEnd ) );
+    }
 } //----- End of Execute
 
 
 /*virtual*/ void AddRectangle::Undo ( )
 {
-	mrDrawing.RemoveFigure( mFigureName );
+    if( mWasExecuted )
+    {
+        mWasExecuted = false;
+        mrDrawing.RemoveFigure( mFigureName );
+    }
+
 } //----- End of Undo
 
 
@@ -76,6 +85,10 @@ AddRectangle::~AddRectangle ( )
 #ifdef DEBUG
 	cout << "Calling destructor of <AddRectangle>" << endl;
 #endif
+    if ( !mWasExecuted )
+    {
+        mrDrawing.DeleteFigure( mFigureName );
+    }
 } //----- End of ~AddRectangle
 
 

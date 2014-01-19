@@ -34,13 +34,21 @@ using namespace std;
 
 /*virtual*/ void AddLine::Execute ( )
 {
-	mrDrawing.AddFigure( mFigureName, new Line( mBegin, mEnd ) );
+    if( !mWasExecuted )
+    {
+        mWasExecuted = true;
+        mrDrawing.AddFigure( mFigureName, new Line( mBegin, mEnd ) );
+    }
 } //----- End of Execute
 
 
 /*virtual*/ void AddLine::Undo ( )
 {
-	mrDrawing.RemoveFigure( mFigureName );
+    if( mWasExecuted )
+    {
+        mWasExecuted = false;
+        mrDrawing.RemoveFigure( mFigureName );
+    }
 } //----- End of Undo
 
 
@@ -76,6 +84,10 @@ AddLine::~AddLine ( )
 #ifdef DEBUG
 	cout << "Calling destructor of <AddLine>" << endl;
 #endif
+    if ( !mWasExecuted )
+    {
+        mrDrawing.DeleteFigure( mFigureName );
+    }
 } //----- End of ~AddLine
 
 

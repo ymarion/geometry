@@ -34,13 +34,21 @@ using namespace std;
 
 /*virtual*/ void AddCircle::Execute ( )
 {
-	mrDrawing.AddFigure( mFigureName, new Circle( mCenter, mRadius ) );
+    if( !mWasExecuted )
+    {
+        mWasExecuted = true;
+        mrDrawing.AddFigure( mFigureName, new Circle( mCenter, mRadius ) );
+    }
 } //----- End of Execute
 
 
 /*virtual*/ void AddCircle::Undo ( )
 {
-	mrDrawing.RemoveFigure( mFigureName );
+    if( mWasExecuted )
+    {
+        mWasExecuted = false;
+        mrDrawing.RemoveFigure( mFigureName );
+    }
 } //----- End of Undo
 
 
@@ -78,6 +86,10 @@ AddCircle::~AddCircle ( )
 #ifdef DEBUG
 	cout << "Calling destructor of <AddCircle>" << endl;
 #endif
+    if ( !mWasExecuted )
+    {
+        mrDrawing.DeleteFigure( mFigureName );
+    }
 } //----- End of ~AddCircle
 
 

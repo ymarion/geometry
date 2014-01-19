@@ -34,13 +34,21 @@ using namespace std;
 
 /*virtual*/ void AddAggregate::Execute ( )
 {
-	mpAggregate = new Aggregate ( mFigures );
-	mrDrawing.AddFigure( mFigureName, new Aggregate( mFigures ) );
+    if( !mWasExecuted )
+    {
+        mWasExecuted = true;
+        mpAggregate = new Aggregate ( mFigures );
+        mrDrawing.AddFigure( mFigureName, new Aggregate( mFigures ) );
+    }
 } //----- End of Execute
 
 /*virtual*/ void AddAggregate::Undo ( )
 {
-	mrDrawing.RemoveFigure( mFigureName );
+    if( mWasExecuted )
+    {
+        mWasExecuted = false;
+        mrDrawing.RemoveFigure( mFigureName );
+    }
 } //----- End of Undo
 
 
@@ -82,6 +90,10 @@ AddAggregate::~AddAggregate ( )
 #ifdef DEBUG
 	cout << "Calling destructor of <AddAggregate>" << endl;
 #endif
+    if ( !mWasExecuted )
+    {
+        mrDrawing.DeleteFigure( mFigureName );
+    }
 } //----- End of ~AddAggregate
 
 
