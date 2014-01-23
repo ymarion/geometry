@@ -33,14 +33,6 @@ public:
 	// Contract:
 	//
 
-    virtual void Execute ( );
-    // How to use:
-	//
-
-	virtual void Undo ( );
-    // How to use:
-	//
-
 //--------------------------------------------------- Operator overloading
 	// ClearCommand & operator = ( ClearCommand const & aClearCommand );
 	// Default
@@ -65,9 +57,14 @@ public:
 
 protected:
 //------------------------------------------------------ Protected methods
+	virtual void execute ( );
+	// Will be used by Command::Do
+
+	virtual void cancel ( );
+	// Will be used by Command::Undo
 
 //--------------------------------------------------- Protected attributes
-	std::string mParameters;// TODO: parse string
+	DrawingFigureList const mList;
 };
 
 //------------------------------ Other definitions depending on <ClearCommand>

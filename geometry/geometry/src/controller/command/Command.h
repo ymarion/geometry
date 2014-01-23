@@ -45,13 +45,13 @@ public:
 	// How to use:
 	// Returns the error message if the command is invalid, empty otherwise.
 
-	virtual void Execute ( ) = 0;
+	void Do ( );
     // Contract:
-	// A command cannot be executed if already executed
+	// A command cannot be executed if already executed (does nothing).
 
-	virtual void Undo ( ) = 0;
+	void Undo ( );
     // Contract:
-	// A command cannot be undone if not already executed
+	// A command cannot be undone if not already executed (does nothing).
 
 //--------------------------------------------------- Operator overloading
 	// Command & operator = ( Command const & aCommand );
@@ -75,6 +75,11 @@ public:
 
 protected:
 //------------------------------------------------------ Protected methods
+	virtual void execute ( ) = 0;
+	// Will be used by Command::Do
+
+	virtual void cancel ( ) = 0;
+	// Will be used by Command::Undo
 
 //--------------------------------------------------- Protected attributes
 	bool mError;

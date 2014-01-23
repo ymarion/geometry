@@ -12,6 +12,7 @@
 //--------------------------------------------------------- System include
 #include <iostream>
 #include <algorithm>
+#include <sstream>
 using namespace std;
 
 //------------------------------------------------------- Personal include
@@ -39,13 +40,28 @@ using namespace std;
 
 
 //--------------------------------------------------- Operator overloading
+/*virtual*/ std::string Polyline::ToString ( ) const
+{
+	stringstream ss;
+	ss << "PL " << mName;
+
+	for ( vector<Point>::const_iterator it = mPointList.begin( );
+		  it != mPointList.end( );
+		  ++it )
+	{
+		ss << " " << *it;
+	}
+
+	return ss.str( );
+}
+
 
 //---------------------------------------------- Constructors - destructor
-Polyline::Polyline ( vector<Point> const & rPointList )
-: mPointList( rPointList )
+Polyline::Polyline ( string name, vector<Point> const & rPointList )
+: Figure( name ), mPointList( rPointList )
 {
 #ifdef DEBUG
-	cout << "Calling constructor of <Polyline>" << endl;
+	cout << "# Calling constructor of <Polyline>" << endl;
 #endif
 } //----- End of Polyline
 
@@ -55,7 +71,7 @@ Polyline::~Polyline ( )
 //
 {
 #ifdef DEBUG
-	cout << "Calling destructor of <Polyline>" << endl;
+	cout << "# Calling destructor of <Polyline>" << endl;
 #endif
 } //----- End of ~Polyline
 

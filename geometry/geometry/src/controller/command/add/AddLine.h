@@ -24,25 +24,17 @@
 
 class AddLine : public AddCommand
 {
-	//----------------------------------------------------------------- PUBLIC
+//----------------------------------------------------------------- PUBLIC
 
 public:
-	//--------------------------------------------------------- Public methods
+//--------------------------------------------------------- Public methods
 	// type Method ( parameter list );
 	// How to use:
 	//
 	// Contract:
 	//
 
-    virtual void Execute ( );
-    // How to use:
-	//
-
-	virtual void Undo ( );
-    // How to use:
-	//
-
-	//--------------------------------------------------- Operator overMoveing
+//--------------------------------------------------- Operator overloading
 	// AddLine & operator = ( AddLine const & aAddLine );
 	// Default
 
@@ -62,12 +54,12 @@ public:
 	// Contract:
 	//
 
-	//---------------------------------------------------------------- PRIVATE
+//---------------------------------------------------------------- PRIVATE
 
 protected:
-	//------------------------------------------------------ Protected methods
+//------------------------------------------------------ Protected methods
 
-	//--------------------------------------------------- Protected attributes
+//--------------------------------------------------- Protected attributes
 	Point mBegin;
 	Point mEnd;
 };

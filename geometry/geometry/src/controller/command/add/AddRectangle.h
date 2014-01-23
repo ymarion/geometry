@@ -34,14 +34,6 @@ public:
 	// Contract:
 	//
 
-    virtual void Execute ( );
-    // How to use:
-	//
-
-	virtual void Undo ( );
-    // How to use:
-	//
-
 //--------------------------------------------------- Operator overloading
 	// AddRectangle & operator = ( AddRectangle const & anAddRectangle );
 	// Default
@@ -68,8 +60,8 @@ protected:
 //------------------------------------------------------ Protected methods
 
 //--------------------------------------------------- Protected attributes
-	Point mBegin;
-	Point mEnd;
+	Point mCorner1;
+	Point mCorner2;
 };
 
 //------------------------------ Other definitions depending on <AddRectangle>

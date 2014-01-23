@@ -16,6 +16,7 @@
 #include "../../view/Drawing.h"
 
 //------------------------------------------------------------------ Types
+typedef std::vector<Figure *> DeleteList;
 
 //------------------------------------------------------------------------
 // Class role of <DeleteCommand>
@@ -33,14 +34,6 @@ public:
 	// How to use:
 	//
 	// Contract:
-	//
-
-    virtual void Execute ( );
-    // How to use:
-	//
-
-	virtual void Undo ( );
-    // How to use:
 	//
 
 //--------------------------------------------------- Operator overloading
@@ -67,20 +60,14 @@ public:
 
 protected:
 //------------------------------------------------------ Protected methods
+	virtual void execute ( );
+	// Will be used by Command::Do
+
+	virtual void cancel ( );
+	// Will be used by Command::Undo
 
 //--------------------------------------------------- Protected attributes
-	struct RemoveFigure
-	{
-		RemoveFigure ( Drawing & rDrawing )
-		: mrDrawing ( rDrawing ) { }
-
-		void operator () ( std::string const & rFigName )
-		{    mrDrawing.RemoveFigure( rFigName );    }
-
-		Drawing & mrDrawing;
-	};
-
-	std::vector<std::string> mDeleteList;
+	DeleteList mDeleteList;
 };
 
 //------------------------------ Other definitions depending on <DeleteCommand>

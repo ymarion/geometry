@@ -15,6 +15,7 @@
 #include "command/Command.h"
 
 //------------------------------------------------------------------ Types
+typedef std::list<Command *> CommandList;
 
 //------------------------------------------------------------------------
 // Class role of <Controller>
@@ -27,7 +28,7 @@ class Controller
 //----------------------------------------------------------------- PUBLIC
 
 public:
-	static int const MAX_UNDO_REDOS = 30;
+	static int const MAX_UNDO_REDOS;
 
 //--------------------------------------------------------- Public methods
 	// type Method ( parameter list );
@@ -40,18 +41,15 @@ public:
 	// How to use:
 	// Returns the single instance of the controller.
 
-	std::streambuf * SetOutput ( std::ostream & rStream );
-	// How to use:
-	// Changes the output to write the result to.
-
-	void SaveAndExecute ( Command * const pCommand );
+	void SaveAndExecute ( Command * pCommand );
 	// How to use:
 	// Executes the command and saves it into a list of undo/redo.
 	// Contract:
 	// The controller handles all memory of this list; and will free
 	// all the commands using delete.
 
-	void PrintList ( );
+	void PrintList ( bool alphabetical = true,
+					 std::ostream & rOutput = std::cout );
 	// How to use:
 	// Prints the list of the figures currently in the drawing on the stream.
 
@@ -59,11 +57,17 @@ public:
 	// How to use:
 	// Free all the commands currently in the undo/redo list (mCommands)
 
-	void UndoRedo ( bool whichOne );
+	bool Undo ( );
 	// How to use:
-	// Moves the undo/redo iterator in the undo/redo list.
-	// Contract :
-	// 0 = undo, 1 = redo
+	// Undoes the last command that was executed.
+	// Contract:
+	// Returns false if there is no more command to undo, true else.
+
+	bool Redo ( );
+	// How to use:
+	// Redoes the last command that was undone.
+	// Contract:
+	// Returns false if there is no more command to redo, true else.
 
 //--------------------------------------------------- Operator overloading
 	// Controller & operator = ( Controller const & rController );
@@ -86,15 +90,25 @@ public:
 protected:
 //------------------------------------------------------ Protected methods
 
-	Controller ( std::ostream & rStream = std::cout );
+	Controller ( );
 	// Because the controller is a singleton.
+
+	void handleError ( Command * pCommand ) const;
+	// Prints the error message of the pCommand and deletes it
+
+	void saveCommand ( Command * pCommand );
+	// Saves a new command and forgets about all the next ones
+
+	void deleteOldestCommand ( );
+	// Deletes the oldest command from the list.
 
 //--------------------------------------------------- Protected attributes
 	static Controller instance;
 
-	std::ostream & mOutput;
-	std::list<Command const *> mCommands;
-	std::list<Command const *>::iterator iCommandIterator;
+	class PrintFigure;
+
+	CommandList mCommands;
+	CommandList::iterator mAfterLastExecuted;
 };
 
 //------------------------------ Other definitions depending on <Controller>

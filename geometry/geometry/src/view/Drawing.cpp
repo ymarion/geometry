@@ -38,36 +38,9 @@ Drawing Drawing::instance = Drawing( );
 } //----- End of GetInstance
 
 
-void Drawing::AddFigure ( string const & rName, Figure *pFigure )
-{
-	mFiguresAlpha.insert( make_pair( rName, pFigure ) );
-	mFiguresCreation.push_back( pFigure );
-} //----- End of AddFigure
-
-
-void Drawing::AddFigureLists ( DrawingFigureList const & rListsToCopy )
-{
-	// TODO merge mFiguresAlpha    += rListsToCopy.first
-	// TODO merge mFiguresCreation += rListsToCopy.second
-} //----- End of AddFigureLists
-
-
-Figure * const Drawing::FindFigure ( string const & rName ) const
-{
-	FiguresAlpha::const_iterator it ( mFiguresAlpha.find( rName ) );
-	return mFiguresAlpha.end( ) == it ? 0 : it->second;
-} //----- End of FindFigure
-
-
-DrawingFigureList const Drawing::GetFigureLists ( ) const
-{
-	return make_pair( &mFiguresAlpha, &mFiguresCreation );
-} //----- End of GetFigureLists
-
-
 bool Drawing::MoveFigure ( std::string const & rName, Point const & rVector )
 {
-	Figure *pFigure = FindFigure( rName );
+	Figure *pFigure = mModel.FindFigure( rName );
 	if ( 0 == pFigure )
 	{
 		return false;
@@ -78,35 +51,89 @@ bool Drawing::MoveFigure ( std::string const & rName, Point const & rVector )
 } //----- End of MoveFigure
 
 
-bool Drawing::DeleteFigure ( std::string const & rName )
+void Drawing::AddFigure ( Figure *pFigure )
 {
-	Figure *pFigure = FindFigure( rName );
-	if ( 0 == pFigure )
+	mModel.AddFigure( pFigure );
+} //----- End of AddFigure
+
+
+void Drawing::CopyAllFigures ( DrawingFigureList const & rListToCopy )
+{
+	mModel.AddFiguresFrom( rListToCopy );
+} //----- End of CopyAllFigures
+
+
+bool Drawing::FigureExists ( string const & rName )
+{
+	return 0 != mModel.FindFigure( rName );
+} //----- End of FigureExits
+
+
+Figure * const Drawing::GetFigure ( std::string const & rName )
+{
+	return mModel.FindFigure( rName );
+} //----- End of GetFigure
+
+
+void Drawing::PrintList ( ostream & rOutput, bool alphabetical ) const
+{
+	if ( mModel.IsEmpty( ) )
 	{
-		return false;
+		rOutput << "EMPTY" << endl;
 	}
+	else
+	{
+		mModel.PrintList( rOutput, alphabetical );
+	}
+} //----- End of PrintList
 
-	RemoveFigure ( rName );
-	delete pFigure;
 
-	return true;
+bool Drawing::IgnoreFigure ( string rName )
+{
+	return mModel.IgnoreFigure( rName );
+} //----- End of IgnoreFigure
+
+
+void Drawing::IgnoreFigures ( DrawingFigureList const & rAggregate )
+{
+	mModel.IgnoreFigures( rAggregate );
+} //----- End of IgnoreFigures
+
+
+bool Drawing::AcknowledgeFigure ( string const & rName )
+{
+	return mModel.AcknowledgeFigure( rName );
+} //----- End of AcknowledgeFigure
+
+
+bool Drawing::AcknowledgeFigures ( DrawingFigureList const & rAggregate )
+{
+	return mModel.AcknowledgeFigures( rAggregate );
+} //----- End of AcknowledgeFigures
+
+
+bool Drawing::DeleteFigure ( string const & rName )
+{
+	return mModel.DeleteFigure( rName );
 } //----- End of DeleteFigure
 
 
-bool Drawing::RemoveFigure ( std::string const & rName )
+void Drawing::DeleteFigures ( DrawingFigureList const & rAggregate )
 {
-	Figure *pFigure = FindFigure( rName );
-	if ( 0 == pFigure )
-	{
-		return false;
-	}
+	mModel.DeleteFigures( rAggregate );
+} //----- End of DeleteFigures
 
-	mFiguresAlpha.erase( rName );
-	FiguresCreation::iterator it ( find( mFiguresCreation.begin( ),
-										 mFiguresCreation.end( ), pFigure ) );
-	mFiguresCreation.erase( it );
-	return true;
-} //----- End of RemoveFigure
+
+DrawingFigureList const Drawing::GetList( ) const
+{
+	return mModel.GetCurrentState( );
+}
+
+
+void Drawing::Clear ( )
+{
+	mModel.Clear( );
+} //----- End of Clear
 
 
 //--------------------------------------------------- Operator overloading
@@ -117,7 +144,7 @@ Drawing::~Drawing ( )
 //
 {
 #ifdef DEBUG
-	cout << "Calling destructor of <Drawing>" << endl;
+	cout << "# Calling destructor of <Drawing>" << endl;
 #endif
 } //----- End of ~Drawing
 
@@ -126,11 +153,10 @@ Drawing::~Drawing ( )
 
 //------------------------------------------------------ Protected methods
 Drawing::Drawing ( )
-// Algorithm:
-//
+: mModel( "Model" )
 {
 #ifdef DEBUG
-	cout << "Calling constructor of <Drawing>" << endl;
+	cout << "# Calling constructor of <Drawing>" << endl;
 #endif
 } //----- End of Drawing
 

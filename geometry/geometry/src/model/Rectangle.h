@@ -40,11 +40,16 @@ public:
 	// Rectangle & operator = ( Rectangle const & aRectangle );
 	// Default
 
+	virtual std::string ToString ( ) const;
+	// How to use:
+	// Returns a string containing the interesting information of the figure.
+
 //---------------------------------------------- Constructors - destructor
 	// Rectangle ( Rectangle const & aRectangle );
 	// Default
 
-	Rectangle ( Point const & rTopLeft, Point const & rBottomRight );
+	Rectangle ( std::string name, Point const & rTopLeft,
+			    Point const & rBottomRight );
 	// How to use:
 	//
 	// Contract:
@@ -62,8 +67,8 @@ protected:
 //------------------------------------------------------ Protected methods
 
 //--------------------------------------------------- Protected attributes
-	Point mTopLeftCorner;
-	Point mBottomRightCorner;
+	Point mCorner1;
+	Point mCorner2;
 };
 
 //------------------------------ Other definitions depending on <Rectangle>

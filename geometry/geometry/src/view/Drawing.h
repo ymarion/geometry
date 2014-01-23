@@ -10,18 +10,14 @@
 #define DRAWING_H_
 
 //-------------------------------------------------------- Interfaces used
-#include <map>
-#include <vector>
+#include <set>
 
 #include "../model/Figure.h"
 #include "../model/Point.h"
+#include "../model/Aggregate.h"
 
 //------------------------------------------------------------------ Types
-typedef std::map   <string const, Figure *> FiguresAlpha;
-typedef std::vector<Figure *>               FiguresCreation;
-
-typedef std::pair<FiguresAlpha    const * const,
-				  FiguresCreation const * const> DrawingFigureList;
+typedef Aggregate DrawingFigureList;
 
 //------------------------------------------------------------------------
 // Class role of <Drawing>
@@ -45,64 +41,76 @@ public:
 	// How to use:
 	// Returns the single instance of the interpreter.
 
-	void AddFigure ( std::string const & rName, Figure * pFigure );
+	bool MoveFigure ( std::string const & rName, Point const & rVector );
 	// How to use:
-	// Adds a figure to the dictionary, so that it may later on be modified
-	// thanks to the other methods of Drawing.
-
-	void AddFigureLists ( DrawingFigureList const & rListsToCopy );
-	// How to use:
-	// Copies the two figure lists and adds all figures to the drawing.
+	// Moves the figure under the name rName by the vector rVector.
 	// Contract:
-	// The two lists MUST be coherent (same pointers, different order).
+	// Returns false if it didn't find any figure under the name rName.
 
-	Figure * const FindFigure ( std::string const & rName ) const;
+	void AddFigure ( Figure *pFigure );
+	// How to use:
+	// Adds a figure to the list of the Drawing.
+
+	void CopyAllFigures ( DrawingFigureList const & rListToCopy );
+	// How to use:
+	// Adds all the figures from rListToCopy to this.
+
+	bool FigureExists ( std::string const & rName );
+	// How to use:
+	// Returns whether the figure is found.
+
+	Figure * const GetFigure ( std::string const & rName );
 	// How to use:
 	// Gives the pointer to a Figure currently saved in the Drawing.
 	// Returns 0 if the figure is not found.
 	// Contract:
-	// You may NOT delete the Figure UNLESS you first remove the figure,
-	// using the method RemoveFigure.
-	// Notes:
-	// DeleteFigure both removes AND deletes the figure it finds.
+	// You may NOT delete the Figure.
 
-	DrawingFigureList const GetFigureLists ( ) const;
+	void PrintList ( std::ostream & rOutput, bool alphabetical = true ) const;
 	// How to use:
-	// Returns the two current figure lists of the drawing.
+	// Prints the list of figures on an output stream.
+	// By default, it is sorted alphabetically, but you can sort it by
+	// order of creation.
 	// Contract:
-	// The lists are coherent (same pointers, different order)
+	// The order of the list will either be alphabetical or by creation order.
 
-	bool MoveFigure ( std::string const & rName, Point const & rVector );
+	bool IgnoreFigure ( std::string rName );
 	// How to use:
-	// Moves a figure along the vector rVector.
+	// Ignores the figure with the name given in parameter.
 	// Contract:
-	// Returns false if figure not found.
+	// Returns false if it didn't find any figure under the name rName.
+
+	void IgnoreFigures ( DrawingFigureList const & rAggregate );
+	// How to use:
+	// Ignores the figure found in parameter.
+
+	bool AcknowledgeFigure ( std::string const & rName );
+	// How to use:
+	// Stops ignoring the figure with the name given in parameter.
+	// Contract:
+	// Returns false if it didn't find any figure under the name rName.
+
+	bool AcknowledgeFigures ( DrawingFigureList const & rAggregate );
+	// How to use:
+	// Stops ignoring the figures found in parameter.
 
 	bool DeleteFigure ( std::string const & rName );
 	// How to use:
-	// DeleteFigure both removes AND deletes the figure it finds.
+	// Permanently deletes the figure it finds.
+	// Contract:
 	// Returns false if it didn't find any figure under the name rName.
 
-	bool RemoveFigure ( std::string const & rName );
+	void DeleteFigures ( DrawingFigureList const & rAggregate );
 	// How to use:
-	// Removes the pointer to the figure under the name rName.
-	// Contract:
-	// !!!IMPORTANT!!! YOU must delete the memory of the figure after removal
-	// or add it back with AddFigure so that there is no memory leak.
+	// Permanently deletes the figure it finds in the parameter.
+
+	DrawingFigureList const GetList ( ) const;
+	// How to use:
+	// Returns a constant copy of the current list.
 
 	void Clear ( );
 	// How to use:
-	// Removes AND deletes ALL figures contained in the drawing.
-	// Contract:
-	// The figures are deleted using that method, no need to do it yourself.
-
-	void RemoveAllFigures ( );
-	// How to use:
-	// Removes ALL figures contained in the drawing.
-	// Useful if you don't want the destructor to handle the deleting.
-	// Contract:
-	// !!!IMPORTANT!!! YOU must delete the memory of the figures after removal
-	// or add them back with AddFigure so that there is no memory leak.
+	// Permanently deletes ALL figures contained in the Aggregate.
 
 //--------------------------------------------------- Operator overloading
 	// Drawing & operator = ( Drawing const & aDrawing );
@@ -129,11 +137,7 @@ protected:
 //--------------------------------------------------- Protected attributes
 	static Drawing instance;
 
-	FiguresAlpha mFiguresAlpha;
-	// All figures ordered by name
-
-	FiguresCreation mFiguresCreation;
-	// Figures ordered by creation order
+	DrawingFigureList mModel;
 };
 
 //------------------------------ Other definitions depending on <Drawing>

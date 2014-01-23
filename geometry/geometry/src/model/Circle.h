@@ -41,11 +41,15 @@ public:
 	// Circle & operator = ( Circle const & aCircle );
 	// Default
 
+	virtual std::string ToString ( ) const;
+	// How to use:
+	// Returns a string containing the interesting information of the figure.
+
 //---------------------------------------------- Constructors - destructor
 	// Circle ( Circle const & aCircle );
 	// Default
 
-	Circle ( Point center, long radius );
+	Circle ( std::string name, Point center, long radius );
 	// How to use:
 	//
 	// Contract:

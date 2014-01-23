@@ -47,11 +47,15 @@ public:
 	// Polyline & operator = ( Polyline const & aPolyline );
 	// Default
 
+	virtual std::string ToString ( ) const;
+	// How to use:
+	// Returns a string containing the interesting information of the figure.
+
 //---------------------------------------------- Constructors - destructor
 	// Polyline ( Polyline const & aPolyline );
 	// Default
 
-	Polyline ( std::vector<Point> const & rPointList );
+	Polyline ( std::string name, std::vector<Point> const & rPointList );
 	// How to use:
 	// The point list will be copied.
 

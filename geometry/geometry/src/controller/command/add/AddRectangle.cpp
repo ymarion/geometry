@@ -32,38 +32,18 @@ using namespace std;
 //} //----- End of Method
 
 
-/*virtual*/ void AddRectangle::Execute ( )
-{
-        if( !mWasExecuted )
-    {
-        mWasExecuted = true;
-        mrDrawing.AddFigure( mFigureName, new Rectangle( mBegin, mEnd ) );
-    }
-} //----- End of Execute
-
-
-/*virtual*/ void AddRectangle::Undo ( )
-{
-    if( mWasExecuted )
-    {
-        mWasExecuted = false;
-        mrDrawing.RemoveFigure( mFigureName );
-    }
-
-} //----- End of Undo
-
-
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
 AddRectangle::AddRectangle ( Drawing & rDrawing, string const & rParameters )
-: AddCommand( rDrawing, false, rParameters ), mBegin( 0, 0 ), mEnd( 0, 0 )
+: AddCommand( rDrawing, false, rParameters ), mCorner1( 0, 0 ),
+  mCorner2( 0, 0 )
 {
 	istringstream iss( mParameters );
-	iss >> mBegin.x;
-	iss >> mBegin.y;
-	iss >> mEnd.x;
-	iss >> mEnd.y;
+	iss >> mCorner1.x;
+	iss >> mCorner1.y;
+	iss >> mCorner2.x;
+	iss >> mCorner2.y;
 
 	bool error = iss.fail( );
 	if ( !mError && error )
@@ -72,8 +52,10 @@ AddRectangle::AddRectangle ( Drawing & rDrawing, string const & rParameters )
 		mErrorMessage = "Impossible to parse coordinates";
 	}
 
+	mpFigure = new Rectangle ( mFigureName, mCorner1, mCorner2 );
+
 #ifdef DEBUG
-	cout << "Calling constructor of <AddRectangle>" << endl;
+	cout << "# Calling constructor of <AddRectangle>" << endl;
 #endif
 } //----- End of AddRectangle
 
@@ -83,12 +65,8 @@ AddRectangle::~AddRectangle ( )
 //
 {
 #ifdef DEBUG
-	cout << "Calling destructor of <AddRectangle>" << endl;
+	cout << "# Calling destructor of <AddRectangle>" << endl;
 #endif
-    if ( !mWasExecuted )
-    {
-        mrDrawing.DeleteFigure( mFigureName );
-    }
 } //----- End of ~AddRectangle
 
 

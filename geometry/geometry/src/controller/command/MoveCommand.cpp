@@ -31,26 +31,6 @@ using namespace std;
 //} //----- End of Method
 
 
-/*virtual*/ void MoveCommand::Execute ( )
-{
-    if( !mWasExecuted )
-    {
-        mWasExecuted = true;
-        mpFigure->Move( mVector );
-    }
-} //----- End of Execute
-
-
-/*virtual*/ void MoveCommand::Undo ( )
-{
-    if( mWasExecuted )
-    {
-        mWasExecuted = false;
-        mpFigure->Move( -mVector );
-    }
-} //----- End of Undo
-
-
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
@@ -58,20 +38,18 @@ MoveCommand::MoveCommand ( Drawing & rDrawing, string const & rParameters )
 : Command( rDrawing, false ), mVector( 0, 0 )
 {
 	istringstream iss( rParameters );
-	string figureName;
-	iss >> figureName;
-	mpFigure = mrDrawing.FindFigure( figureName );
-	bool error = 0 == mpFigure;
+	iss >> mFigureName;
+	bool error = !mrDrawing.FigureExists( mFigureName );
 	if ( !mError && error )
 	{
 		mError = true;
-		mErrorMessage = "Figure \"" + figureName + "\" doesn't exist";
+		mErrorMessage = "Figure \"" + mFigureName + "\" doesn't exist";
 	}
 	else
 	{
 		iss >> mVector.x;
 		iss >> mVector.y;
-		// TODO check parsing
+
 		error = iss.fail( );
 		if ( !mError && error )
 		{
@@ -81,17 +59,15 @@ MoveCommand::MoveCommand ( Drawing & rDrawing, string const & rParameters )
 	}
 
 #ifdef DEBUG
-	cout << "Calling constructor of <MoveCommand>" << endl;
+	cout << "# Calling constructor of <MoveCommand>" << endl;
 #endif
 } //----- End of MoveCommand
 
 
 MoveCommand::~MoveCommand ( )
-// Algorithm:
-//
 {
 #ifdef DEBUG
-	cout << "Calling destructor of <MoveCommand>" << endl;
+	cout << "# Calling destructor of <MoveCommand>" << endl;
 #endif
 } //----- End of ~MoveCommand
 
@@ -99,4 +75,14 @@ MoveCommand::~MoveCommand ( )
 //---------------------------------------------------------------- PRIVATE
 
 //------------------------------------------------------ Protected methods
+/*virtual*/ void MoveCommand::execute ( )
+{
+	mrDrawing.MoveFigure( mFigureName, mVector );
+} //----- End of Execute
+
+
+/*virtual*/ void MoveCommand::cancel ( )
+{
+	mrDrawing.MoveFigure( mFigureName, -mVector );
+} //----- End of Undo
 

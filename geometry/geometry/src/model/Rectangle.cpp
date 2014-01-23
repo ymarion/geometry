@@ -10,6 +10,7 @@
 //---------------------------------------------------------------- INCLUDE
 
 //--------------------------------------------------------- System include
+#include <sstream>
 #include <iostream>
 using namespace std;
 
@@ -32,19 +33,28 @@ using namespace std;
 
 /*virtual*/ void Rectangle::Move ( Point const & rVector )
 {
-	mTopLeftCorner += rVector;
-	mBottomRightCorner += rVector;
+	mCorner1 += rVector;
+	mCorner2 += rVector;
 } //----- End of Move
 
 
 //--------------------------------------------------- Operator overloading
+/*virtual*/ std::string Rectangle::ToString ( ) const
+{
+	stringstream ss;
+	ss << "R " << mName << " " << mCorner1 << " " << mCorner2;
+	return ss.str( );
+}
+
 
 //---------------------------------------------- Constructors - destructor
-Rectangle::Rectangle ( Point const & rTopLeft, Point const & rBottomRight )
-: mTopLeftCorner( rTopLeft ), mBottomRightCorner( rBottomRight )
+Rectangle::Rectangle ( string name, Point const & rCorner1,
+					   Point const & rCorner2 )
+: Figure ( name ), mCorner1( rCorner1 ),
+  mCorner2( rCorner2 )
 {
 #ifdef DEBUG
-	cout << "Calling constructor of <Rectangle>" << endl;
+	cout << "# Calling constructor of <Rectangle>" << endl;
 #endif
 } //----- End of Rectangle
 
@@ -54,7 +64,7 @@ Rectangle::~Rectangle ( )
 //
 {
 #ifdef DEBUG
-	cout << "Calling destructor of <Rectangle>" << endl;
+	cout << "# Calling destructor of <Rectangle>" << endl;
 #endif
 } //----- End of ~Rectangle
 

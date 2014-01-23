@@ -31,18 +31,6 @@ using namespace std;
 //} //----- End of Method
 
 
-/*virtual*/ void DeleteCommand::Execute ( )
-{
-	mrDrawing.RemoveFigure( "" );
-} //----- End of Execute
-
-
-/*virtual*/ void DeleteCommand::Undo ( )
-{
-	// TODO
-} //----- End of Undo
-
-
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
@@ -55,28 +43,35 @@ DeleteCommand::DeleteCommand ( Drawing & rDrawing, string const & rParameters )
 	{
 		string figureName;
 		ss >> figureName;
-		error = 0 == mrDrawing.FindFigure( figureName );
+		error = !mrDrawing.FigureExists( figureName );
 		if ( !mError && error )
 		{
 			mError = true;
 			mErrorMessage = "Figure \"" + figureName + "\" doesn't exist";
 			break;
 		}
-		mDeleteList.push_back(figureName);
+		mDeleteList.push_back( mrDrawing.GetFigure( figureName ) );
 	}
 
 #ifdef DEBUG
-	cout << "Calling constructor of <DeleteCommand>" << endl;
+	cout << "# Calling constructor of <DeleteCommand>" << endl;
 #endif
 } //----- End of DeleteCommand
 
 
 DeleteCommand::~DeleteCommand( )
-// Algorithm:
-//
 {
+	if ( mWasExecuted )
+	{
+		for ( DeleteList::iterator it = mDeleteList.begin( );
+			  it != mDeleteList.end( );
+			  ++it )
+		{
+			mrDrawing.DeleteFigure( ( *it )->GetName( ) );
+		}
+	}
 #ifdef DEBUG
-	cout << "Calling destructor of <DeleteCommand>" << endl;
+	cout << "# Calling destructor of <DeleteCommand>" << endl;
 #endif
 } //----- End of ~DeleteCommand
 
@@ -84,4 +79,28 @@ DeleteCommand::~DeleteCommand( )
 //---------------------------------------------------------------- PRIVATE
 
 //------------------------------------------------------ Protected methods
+/*virtual*/ void DeleteCommand::execute ( )
+{
+	for ( DeleteList::iterator it = mDeleteList.begin( );
+		  it != mDeleteList.end( );
+		 ++it )
+	{
+		mrDrawing.IgnoreFigure( ( *it )->GetName( ) );
+	}
+} //----- End of execute
+
+
+/*virtual*/ void DeleteCommand::cancel ( )
+{
+	for ( DeleteList::iterator it = mDeleteList.begin( );
+		  it != mDeleteList.end( );
+		  ++it )
+	{
+		bool acknowledged = mrDrawing.AcknowledgeFigure( ( *it )->GetName( ) );
+		if ( !acknowledged )
+		{
+			cout << "# FATAL ERROR: could not undo DELETE." << endl;
+		}
+	}
+} //----- End of cancel
 

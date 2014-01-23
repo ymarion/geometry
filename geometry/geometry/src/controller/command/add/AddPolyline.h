@@ -26,29 +26,21 @@
 
 class AddPolyline : public AddCommand
 {
-	//----------------------------------------------------------------- PUBLIC
+//----------------------------------------------------------------- PUBLIC
 
 public:
-	//--------------------------------------------------------- Public methods
+//--------------------------------------------------------- Public methods
 	// type Method ( parameter list );
 	// How to use:
 	//
 	// Contract:
 	//
 
-    virtual void Execute ( );
-    // How to use:
-	//
-
-	virtual void Undo ( );
-    // How to use:
-	//
-
-	//--------------------------------------------------- Operator overMoveing
+//--------------------------------------------------- Operator overloading
 	// AddPolyline & operator = ( AddPolyline const & aAddPolyline );
 	// Default
 
-	//---------------------------------------------- Constructors - destructor
+//---------------------------------------------- Constructors - destructor
 	// AddPolyline ( AddPolyline const & aAddPolyline );
 	// Default
 
@@ -64,12 +56,12 @@ public:
 	// Contract:
 	//
 
-	//---------------------------------------------------------------- PRIVATE
+//---------------------------------------------------------------- PRIVATE
 
 protected:
-	//------------------------------------------------------ Protected methods
+//------------------------------------------------------ Protected methods
 
-	//--------------------------------------------------- Protected attributes
+//--------------------------------------------------- Protected attributes
 	std::vector<Point> mPointList;
 };
 

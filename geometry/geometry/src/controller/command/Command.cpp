@@ -42,6 +42,28 @@ string const & Command::ErrorMessage ( ) const
 } //----- End of ErrorMessage
 
 
+void Command::Do ( )
+{
+	if ( !mWasExecuted && !mError )
+	{
+		execute( );
+		mWasExecuted = true;
+		cout << "OK" << endl;
+	}
+} //----- End of Do
+
+
+void Command::Undo ( )
+{
+	if ( mWasExecuted && !mError )
+	{
+		cancel( );
+		mWasExecuted = false;
+		cout << "OK" << endl;
+	}
+} //----- End of Undo
+
+
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
@@ -49,7 +71,7 @@ Command::Command ( Drawing & rDrawing, bool validState, bool executed )
 : mError( validState ), mrDrawing( rDrawing ), mWasExecuted( executed )
 {
 #ifdef DEBUG
-	cout << "Calling constructor of <Command>" << endl;
+	cout << "# Calling constructor of <Command>" << endl;
 #endif
 } //----- End of Command
 
@@ -59,7 +81,7 @@ Command::~Command ( )
 //
 {
 #ifdef DEBUG
-	cout << "Calling destructor of <Command>" << endl;
+	cout << "# Calling destructor of <Command>" << endl;
 #endif
 } //----- End of ~Command
 

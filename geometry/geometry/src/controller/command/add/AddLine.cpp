@@ -32,26 +32,6 @@ using namespace std;
 //} //----- End of Method
 
 
-/*virtual*/ void AddLine::Execute ( )
-{
-    if( !mWasExecuted )
-    {
-        mWasExecuted = true;
-        mrDrawing.AddFigure( mFigureName, new Line( mBegin, mEnd ) );
-    }
-} //----- End of Execute
-
-
-/*virtual*/ void AddLine::Undo ( )
-{
-    if( mWasExecuted )
-    {
-        mWasExecuted = false;
-        mrDrawing.RemoveFigure( mFigureName );
-    }
-} //----- End of Undo
-
-
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
@@ -71,23 +51,24 @@ AddLine::AddLine ( Drawing & rDrawing, string const & rParameters )
 		mErrorMessage = "Impossible to parse coordinates";
 	}
 
+	mpFigure = new Line( mFigureName, mBegin, mEnd );
+
 #ifdef DEBUG
-	cout << "Calling constructor of <AddLine>" << endl;
+	cout << "# Calling constructor of <AddLine>" << endl;
 #endif
 } //----- End of AddLine
 
 
 AddLine::~AddLine ( )
-// Algorithm:
-//
 {
+	if ( !mWasExecuted )
+	// Was cancelled
+	{
+		mrDrawing.DeleteFigure( mFigureName );
+	}
 #ifdef DEBUG
-	cout << "Calling destructor of <AddLine>" << endl;
+	cout << "# Calling destructor of <AddLine>" << endl;
 #endif
-    if ( !mWasExecuted )
-    {
-        mrDrawing.DeleteFigure( mFigureName );
-    }
 } //----- End of ~AddLine
 
 

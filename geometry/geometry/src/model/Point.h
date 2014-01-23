@@ -38,6 +38,10 @@ public:
 	// Point & operator = ( Point const & aPoint );
 	// Default
 
+	std::string ToString ( ) const;
+	// How to use:
+	// Returns a string containing the interesting information of the point.
+
 	Point operator + ( Point const & rPoint ) const;
 	// Adds the four coordinates so that result is (x1 + x2, y1 + y2)
 
@@ -73,6 +77,10 @@ protected:
 };
 
 //------------------------------ Other definitions depending on <Point>
+std::ostream & operator << ( std::ostream & rOutput,
+							 Point const & rPoint );
+// How to use:
+// Writes the coordinates (x and y) to the given output.
 
 #endif // POINT_H_
 

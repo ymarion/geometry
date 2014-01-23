@@ -10,6 +10,7 @@
 //---------------------------------------------------------------- INCLUDE
 
 //--------------------------------------------------------- System include
+#include <sstream>
 #include <iostream>
 using namespace std;
 
@@ -32,18 +33,25 @@ using namespace std;
 
 /*virtual*/ void Line::Move ( Point const & rVector )
 {
-	
+	mBegin += rVector;
+	mEnd += rVector;
 } //----- End of Move
 
 
 //--------------------------------------------------- Operator overloading
+/*virtual*/ string Line::ToString ( ) const
+{
+	stringstream ss;
+	ss << "L " << mName << " " << mBegin << " " << mEnd;
+	return ss.str( );
+}
 
 //---------------------------------------------- Constructors - destructor
-Line::Line ( Point const & beginCopy, Point const & endCopy )
-: mBegin ( beginCopy ), mEnd ( endCopy )
+Line::Line ( string name, Point const & beginCopy, Point const & endCopy )
+: Figure( name ), mBegin( beginCopy ), mEnd( endCopy )
 {
 #ifdef DEBUG
-	cout << "Calling constructor of <Line>" << endl;
+	cout << "# Calling constructor of <Line>" << endl;
 #endif
 } //----- End of Line
 
@@ -53,7 +61,7 @@ Line::~Line ( )
 //
 {
 #ifdef DEBUG
-	cout << "Calling destructor of <Line>" << endl;
+	cout << "# Calling destructor of <Line>" << endl;
 #endif
 } //----- End of ~Line
 

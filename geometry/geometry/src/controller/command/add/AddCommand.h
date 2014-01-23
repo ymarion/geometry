@@ -33,14 +33,6 @@ public:
 	// Contract:
 	//
 
-    virtual void Execute ( ) = 0;
-    // How to use:
-	//
-
-	virtual void Undo ( ) = 0;
-    // How to use:
-	//
-
 //--------------------------------------------------- Operator overloading
 	// AddCommand & operator = ( AddCommand const & anAddCommand );
 	// Default
@@ -64,8 +56,14 @@ public:
 
 protected:
 //------------------------------------------------------ Protected methods
+	virtual void execute ( );
+	// Will be used by Command::Do
+
+	virtual void cancel ( );
+	// Will be used by Command::Undo
 
 //--------------------------------------------------- Protected attributes
+	bool isRedo;
 	std::string mFigureName;
 	Figure *mpFigure;
 	std::string mParameters;

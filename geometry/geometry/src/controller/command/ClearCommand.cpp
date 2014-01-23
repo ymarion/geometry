@@ -31,23 +31,11 @@ using namespace std;
 //} //----- End of Method
 
 
-/*virtual*/ void ClearCommand::Execute ( )
-{
-	// TODO
-} //----- End of Execute
-
-
-/*virtual*/ void ClearCommand::Undo ( )
-{
-	// TODO
-} //----- End of Undo
-
-
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
 ClearCommand::ClearCommand ( Drawing & rDrawing, string const & rParameters )
-: Command ( rDrawing, false ), mParameters( rParameters )
+: Command ( rDrawing, false ), mList ( rDrawing.GetList( ) )
 {
 	bool error = ( "" == rParameters ); // TODO accept whitespaces
 	if ( !mError && error )
@@ -55,9 +43,8 @@ ClearCommand::ClearCommand ( Drawing & rDrawing, string const & rParameters )
 		mError = true;
 		mErrorMessage = "CLEAR takes no parameter";
 	}
-
 #ifdef DEBUG
-	cout << "Calling constructor of <ClearCommand>" << endl;
+	cout << "# Calling constructor of <ClearCommand>" << endl;
 #endif
 } //----- End of ClearCommand
 
@@ -67,12 +54,31 @@ ClearCommand::~ClearCommand ( )
 //
 {
 #ifdef DEBUG
-	cout << "Calling destructor of <ClearCommand>" << endl;
+	cout << "# Calling destructor of <ClearCommand>" << endl;
 #endif
+	if ( mWasExecuted )
+	// The figures need to be cleared
+	{
+		mrDrawing.DeleteFigures( mList );
+	}
 } //----- End of ~ClearCommand
 
 
 //---------------------------------------------------------------- PRIVATE
 
 //------------------------------------------------------ Protected methods
+/*virtual*/ void ClearCommand::execute ( )
+{
+	mrDrawing.IgnoreFigures( mList );
+} //----- End of execute
+
+
+/*virtual*/ void ClearCommand::cancel ( )
+{
+	bool acknowleged = mrDrawing.AcknowledgeFigures( mList );
+	if ( !acknowleged )
+	{
+		mrDrawing.CopyAllFigures( mList );
+	}
+} //----- End of cancel
 

@@ -11,10 +11,12 @@
 
 //--------------------------------------------------------- System include
 #include <iostream>
+#include <vector>
 #include <sstream>
 using namespace std;
 
 //------------------------------------------------------- Personal include
+#include "Interpreter.h"
 #include "LoadCommand.h"
 
 //-------------------------------------------------------- Class constants
@@ -31,23 +33,11 @@ using namespace std;
 //} //----- End of Method
 
 
-/*virtual*/ void LoadCommand::Execute ( )
-{
-	// TODO
-} //----- End of Execute
-
-
-/*virtual*/ void LoadCommand::Undo ( )
-{
-	// TODO
-} //----- End of Undo
-
-
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
 LoadCommand::LoadCommand ( Drawing & rDrawing, string const & rParameters )
-: Command( rDrawing, false ), mInFile( rParameters.c_str( ) )
+: Command( rDrawing, false ), mInFile( rParameters.c_str( ) ), mFigures( " " )
 {
 	bool error = !mInFile.good( );
 	if ( !mError && error )
@@ -56,8 +46,31 @@ LoadCommand::LoadCommand ( Drawing & rDrawing, string const & rParameters )
 		mErrorMessage = "File \"" + rParameters + "\" could not be opened";
 	}
 
+	while ( mInFile.good( ) )
+	{
+		string code, parameters;
+		mInFile >> code;
+		mInFile >> ws;
+		getline( mInFile, parameters, Interpreter::ENDL );
+		Command *pCommand = Interpreter::GetInstance( )
+							.GetCommand( code, parameters );
+		mCommands.push_back( pCommand );
+		mInFile.peek( );
+	}
+
+	for ( std::vector<Command *>::iterator it = mCommands.begin( );
+		  it != mCommands.end( );
+		  ++it )
+	{
+		if ( !( *it )->isValid( ) )
+		{
+			handleError( *it );
+			break;
+		}
+	}
+
 #ifdef DEBUG
-	cout << "Calling constructor of <LoadCommand>" << endl;
+	cout << "# Calling constructor of <LoadCommand>" << endl;
 #endif
 } //----- End of LoadCommand
 
@@ -67,7 +80,7 @@ LoadCommand::~LoadCommand ( )
 //
 {
 #ifdef DEBUG
-	cout << "Calling destructor of <LoadCommand>" << endl;
+	cout << "# Calling destructor of <LoadCommand>" << endl;
 #endif
 } //----- End of ~LoadCommand
 
@@ -75,4 +88,42 @@ LoadCommand::~LoadCommand ( )
 //---------------------------------------------------------------- PRIVATE
 
 //------------------------------------------------------ Protected methods
+/*virtual*/ void LoadCommand::execute ( )
+{
+	for ( std::vector<Command *>::iterator it = mCommands.begin( );
+		 it != mCommands.end( );
+		 ++it )
+	{
+		( *it )->Do( );
+	}
+} //----- End of execute
+
+
+/*virtual*/ void LoadCommand::cancel ( )
+{
+	for ( std::vector<Command *>::iterator it = mCommands.begin( );
+		 it != mCommands.end( );
+		 ++it )
+	{
+		( *it )->Undo( );
+	}
+} //----- End of cancel
+
+
+void LoadCommand::handleError ( Command * pCommand )
+{
+	if ( !mError )
+	{
+		this->mError = true;
+		mErrorMessage = string( "ERR in LOAD: " ) + pCommand->ErrorMessage( );
+	}
+#ifdef DEBUG
+	cout << "# Load command will be aborted" << endl;
+#endif
+	delete pCommand;
+	pCommand = 0;
+#ifdef DEBUG
+	cout << "# Command Deleted." << endl;
+#endif
+} //----- End of handleError
 

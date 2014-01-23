@@ -37,12 +37,12 @@ using namespace std;
 AddCommand::AddCommand ( Drawing & rDrawing, bool validState,
 						 string const & rParameters )
 : Command ( rDrawing, validState ), mParameters ( rParameters )
+, isRedo ( false )
 {
 	long pos = rParameters.find( Interpreter::DELIMITER );
 	mFigureName = rParameters.substr( 0, pos );
-	mpFigure = mrDrawing.FindFigure( mFigureName );
 
-	bool error = 0 != mpFigure; // A figure already exists under this name
+	bool error = mrDrawing.FigureExists( mFigureName );
 	if ( !mError && error )
 	// No error but the last one
 	{
@@ -53,17 +53,20 @@ AddCommand::AddCommand ( Drawing & rDrawing, bool validState,
 	mParameters = rParameters.substr( pos + 1 );
 
 #ifdef DEBUG
-	cout << "Calling constructor of <AddCommand>" << endl;
+	cout << "# Calling constructor of <AddCommand>" << endl;
 #endif
 } //----- End of AddCommand
 
 
 AddCommand::~AddCommand ( )
-// Algorithm:
-//
 {
+	if ( !mWasExecuted && !mError )
+	{
+		delete mpFigure;
+		mpFigure = 0;
+	}
 #ifdef DEBUG
-	cout << "Calling destructor of <AddCommand>" << endl;
+	cout << "# Calling destructor of <AddCommand>" << endl;
 #endif
 } //----- End of ~AddCommand
 
@@ -71,4 +74,22 @@ AddCommand::~AddCommand ( )
 //---------------------------------------------------------------- PRIVATE
 
 //------------------------------------------------------ Protected methods
+/*virtual*/ void AddCommand::execute( )
+{
+	if ( !isRedo )
+	{
+		mrDrawing.AddFigure( mpFigure );
+	}
+	else
+	{
+		mrDrawing.AcknowledgeFigure( mpFigure->GetName( ) );
+	}
+	isRedo = true;
+} //----- End of execute
+
+
+/*virtual*/ void AddCommand::cancel ( )
+{
+	mrDrawing.IgnoreFigure( mFigureName );
+} //----- End of cancel
 

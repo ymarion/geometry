@@ -101,7 +101,7 @@ CommandFactory::CommandFactory ( )
 //
 {
 #ifdef DEBUG
-	cout << "Calling constructor of <CommandFactory>" << endl;
+	cout << "# Calling constructor of <CommandFactory>" << endl;
 #endif
 } //----- End of CommandFactory
 
@@ -111,7 +111,7 @@ CommandFactory::~CommandFactory ( )
 //
 {
 #ifdef DEBUG
-	cout << "Calling destructor of <CommandFactory>" << endl;
+	cout << "# Calling destructor of <CommandFactory>" << endl;
 #endif
 } //----- End of ~CommandFactory
 

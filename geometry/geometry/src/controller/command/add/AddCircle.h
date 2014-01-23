@@ -34,15 +34,7 @@ public:
 	// Contract:
 	//
 
-    virtual void Execute ( );
-    // How to use:
-	//
-
-	virtual void Undo ( );
-    // How to use:
-	//
-
-	//--------------------------------------------------- Operator overMoveing
+	//--------------------------------------------------- Operator overloading
 	// AddCircle & operator = ( AddCircle const & aAddCircle );
 	// Default
 
@@ -62,12 +54,12 @@ public:
 	// Contract:
 	//
 
-	//---------------------------------------------------------------- PRIVATE
+//---------------------------------------------------------------- PRIVATE
 
 protected:
-	//------------------------------------------------------ Protected methods
+//------------------------------------------------------ Protected methods
 
-	//--------------------------------------------------- Protected attributes
+//--------------------------------------------------- Protected attributes
 	Point mCenter;
 	int mRadius;
 };

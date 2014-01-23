@@ -32,26 +32,6 @@ using namespace std;
 //} //----- End of Method
 
 
-/*virtual*/ void AddAggregate::Execute ( )
-{
-    if( !mWasExecuted )
-    {
-        mWasExecuted = true;
-        mpAggregate = new Aggregate ( mFigures );
-        mrDrawing.AddFigure( mFigureName, new Aggregate( mFigures ) );
-    }
-} //----- End of Execute
-
-/*virtual*/ void AddAggregate::Undo ( )
-{
-    if( mWasExecuted )
-    {
-        mWasExecuted = false;
-        mrDrawing.RemoveFigure( mFigureName );
-    }
-} //----- End of Undo
-
-
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
@@ -59,41 +39,38 @@ AddAggregate::AddAggregate ( Drawing & rDrawing, string const & rParameters )
 : AddCommand( rDrawing, false, rParameters )
 {
 	stringstream ss( mParameters );
-	while ( ss.good( ) )
+	while ( ss.good( ) && !mError )
 	{
 		string figureName;
 		ss >> figureName;
-		Figure * pFigure = mrDrawing.FindFigure( figureName );
+		Figure * pFigure = mrDrawing.GetFigure( figureName );
 		if ( 0 != pFigure )
 		// Figure is found
 		{
-			mFigures.insert( make_pair( figureName, pFigure ) );
+			AggregatedFigureInfo i;// By default, both bool are false
+			mFigures.insert( make_pair( pFigure, i ) );
+			// The figure should not be ignored
 		}
 		else if ( !mError )
-		// No error yet
+		// No error until this one
 		{
 			mError = true;
 			mErrorMessage = "Figure \"" + figureName + "\" doesn't exist";
-			break;
 		}
 	}
+	mpFigure = new Aggregate( mFigureName, mFigures );
+
 #ifdef DEBUG
-	cout << "Calling constructor of <AddAggregate>" << endl;
+	cout << "# Calling constructor of <AddAggregate>" << endl;
 #endif
 } //----- End of AddAggregate
 
 
 AddAggregate::~AddAggregate ( )
-// Algorithm:
-//
 {
 #ifdef DEBUG
-	cout << "Calling destructor of <AddAggregate>" << endl;
+	cout << "# Calling destructor of <AddAggregate>" << endl;
 #endif
-    if ( !mWasExecuted )
-    {
-        mrDrawing.DeleteFigure( mFigureName );
-    }
 } //----- End of ~AddAggregate
 
 

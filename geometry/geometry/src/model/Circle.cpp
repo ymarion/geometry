@@ -11,6 +11,7 @@
 
 //--------------------------------------------------------- System include
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 //------------------------------------------------------- Personal include
@@ -36,16 +37,24 @@ using namespace std;
 } //----- End of Move
 
 
+/*virtual*/ string Circle::ToString ( ) const
+{
+	stringstream ss;
+	ss << "C " << mName << " " << mCenter << " " << mRadius;
+	return ss.str( );
+}
+
+
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
-Circle::Circle ( Point center, long radius )
-: mCenter( center ), mRadius( radius )
+Circle::Circle ( string name, Point center, long radius )
+: Figure ( name ), mCenter( center ), mRadius( radius )
 // Algorithm:
 //
 {
 #ifdef DEBUG
-	cout << "Calling constructor of <Circle>" << endl;
+	cout << "# Calling constructor of <Circle>" << endl;
 #endif
 } //----- End of Circle
 
@@ -55,7 +64,7 @@ Circle::~Circle ( )
 //
 {
 #ifdef DEBUG
-	cout << "Calling destructor of <Circle>" << endl;
+	cout << "# Calling destructor of <Circle>" << endl;
 #endif
 } //----- End of ~Circle
 
@@ -63,4 +72,3 @@ Circle::~Circle ( )
 //---------------------------------------------------------------- PRIVATE
 
 //------------------------------------------------------ Protected methods
-

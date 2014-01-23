@@ -24,29 +24,21 @@
 
 class MoveCommand : public Command
 {
-	//----------------------------------------------------------------- PUBLIC
+//----------------------------------------------------------------- PUBLIC
 
 public:
-	//--------------------------------------------------------- Public methods
+//--------------------------------------------------------- Public methods
 	// type Method ( parameter list );
 	// How to use:
 	//
 	// Contract:
 	//
 
-    virtual void Execute ( );
-    // How to use:
-	//
-
-	virtual void Undo ( );
-    // How to use:
-	//
-
-	//--------------------------------------------------- Operator overMoveing
+//--------------------------------------------------- Operator overloading
 	// MoveCommand & operator = ( MoveCommand const & aMoveCommand );
 	// Default
 
-	//---------------------------------------------- Constructors - destructor
+//---------------------------------------------- Constructors - destructor
 	// MoveCommand ( MoveCommand const & aMoveCommand );
 	// Default
 
@@ -62,13 +54,18 @@ public:
 	// Contract:
 	//
 
-	//---------------------------------------------------------------- PRIVATE
+//---------------------------------------------------------------- PRIVATE
 
 protected:
-	//------------------------------------------------------ Protected methods
+//------------------------------------------------------ Protected methods
+	virtual void execute ( );
+	// Will be used by Command::Do
 
-	//--------------------------------------------------- Protected attributes
-	Figure *mpFigure;
+	virtual void cancel ( );
+	// Will be used by Command::Undo
+
+//--------------------------------------------------- Protected attributes
+	std::string mFigureName;
 	Point mVector;
 };
 

@@ -36,14 +36,6 @@ public:
 	// Contract:
 	//
 
-    virtual void Execute ( );
-    // How to use:
-	//
-
-	virtual void Undo ( );
-    // How to use:
-	//
-
 //--------------------------------------------------- Operator overloading
 	// AddAggregate & operator = ( AddAggregate const & aAddAggregate );
 	// Default
@@ -71,7 +63,6 @@ protected:
 
 //--------------------------------------------------- Protected attributes
 	AggregatedFigures mFigures;// Filled during the string parsing
-	Aggregate * mpAggregate;
 };
 
 //------------------------------ Other definitions depending on <AddAggregate>

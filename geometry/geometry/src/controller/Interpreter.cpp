@@ -27,6 +27,7 @@ string const Interpreter::LIST = "LIST";
 
 string const Interpreter::UNDO = "UNDO";
 string const Interpreter::REDO = "REDO";
+string const Interpreter::SAVE = "SAVE";
 
 MapStringToCommand const Interpreter::COMMAND_TABLE =
 			CreateMap<string const, FactoryMethod>
@@ -73,6 +74,25 @@ void Interpreter::Interpret ( istream & rStream )
 } //----- End of Interpret
 
 
+Command * Interpreter::GetCommand ( string const & code,
+								 string const & parameters )
+{
+	MapStringToCommand::const_iterator it;
+	it = Interpreter::COMMAND_TABLE.find( code );
+
+	if ( it == Interpreter::COMMAND_TABLE.end( ) )
+		// not found
+	{
+		cout << "ERR Command unknown" << endl;
+	}
+
+	Command * pCommand = ( mFactory.*( it->second ) )
+	( Drawing::GetInstance( ), parameters );
+	// Creating a command and passing it its arguments
+	return pCommand;
+}
+
+
 bool Interpreter::InterpretCommand( string const & rLine )
 {
 	if ( STOP == rLine )
@@ -88,12 +108,12 @@ bool Interpreter::InterpretCommand( string const & rLine )
 	}
 	if ( UNDO == rLine )
     {
-        mrController.UndoRedo(0);
+        mrController.Undo( );
         return false;
     }
     if ( REDO == rLine )
     {
-        mrController.UndoRedo(1);
+        mrController.Redo( );
         return false;
     }
 
@@ -102,22 +122,21 @@ bool Interpreter::InterpretCommand( string const & rLine )
 	string parameters( rLine.substr( rLine.find( DELIMITER ) + 1 ) );
 	// All characters after first DELIMITER
 
-	MapStringToCommand::const_iterator it;
-	it = Interpreter::COMMAND_TABLE.find( code );
-
-	if ( it == Interpreter::COMMAND_TABLE.end( ) )
-	// not found
+	if ( SAVE == code )
 	{
-		cout << "ERR Command unknown" << endl;
+		ofstream outputFile( parameters.c_str( ) );
+		if ( outputFile.fail( ) )
+		{
+			cout << "ERR: Impossible to write file " << parameters;
+			return false;
+		}
+		mrController.PrintList( false, outputFile );
+		return false;
 	}
-	else
-	{
-		Command * pCommand = ( mFactory.*( it->second ) )
-				( Drawing::GetInstance( ), parameters );
-		// Creating a command and passing it its arguments
 
-		mrController.SaveAndExecute( pCommand );
-	}
+	Command *pCommand = GetCommand( code, parameters );
+
+	mrController.SaveAndExecute( pCommand );
 
 	return false;
 } //----- End of InterpretCommand
@@ -132,7 +151,7 @@ Interpreter::~Interpreter ( )
 //
 {
 #ifdef DEBUG
-	cout << "Calling destructor of <Interpreter>" << endl;
+	cout << "# Calling destructor of <Interpreter>" << endl;
 #endif
 } //----- End of ~Interpreter
 
@@ -144,7 +163,7 @@ Interpreter::Interpreter ( )
 : mrController( Controller::GetInstance( ) ), mFactory( )
 {
 #ifdef DEBUG
-	cout << "Calling constructor of <Interpreter>" << endl;
+	cout << "# Calling constructor of <Interpreter>" << endl;
 #endif
 } //----- End of Interpreter
 

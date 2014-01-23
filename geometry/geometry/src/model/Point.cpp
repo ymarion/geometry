@@ -11,6 +11,7 @@
 
 //--------------------------------------------------------- System include
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 //------------------------------------------------------- Personal include
@@ -31,6 +32,14 @@ using namespace std;
 
 
 //--------------------------------------------------- Operator overloading
+string Point::ToString ( ) const
+{
+	stringstream ss;
+	ss << x << " " << y;
+	return ss.str( );
+}
+
+
 Point Point::operator + ( Point const & rPoint ) const
 {
 	return Point (x + rPoint.x, y + rPoint.y );
@@ -58,7 +67,7 @@ Point::Point ( long xParam, long yParam )
 : x( xParam ), y( yParam )
 {
 #ifdef DEBUG
-	cout << "Calling constructor of <Point>" << endl;
+	cout << "# Calling constructor of <Point>" << endl;
 #endif
 } //----- End of Point
 
@@ -68,7 +77,7 @@ Point::~Point ( )
 //
 {
 #ifdef DEBUG
-	cout << "Calling destructor of <Point>" << endl;
+	cout << "# Calling destructor of <Point>" << endl;
 #endif
 } //----- End of ~Point
 
@@ -76,4 +85,12 @@ Point::~Point ( )
 //---------------------------------------------------------------- PRIVATE
 
 //------------------------------------------------------ Protected methods
+
+//------------------------------ Other definitions depending on <Point>
+ostream & operator << ( ostream & rOutput,
+						Point const & rPoint )
+{
+	rOutput << rPoint.x << " " << rPoint.y;
+	return rOutput;
+}
 

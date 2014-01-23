@@ -18,7 +18,6 @@
 #include "Controller.h"
 
 //------------------------------------------------------------------ Types
-//typedef Command * ( CommandFactory::*FactoryMethod )( std::string const & );
 typedef Command * ( CommandFactory::*FactoryMethod )
 							( Drawing & rDrawing, std::string const & ) const;
 typedef std::map<string const, FactoryMethod> MapStringToCommand;
@@ -39,6 +38,10 @@ public:
 	static char const DELIMITER;
 	static std::string const STOP;
 	static std::string const LIST;
+	static std::string const UNDO;
+	static std::string const REDO;
+	static std::string const SAVE;
+
 	static MapStringToCommand const COMMAND_TABLE;
 //--------------------------------------------------------- Public methods
 	// type Method ( parameter list );
@@ -56,6 +59,11 @@ public:
 	// Interprets all commands from an input stream.
 	// Contract:
 	// Displays result on the standard output.
+
+	Command * GetCommand ( std::string const & code,
+						   std::string const & parameters );
+	// How to use:
+	// Returns a pointer to the newly created command (thanks to the line)
 
 	bool InterpretCommand ( std::string const & command );
 	// How to use:

@@ -41,11 +41,15 @@ public:
 	// Line & operator = ( Line const & aLine );
 	// Default
 
+	virtual std::string ToString ( ) const;
+	// How to use:
+	// Returns a string containing the interesting information of the figure.
+
 //---------------------------------------------- Constructors - destructor
 	// Line ( Line const & aLine );
 	// Default
 
-	Line ( Point const & beginCopy, Point const & endCopy );
+	Line ( std::string name, Point const & beginCopy, Point const & endCopy );
 	// How to use:
 	// Creates a line going from point begin to end. Points are copied.
 

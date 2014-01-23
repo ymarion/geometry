@@ -35,14 +35,6 @@ public:
 	// Contract:
 	//
 
-    virtual void Execute ( );
-    // How to use:
-	//
-
-	virtual void Undo ( );
-    // How to use:
-	//
-
 //--------------------------------------------------- Operator overloading
 	// LoadCommand & operator = ( LoadCommand const & aLoadCommand );
 	// Default
@@ -67,9 +59,20 @@ public:
 
 protected:
 //------------------------------------------------------ Protected methods
+	virtual void execute ( );
+	// Will be used by Command::Do
+
+	virtual void cancel ( );
+	// Will be used by Command::Undo
+
+	void handleError ( Command * pCommand );
 
 //--------------------------------------------------- Protected attributes
 	std::ifstream mInFile;
+
+	std::vector<Command *> mCommands;
+
+	DrawingFigureList mFigures;
 };
 
 //------------------------------ Other definitions depending on <LoadCommand>

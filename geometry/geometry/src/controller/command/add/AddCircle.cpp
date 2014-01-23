@@ -32,26 +32,6 @@ using namespace std;
 //} //----- End of Method
 
 
-/*virtual*/ void AddCircle::Execute ( )
-{
-    if( !mWasExecuted )
-    {
-        mWasExecuted = true;
-        mrDrawing.AddFigure( mFigureName, new Circle( mCenter, mRadius ) );
-    }
-} //----- End of Execute
-
-
-/*virtual*/ void AddCircle::Undo ( )
-{
-    if( mWasExecuted )
-    {
-        mWasExecuted = false;
-        mrDrawing.RemoveFigure( mFigureName );
-    }
-} //----- End of Undo
-
-
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
@@ -72,24 +52,19 @@ AddCircle::AddCircle ( Drawing & rDrawing, string const & rParameters )
 		mError = true;
 		mErrorMessage = "Impossible to parse coordinates or radius";
 	}
+	mpFigure = new Circle( mFigureName, mCenter, mRadius );
 
 #ifdef DEBUG
-	cout << "Calling constructor of <AddCircle>" << endl;
+	cout << "# Calling constructor of <AddCircle>" << endl;
 #endif
 } //----- End of AddCircle
 
 
 AddCircle::~AddCircle ( )
-// Algorithm:
-//
 {
 #ifdef DEBUG
-	cout << "Calling destructor of <AddCircle>" << endl;
+	cout << "# Calling destructor of <AddCircle>" << endl;
 #endif
-    if ( !mWasExecuted )
-    {
-        mrDrawing.DeleteFigure( mFigureName );
-    }
 } //----- End of ~AddCircle
 
 

@@ -32,26 +32,6 @@ using namespace std;
 //} //----- End of Method
 
 
-/*virtual*/ void AddPolyline::Execute ( )
-{
-    if( !mWasExecuted )
-    {
-        mWasExecuted = true;
-        mrDrawing.AddFigure( mFigureName, new Polyline( mPointList ) );
-    }
-} //----- End of Execute
-
-
-/*virtual*/ void AddPolyline::Undo ( )
-{
-    if( mWasExecuted )
-    {
-        mWasExecuted = false;
-        mrDrawing.RemoveFigure( mFigureName );
-    }
-} //----- End of Undo
-
-
 //--------------------------------------------------- Operator overloading
 
 //---------------------------------------------- Constructors - destructor
@@ -77,9 +57,10 @@ AddPolyline::AddPolyline ( Drawing & rDrawing, string const & rParameters )
 		Point aPoint( x, y );
 		mPointList.push_back(aPoint);
 	}
+	mpFigure = new Polyline( mFigureName, mPointList );
 
 #ifdef DEBUG
-	cout << "Calling constructor of <AddPolyline>" << endl;
+	cout << "# Calling constructor of <AddPolyline>" << endl;
 #endif
 } //----- End of AddPolyline
 
@@ -89,12 +70,8 @@ AddPolyline::~AddPolyline ( )
 //
 {
 #ifdef DEBUG
-	cout << "Calling destructor of <AddPolyline>" << endl;
+	cout << "# Calling destructor of <AddPolyline>" << endl;
 #endif
-    if ( !mWasExecuted )
-    {
-        mrDrawing.DeleteFigure( mFigureName );
-    }
 } //----- End of ~AddPolyline
 
 
