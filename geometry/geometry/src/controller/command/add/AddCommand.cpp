@@ -62,8 +62,7 @@ AddCommand::~AddCommand ( )
 {
 	if ( !mWasExecuted && !mError )
 	{
-		delete mpFigure;
-		mpFigure = 0;
+		mrDrawing.DeleteFigure( mFigureName );
 	}
 #ifdef DEBUG
 	cout << "# Calling destructor of <AddCommand>" << endl;

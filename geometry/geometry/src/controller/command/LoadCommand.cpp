@@ -82,6 +82,13 @@ LoadCommand::~LoadCommand ( )
 #ifdef DEBUG
 	cout << "# Calling destructor of <LoadCommand>" << endl;
 #endif
+	for ( std::vector<Command *>::iterator it = mCommands.begin( );
+		 it != mCommands.end( );
+		 ++it )
+	{
+		delete *it;
+	}
+	mCommands.clear( );
 } //----- End of ~LoadCommand
 
 
@@ -120,10 +127,15 @@ void LoadCommand::handleError ( Command * pCommand )
 #ifdef DEBUG
 	cout << "# Load command will be aborted" << endl;
 #endif
-	delete pCommand;
-	pCommand = 0;
+	for ( std::vector<Command *>::iterator it = mCommands.begin( );
+		  it != mCommands.end( );
+		  ++it )
+	{
+		delete *it;
+	}
+	mCommands.clear( );
 #ifdef DEBUG
-	cout << "# Command Deleted." << endl;
+	cout << "# Commands Deleted." << endl;
 #endif
 } //----- End of handleError
 
