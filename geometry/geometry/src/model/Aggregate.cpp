@@ -314,7 +314,7 @@ struct Aggregate::EmptyFigure : public Figure
 void Aggregate::addIdToName( AggregatedFigures::iterator it )
 {
 	stringstream ss;
-	ss << ( it->first )->GetName( ) << '-' << ( it->first )->GetId( );
+	ss << ( it->first )->GetName( ) << IMPOSSIBLE << ( it->first )->GetId( );
 	( it->first )->SetName( ss.str( ) );
 }
 
