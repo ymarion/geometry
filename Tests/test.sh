@@ -59,7 +59,14 @@ then
   sRun="$sRun 2>temp.err.comments"
   # removes comments
   grep -v '^#' "temp.err.comments" > "temp.err"
-  rm "temp.err.comments"
+
+  if [ "$3" = "" ]
+  then
+    rm "temp.err.comments"
+  else
+    echo "no rm activated"
+  fi
+
 fi
 
 echo $sRun
@@ -67,7 +74,13 @@ echo $sRun
 eval $sRun
 returnCode=$?
 # Removes temp file
-rm temp.in
+
+if [ "$3" = "" ]
+then
+  rm temp.in
+else
+  echo "no rm activated"
+fi
 
 resultGlobal=1
 
@@ -92,11 +105,19 @@ if [ -r "std.out" ]
 then 
   # removes comments
   grep -v '^#' "temp.out.comments" > "temp.out"
+
+if [ "$3" = "" ]
+then
   rm temp.out.comments
+else
+  echo "no rm activated"
+fi
 
 #  diff -wB temp.out std.out >/dev/null
 # Do NOT ignore whitespaces and blank lines
-  diff temp.out std.out >/dev/null
+  # removes comments
+  grep -v '^#' "std.out" > "std.out.nocomments"
+  diff temp.out std.out.nocomments >/dev/null
   if [ $? -eq 0 ]
   then
     echo "                                       Stdout      : PASSED"
@@ -107,7 +128,16 @@ then
     resultGlobal=0
   fi
   # clean temporary out file
-  rm temp.out
+
+  if [ "$3" = "" ]
+  then
+    rm temp.out
+    rm std.out.nocomments
+  else
+    echo "no rm activated"
+    echo "no rm activated"
+  fi
+
 fi
 
 # compare stderr if concerned
@@ -127,7 +157,13 @@ then
     resultGlobal=0
   fi
   # clean temporary out file
-  rm temp.err
+
+  if [ "$3" = "" ]
+  then
+    rm temp.err
+  else
+    echo "no rm activated"
+  fi
 fi
 
 # compare files created if concerned
@@ -150,8 +186,13 @@ then
         echo "                                       File #$number     : FAILED"
         resultFiles="Failed"
         resultGlobal=0
-      fi  
-      rm $fileName
+      fi
+      if [ "$3" = "" ]
+      then
+        rm $fileName
+      else
+        echo "no rm activated"
+      fi
     else  
       echo "                                       File #$number     : FAILED"
       resultFiles="Failed"
@@ -159,7 +200,7 @@ then
     fi
     let "number=$number+1"
   done
-  if [ $resultFiles -eq 2 ]
+  if [ "$resultFiles" = "Failed" ]
   then
     resultFiles="Passed"
   fi

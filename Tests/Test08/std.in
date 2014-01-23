@@ -6,5 +6,5 @@ L l1 0 0 20 20
 DELETE c1
 # Should not show c1
 LIST
-
-
+#
+EXIT

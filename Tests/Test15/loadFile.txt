@@ -1,0 +1,5 @@
+C c1 0 0 10
+L bonjour 2 3 0 2
+PL tagazok 2 4 5 4 595 48
+R ahouibonjour 3 4 5 9
+C bref,tout_marche 3 5 2

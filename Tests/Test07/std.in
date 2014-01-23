@@ -4,8 +4,8 @@ R R1 0 0 20 20
 L L1 0 0 20 20
 PL PL1 0 0 10 20 20 10 0 0
 # And after that, agregation !
-OA agg1 C1 R1 L1 PL1
+OA Agg1 C1 R1 L1 PL1
 # Should show agg1
 LIST
-
-
+#
+EXIT

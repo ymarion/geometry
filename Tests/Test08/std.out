@@ -1,4 +1,8 @@
+# 3 ok for the creations
 OK
-R r1 0 0 20 20
+OK
+OK
+# 1 ok for the delete command
+OK
 L l1 0 0 20 20
-
+R r1 0 0 20 20

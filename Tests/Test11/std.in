@@ -5,5 +5,5 @@ C c2 10 10 10
 UNDO
 # Should just show c1
 LIST
-
-
+#
+EXIT

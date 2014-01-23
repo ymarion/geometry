@@ -1,6 +1,13 @@
+# Creations
 OK
+OK
+OK
+OK
+# Creation of the OA
+OK
+# Result of the list
+OA Agg1 C1 L1 PL1 R1
 C C1 0 0 10
-R R1 0 0 20 20
 L L1 0 0 20 20
-OA agg1 C1 R1 L1 PL1
-
+PL PL1 0 0 10 20 20 10 0 0
+R R1 0 0 20 20

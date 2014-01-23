@@ -7,4 +7,5 @@ UNDO
 REDO
 # Should have c1 and c2
 LIST
-
+#
+EXIT

@@ -1,4 +1,5 @@
-LOAD test.txt
+LOAD model.txt
 # Checking if the file has been loaded
 LIST
-
+#
+EXIT

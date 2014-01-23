@@ -2,4 +2,5 @@
 L L1 0 0 20 20
 # Should show L1
 LIST
-
+#
+EXIT

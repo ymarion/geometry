@@ -1,11 +1,6 @@
-# Initializing the model
 R r1 0 0 10 10
 R r2 0 0 20 20
 R r3 0 0 30 30
 C c1 0 0 10
 C c2 0 0 20
 C c3 0 0 30
-# Saving it
-SAVE testOut.txt
-#
-EXIT

@@ -4,3 +4,5 @@ C c1 0 10 10
 MOVE c1 10 10
 # Displaying the moved circle
 LIST
+#
+EXIT
