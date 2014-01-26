@@ -132,6 +132,7 @@ bool Interpreter::InterpretCommand( string const & rLine )
 			return false;
 		}
 		mrController.PrintList( false, outputFile );
+		cout << "OK" << endl;
 		return false;
 	}
 

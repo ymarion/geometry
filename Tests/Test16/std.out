@@ -1,13 +1,87 @@
+# Create c
+OK
+# LIST
 C c 1 1 1
+#
+#
+# DELETE c
+OK
+# LIST
 EMPTY
+#
+#
+#
+# Create c
+OK
+# LIST
 C c 2 2 2
+#
+#
+#
+# DELETE c
+OK
+# LIST
 EMPTY
+#
+#
+#
+# Create c
+OK
+# LIST
 C c 3 3 3
+#
+#
+#
+# DELETE c
+OK
+# LIST
 EMPTY
+#
+#
+#
+# UNDO the Delete
+OK
+# LIST
 C c 3 3 3
+#
+#
+#
+# UNDO the creation
+OK
+# LIST
 EMPTY
+#
+#
+#
+# REDO the creation
+OK
+# LIST
 C c 3 3 3
+#
+#
+#
+# UNDO the creation
+OK
+# LIST
 EMPTY
+#
+#
+#
+# UNDO the Delete
+OK
+# LIST
 C c 2 2 2
+#
+#
+#
+# UNDO the Creation
+OK
+# LIST
 EMPTY
+#
+#
+#
+# UNDO the Delete
+OK
+# LIST
 C c 1 1 1

@@ -45,6 +45,10 @@ public:
 	// How to use:
 	// Returns the error message if the command is invalid, empty otherwise.
 
+	void SetCommentOk ( bool commentOk );
+	// How to use:
+	// Sets the comment ok bool
+
 	void Do ( );
     // Contract:
 	// A command cannot be executed if already executed (does nothing).
@@ -85,6 +89,7 @@ protected:
 	bool mError;
 	std::string mErrorMessage;
 	bool mWasExecuted;
+	bool mCommentOk;
 	Drawing & mrDrawing;
 };
 

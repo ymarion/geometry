@@ -62,6 +62,7 @@ LoadCommand::LoadCommand ( Drawing & rDrawing, string const & rParameters )
 		}
 		else
 		{
+			pCommand->SetCommentOk( true );
 			pCommand->Do( );
 			mCommands.push_back( pCommand );
 			mInFile >> ws;

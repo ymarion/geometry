@@ -42,13 +42,19 @@ string const & Command::ErrorMessage ( ) const
 } //----- End of ErrorMessage
 
 
+void Command::SetCommentOk( bool commentOk )
+{
+	mCommentOk = commentOk;
+} //----- End of SetCommentOk
+
+
 void Command::Do ( )
 {
 	if ( !mWasExecuted && !mError )
 	{
 		execute( );
 		mWasExecuted = true;
-		cout << "# OK" << endl;
+		cout << ( mCommentOk ? "# " : "" ) <<"OK" << endl;
 	}
 } //----- End of Do
 
@@ -59,7 +65,7 @@ void Command::Undo ( )
 	{
 		cancel( );
 		mWasExecuted = false;
-		cout << "# OK" << endl;
+		cout << ( mCommentOk ? "# " : "" ) <<"OK" << endl;
 	}
 } //----- End of Undo
 
@@ -68,7 +74,8 @@ void Command::Undo ( )
 
 //---------------------------------------------- Constructors - destructor
 Command::Command ( Drawing & rDrawing, bool validState, bool executed )
-: mError( validState ), mrDrawing( rDrawing ), mWasExecuted( executed )
+: mError( validState ), mrDrawing( rDrawing ), mWasExecuted( executed ),
+  mCommentOk( false )
 {
 #ifdef DEBUG
 	cout << "# Calling constructor of <Command>" << endl;

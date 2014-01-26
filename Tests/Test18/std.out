@@ -1,3 +1,5 @@
+# Load
+OK
 # LIST of the file.txt
 # -------
 PL 0000000001 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -103,9 +105,14 @@ R 0000000100 0 0 0 0
 # -------
 # End of LIST of the file
 #
+# CLEAR
+OK
 # After the CLEAR
 EMPTY
 #
+# REDOing
+OK
+#
 # LIST of the file.txt
 # -------
 PL 0000000001 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -210,6 +217,9 @@ R 0000000099 0 0 0 0
 R 0000000100 0 0 0 0
 # -------
 # End of LIST of the file
+#
+# UNDO
+OK
 #
 # After the UNDO
 EMPTY
