@@ -114,8 +114,8 @@ Figure::~Figure ( )
 //------------------------------------------------------ Protected methods
 void Figure::toLower ( string & rStringToTransform ) const
 {
-	transform( rStringToTransform.begin( ), rStringToTransform.end( ),
-			   rStringToTransform.begin( ), ::tolower );
+	::transform( rStringToTransform.begin( ), rStringToTransform.end( ),
+				 rStringToTransform.begin( ), ::tolower );
 } //----- End of toLower
 
 
