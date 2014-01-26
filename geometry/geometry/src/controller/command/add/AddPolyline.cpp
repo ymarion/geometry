@@ -41,7 +41,7 @@ AddPolyline::AddPolyline ( Drawing & rDrawing, string const & rParameters )
 	istringstream iss( mParameters );
 	long x, y;
 	bool error = true;
-	while ( iss.good() )
+	while ( iss.good( ) )
 	{
 		iss >> x;
 		iss >> y;
@@ -50,12 +50,14 @@ AddPolyline::AddPolyline ( Drawing & rDrawing, string const & rParameters )
 		if ( !mError && error )
 		{
 			mError = true;
-			mErrorMessage = "Impossible to parse coordinates";
+			mErrorMessage = mFigureName
+							+ ": Impossible to parse coordinates";
 			break;
 		}
 
 		Point aPoint( x, y );
 		mPointList.push_back(aPoint);
+		iss >> ws;
 	}
 	mpFigure = new Polyline( mFigureName, mPointList );
 

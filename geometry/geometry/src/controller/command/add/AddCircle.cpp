@@ -50,7 +50,8 @@ AddCircle::AddCircle ( Drawing & rDrawing, string const & rParameters )
 	// No error yet except for the last one
 	{
 		mError = true;
-		mErrorMessage = "Impossible to parse coordinates or radius";
+		mErrorMessage = mFigureName
+						+ ": Impossible to parse coordinates or radius";
 	}
 	mpFigure = new Circle( mFigureName, mCenter, mRadius );
 

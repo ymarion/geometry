@@ -54,19 +54,25 @@ LoadCommand::LoadCommand ( Drawing & rDrawing, string const & rParameters )
 		getline( mInFile, parameters, Interpreter::ENDL );
 		Command *pCommand = Interpreter::GetInstance( )
 							.GetCommand( code, parameters );
-		mCommands.push_back( pCommand );
-		mInFile.peek( );
+
+		if ( !pCommand->isValid( ) )
+		{
+			handleError( pCommand );
+			break;
+		}
+		else
+		{
+			pCommand->Do( );
+			mCommands.push_back( pCommand );
+			mInFile >> ws;
+		}
 	}
 
-	for ( std::vector<Command *>::iterator it = mCommands.begin( );
+	for ( vector<Command *>::iterator it = mCommands.begin( );
 		  it != mCommands.end( );
 		  ++it )
 	{
-		if ( !( *it )->isValid( ) )
-		{
-			handleError( *it );
-			break;
-		}
+		( *it )->Undo( );
 	}
 
 #ifdef DEBUG
@@ -122,7 +128,7 @@ void LoadCommand::handleError ( Command * pCommand )
 	if ( !mError )
 	{
 		this->mError = true;
-		mErrorMessage = string( "ERR in LOAD: " ) + pCommand->ErrorMessage( );
+		mErrorMessage = string( "LOAD: " ) + pCommand->ErrorMessage( );
 	}
 #ifdef DEBUG
 	cout << "# Load command will be aborted" << endl;

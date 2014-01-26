@@ -48,7 +48,7 @@ void Command::Do ( )
 	{
 		execute( );
 		mWasExecuted = true;
-		cout << "OK" << endl;
+		cout << "# OK" << endl;
 	}
 } //----- End of Do
 
@@ -59,7 +59,7 @@ void Command::Undo ( )
 	{
 		cancel( );
 		mWasExecuted = false;
-		cout << "OK" << endl;
+		cout << "# OK" << endl;
 	}
 } //----- End of Undo
 

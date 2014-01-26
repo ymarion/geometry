@@ -48,7 +48,8 @@ AddLine::AddLine ( Drawing & rDrawing, string const & rParameters )
 	if ( !mError && error )
 	{
 		mError = true;
-		mErrorMessage = "Impossible to parse coordinates";
+		mErrorMessage = mFigureName
+						+ ": Impossible to parse coordinates";
 	}
 
 	mpFigure = new Line( mFigureName, mBegin, mEnd );

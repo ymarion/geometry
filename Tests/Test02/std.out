@@ -1,10 +1,3 @@
-# The loading OK message
-OK
-# Four insertions
-OK
-OK
-OK
-OK
 # The result of LIST should be the one of the file
 C C1 0 0 2
 L L1 0 0 20 20
