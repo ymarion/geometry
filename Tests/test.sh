@@ -182,6 +182,7 @@ then
       if [ $? -eq 0 ]
       then
         echo "                                       File #$number     : PASSED"
+        resultFiles="Passed"
       else
         echo "                                       File #$number     : FAILED"
         resultFiles="Failed"
@@ -193,7 +194,7 @@ then
       else
         echo "no rm activated"
       fi
-    else  
+    else
       echo "                                       File #$number     : FAILED"
       resultFiles="Failed"
       resultGlobal=0
@@ -214,7 +215,7 @@ else
   echo "                                       Global      : PASSED"
 fi
 echo "-----------------------------------------------------------"
-echo 
+echo
 
 cd $execDir
 
