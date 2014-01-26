@@ -1,0 +1,59 @@
+Testing the LOADing of different # of figures.
+Note: Generating time not counted.
+
+
+10 figures
+real	0m0.004s
+user	0m0.001s
+sys	0m0.002s
+
+50 figures
+real	0m0.005s
+user	0m0.003s
+sys	0m0.002s
+
+100 figures
+real	0m0.007s
+user	0m0.004s
+sys	0m0.002s
+
+500 figures
+real	0m0.026s
+user	0m0.023s
+sys	0m0.003s
+
+1000 figures
+real	0m0.048s
+user	0m0.043s
+sys	0m0.005s
+
+5000 figures
+real	0m0.253s
+user	0m0.236s
+sys	0m0.016s
+
+10000 figures
+real	0m0.506s
+user	0m0.475s
+sys	0m0.030s
+
+50000 figures
+real	0m2.820s
+user	0m2.662s
+sys	0m0.154s
+
+100000 figures
+real	0m6.865s
+user	0m6.453s
+sys	0m0.381s
+
+500000 figures
+real	0m30.766s
+user	0m29.159s
+sys	0m1.557s
+
+1000000 figures
+real	1m2.342s
+user	0m59.158s
+sys	0m3.100s
+
