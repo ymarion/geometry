@@ -1,0 +1,3 @@
+LOAD bigFile.txt
+LIST
+EXIT

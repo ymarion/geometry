@@ -1,0 +1,10 @@
+# Min UNDO/REDO for this test: 1
+LOAD file.txt
+LIST
+CLEAR
+LIST
+LOAD file.txt
+LIST
+UNDO
+LIST
+EXIT
