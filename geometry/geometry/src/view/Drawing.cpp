@@ -47,6 +47,8 @@ bool Drawing::MoveFigure ( std::string const & rName, Point const & rVector )
 	}
 
 	pFigure->Move( rVector );
+	pFigure->SetMoveOk( true );
+
 	return true;
 } //----- End of MoveFigure
 

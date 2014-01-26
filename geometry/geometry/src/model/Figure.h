@@ -36,21 +36,37 @@ public:
 	// How to use:
 	// Moves the object along the vector rVector.
 
+	long GetId ( ) const;
+	// How to use:
+	// Returns the object id (its creation order)
+
 	std::string const & GetName ( ) const;
 	// How to use:
 	// Returns the name of the figure.
+
+	bool IsIgnored ( ) const;
+	// How to use:
+	// Returns whether the figure is ignored or not.
+
+	virtual bool MoveOk ( ) const;
+	// How to use:
+	// Returns whether or not the figure should be moved (true by default).
 
 	void SetName ( std::string const & rNewName );
 	// How to use:
 	// Changes the name of the figure.
 
+	void SetIgnored ( bool ignored );
+	// How to use:
+	// Sets the ignored flag.
+
+	virtual void SetMoveOk ( bool moveOk );
+	// How to use:
+	// Sets the MoveOk flag.
+
 //--------------------------------------------------- Operator overloading
 	// Figure & operator = ( Figure const & aFigure );
 	// Default
-
-	long GetId ( ) const;
-	// How to use:
-	// Returns the object id (its creation order)
 
 	bool operator == ( Figure const & rFigureToCompare ) const;
 	// How to use:
@@ -95,6 +111,8 @@ protected:
 
 	long const mId;
 
+	bool mMoveOk;
+	bool mIsIgnored;
 	std::string mName;
 	std::string mNameLow;
 };

@@ -84,6 +84,7 @@ Command * Interpreter::GetCommand ( string const & code,
 		// not found
 	{
 		cout << "ERR Command unknown" << endl;
+		return 0;
 	}
 
 	Command * pCommand = ( mFactory.*( it->second ) )
@@ -136,7 +137,11 @@ bool Interpreter::InterpretCommand( string const & rLine )
 
 	Command *pCommand = GetCommand( code, parameters );
 
-	mrController.SaveAndExecute( pCommand );
+	if ( 0 != pCommand )
+	// Command exists
+	{
+		mrController.SaveAndExecute( pCommand );
+	}
 
 	return false;
 } //----- End of InterpretCommand

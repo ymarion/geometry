@@ -47,8 +47,7 @@ AddAggregate::AddAggregate ( Drawing & rDrawing, string const & rParameters )
 		if ( 0 != pFigure )
 		// Figure is found
 		{
-			AggregatedFigureInfo i;// By default, both bool are false
-			mFigures.insert( make_pair( pFigure, i ) );
+			mFigures.insert( pFigure );
 			// The figure should not be ignored
 		}
 		else if ( !mError )

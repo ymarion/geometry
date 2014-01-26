@@ -42,20 +42,47 @@ char const Aggregate::IMPOSSIBLE = Interpreter::DELIMITER;
 		  it != mAggregatedFigures.end( );
 		  ++it )
 	{
-		if ( !( it->second ).moved && !( it->second ).ignored )
+		if ( ( *it )->MoveOk( ) && ( *it )->IsIgnored( ) )
 		{
-			( it->first )->Move( rVector );
-			( it->second ).ignored = true;
+			( *it )->Move( rVector );
+			( *it )->SetMoveOk( false );
 		}
 	}
+} //----- End of Move
 
-	for ( AggregatedFigures::iterator it = mAggregatedFigures.begin( );
+
+/*virtual*/ bool Aggregate::MoveOk ( ) const
+{
+	if ( !mMoveOk ) { return false; }
+	for ( AggregatedFigures::const_iterator it = mAggregatedFigures.begin( );
 		 it != mAggregatedFigures.end( );
 		 ++it )
 	{
-		( it->second ).moved = false;
+		if ( !( *it )->MoveOk( ) )
+		{
+			return false;
+		}
 	}
-} //----- End of Move
+	return true;
+} //----- End of MoveOk
+
+
+/*virtual*/ void Aggregate::SetMoveOk ( bool moveOk )
+{
+	mMoveOk = moveOk;
+	if ( mMoveOk )
+	{
+		for ( AggregatedFigures::iterator it = mAggregatedFigures.begin( );
+			 it != mAggregatedFigures.end( );
+			 ++it )
+		{
+			if ( !( *it )->MoveOk( ) && !( *it )->IsIgnored( ) )
+			{
+				( *it )->SetMoveOk( true );
+			}
+		}
+	}
+} //----- End of SetMoveOk
 
 
 bool Aggregate::IsEmpty ( ) const
@@ -66,7 +93,7 @@ bool Aggregate::IsEmpty ( ) const
 		 it != mAggregatedFigures.end( );
 		 ++it )
 	{
-		if ( !( it->second ).ignored )
+		if ( !( *it )->IsIgnored( ) )
 		{
 			return false;
 		}
@@ -78,7 +105,7 @@ bool Aggregate::IsEmpty ( ) const
 
 void Aggregate::AddFigure( Figure *pFigure )
 {
-	mAggregatedFigures.insert( make_pair( pFigure, AggregatedFigureInfo( ) ) );
+	mAggregatedFigures.insert( pFigure );
 } //----- End of AddFigure
 
 
@@ -89,16 +116,16 @@ void Aggregate::AddFiguresFrom ( Aggregate const & rAggregate )
 } //----- End of AddFiguresFrom
 
 
-Figure * const Aggregate::FindFigure ( std::string const & rName )
+Figure * const Aggregate::FindFigure ( string const & rName )
 {
 	AggregatedFigures::iterator it( findFigure( rName ) );
-	if ( notFound( it ) || ( it->second ).ignored ) { return 0; }
+	if ( notFound( it ) || ( *it )->IsIgnored( ) ) { return 0; }
 
-	return it->first;
+	return *it;
 } //----- End of FindFigure
 
 
-void Aggregate::PrintList ( std::ostream & rOutput, bool alphabetical ) const
+void Aggregate::PrintList ( ostream & rOutput, bool alphabetical ) const
 {
 	if ( alphabetical )
 	{
@@ -106,9 +133,9 @@ void Aggregate::PrintList ( std::ostream & rOutput, bool alphabetical ) const
 			 it != mAggregatedFigures.end( );
 			 ++it )
 		{
-			if ( !( it->second ).ignored )
+			if ( !( *it )->IsIgnored( ) )
 			{
-				rOutput << *( it->first ) << endl;
+				rOutput << *( *it ) << endl;
 			}
 		}
 	}
@@ -119,11 +146,12 @@ void Aggregate::PrintList ( std::ostream & rOutput, bool alphabetical ) const
 			 it != mAggregatedFigures.end( );
 			 ++it )
 		{
-			if ( !( it->second ).ignored )
+			if ( !( *it )->IsIgnored( ) )
 			{
-				std::cout << "# inserting " << ( it->first )->ToString( ) << endl;
-				list.insert( make_pair( ( it->first )->GetId( ),
-									    ( it->first ) ) );
+#ifdef DEBUG
+				cout << "# inserting " << ( *it )->ToString( ) << endl;
+#endif
+				list.insert( make_pair( ( *it )->GetId( ), *it ) );
 			}
 		}
 		for ( map<int, Figure *>::const_iterator it = list.begin( );
@@ -144,7 +172,7 @@ bool Aggregate::IgnoreFigure ( string rName )
 		return false;
 	}
 
-	( it->second ).ignored = true;
+	( *it )->SetIgnored( true );
 
 	addIdToName( it );
 
@@ -159,7 +187,7 @@ void Aggregate::IgnoreFigures ( Aggregate const & rAggregate )
 		  it != rAggregate.mAggregatedFigures.end( );
 		  ++it)
 	{
-		IgnoreFigure( ( it->first )->GetName( ) );
+		IgnoreFigure( ( *it )->GetName( ) );
 	}
 } //----- End of IgnoreFigures
 
@@ -169,7 +197,7 @@ void Aggregate::PrintAll()
 		 it != mAggregatedFigures.end( );
 		 ++it )
 	{
-		cout << *( it->first ) << endl;
+		cout << *( *it ) << endl;
 	}
 	cout << endl;
 }
@@ -182,7 +210,7 @@ bool Aggregate::AcknowledgeFigure ( string const & rName )
 		return false;
 	}
 
-	( it->second ).ignored = false;
+	( *it )->SetIgnored( false );
 
 	removeIdFromName( it );
 
@@ -196,7 +224,7 @@ bool Aggregate::AcknowledgeFigures ( Aggregate const & rAggregate )
 		 it != rAggregate.mAggregatedFigures.end( );
 		 ++it)
 	{
-		if ( !AcknowledgeFigure( ( it->first )->GetName( ) ) )
+		if ( !AcknowledgeFigure( ( *it )->GetName( ) ) )
 		{
 			return false;
 		}
@@ -205,12 +233,12 @@ bool Aggregate::AcknowledgeFigures ( Aggregate const & rAggregate )
 } //----- End of AcknowledgeFigures
 
 
-bool Aggregate::DeleteFigure ( std::string const & rName )
+bool Aggregate::DeleteFigure ( string const & rName )
 {
 	AggregatedFigures::iterator it( findFigure( rName ) );
 	if ( notFound( it ) ) { return false; }
 
-	delete it->first;
+	delete *it;
 	mAggregatedFigures.erase( it );
 
 	return true;
@@ -224,7 +252,7 @@ void Aggregate::DeleteFigures ( Aggregate const & rAggregate )
 		 it != rAggregate.mAggregatedFigures.end( );
 		 ++it)
 	{
-		DeleteFigure( ( it->first )->GetName( ) );
+		DeleteFigure( ( *it )->GetName( ) );
 	}
 } //----- End of DeleteFigures
 
@@ -242,7 +270,7 @@ void Aggregate::Clear ( )
 		 it != mAggregatedFigures.end( );
 		 ++it )
 	{
-		delete it->first;
+		delete *it;
 	}
 	mAggregatedFigures.clear( );
 } //----- End of Clear
@@ -257,7 +285,10 @@ void Aggregate::Clear ( )
 		 it != mAggregatedFigures.end( );
 		 ++it )
 	{
-		aggregatesAsString += string( " " ) + ( it->first )->GetName( );
+		if ( !( *it )->IsIgnored( ) )
+		{
+			aggregatesAsString += string( " " ) + ( *it )->GetName( );
+		}
 	}
 
 	return string( "OA " ) + mName + aggregatesAsString;
@@ -286,6 +317,7 @@ Aggregate::~Aggregate ( )
 // Algorithm:
 //
 {
+//	Clear( );
 #ifdef DEBUG
 	cout << "# Calling destructor of <Aggregate>" << endl;
 #endif
@@ -313,21 +345,29 @@ struct Aggregate::EmptyFigure : public Figure
 
 void Aggregate::addIdToName( AggregatedFigures::iterator it )
 {
+	Figure *pFigure = *it;
 	stringstream ss;
-	ss << ( it->first )->GetName( ) << IMPOSSIBLE << ( it->first )->GetId( );
-	( it->first )->SetName( ss.str( ) );
+	ss << pFigure->GetName( ) << IMPOSSIBLE << pFigure->GetId( );
+	pFigure->SetName( ss.str( ) );
+
+	mAggregatedFigures.erase( it );
+	mAggregatedFigures.insert( pFigure );
 }
 
 
 void Aggregate::removeIdFromName( AggregatedFigures::iterator it )
 {
-	string newName = ( it->first )->GetName( );
+	Figure *pFigure = *it;
+	string newName = pFigure->GetName( );
 
 	long pos = newName.find( IMPOSSIBLE );
 	newName = newName.substr( 0, pos );
 	// Removing the impossible character and the ID
 
-	( it->first )->SetName( newName );
+	pFigure->SetName( newName );
+
+	mAggregatedFigures.erase( it );
+	mAggregatedFigures.insert( pFigure );
 }
 
 

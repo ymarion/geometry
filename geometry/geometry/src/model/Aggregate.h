@@ -10,21 +10,11 @@
 #define AGGREGATE_H_
 
 //-------------------------------------------------------- Interfaces used
-#include <map>
 #include <set>
 
 #include "Figure.h"
 
 //------------------------------------------------------------------ Types
-struct AggregatedFigureInfo
-// Stores whether the figure should be ignored and whether it was moved.
-{
-	AggregatedFigureInfo( bool isIgnored = false, bool isMoved = false )
-	: ignored ( isIgnored ), moved ( isMoved ) { }
-	bool ignored;
-	bool moved;
-};
-
 struct MyComp
 {
 	bool operator () ( Figure const * pFigure1,
@@ -33,7 +23,7 @@ struct MyComp
 		return *pFigure1 < *pFigure2;
 	}
 };
-typedef std::map<Figure *, AggregatedFigureInfo, MyComp> AggregatedFigures;
+typedef std::set<Figure *, MyComp> AggregatedFigures;
 
 //------------------------------------------------------------------------
 // Class role of <Aggregate>
@@ -55,9 +45,18 @@ public:
 
 	virtual void Move ( Point const & rVector );
 	// How to use:
-	// Moves all the figures aggregated.
+	// Moves all the figures (not moved yet) once, and sets them as moved.
+	// See ResetMovement for setting them back to not moved.
 	// Contract:
 	// Only moves each figure once.
+
+	virtual bool MoveOk ( ) const;
+	// How to use:
+	// Returns whether or not the figure should be moved (true by default).
+
+	virtual void SetMoveOk ( bool moveOk );
+	// How to use:
+	// Sets the MoveOk flag.
 
 	virtual std::string ToString ( ) const;
 	// How to use:

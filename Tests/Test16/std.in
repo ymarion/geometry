@@ -1,0 +1,42 @@
+# Min UNDO/REDO for this test: 5
+# 1-2
+C c 1 1 1
+LIST
+# 3-4
+DELETE c
+LIST
+# 5-6
+C c 2 2 2
+LIST
+# 7-8
+DELETE c
+LIST
+# 9-10
+C c 3 3 3
+LIST
+# 11-12
+DELETE c
+LIST
+# 13-14
+UNDO
+LIST
+# 15-16
+UNDO
+LIST
+# 17-18
+REDO
+LIST
+# 19-20
+UNDO
+LIST
+# 21-22
+UNDO
+LIST
+# 23-24
+UNDO
+LIST
+# 25-26
+UNDO
+LIST
+# Bye
+EXIT

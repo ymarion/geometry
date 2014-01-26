@@ -99,7 +99,7 @@ DeleteCommand::~DeleteCommand( )
 		bool acknowledged = mrDrawing.AcknowledgeFigure( ( *it )->GetName( ) );
 		if ( !acknowledged )
 		{
-			cout << "# FATAL ERROR: could not undo DELETE." << endl;
+			cout << "FATAL ERROR: could not undo DELETE." << endl;
 		}
 	}
 } //----- End of cancel

@@ -34,13 +34,25 @@ long Figure::currentId = 0;
 long Figure::GetId ( ) const
 {
 	return mId;
-}
+} //----- End of GetId
 
 
 string const & Figure::GetName( ) const
 {
 	return mName;
-}
+} //----- End of GetName
+
+
+bool Figure::IsIgnored ( ) const
+{
+	return mIsIgnored;
+} //----- End of IsIgnored
+
+
+bool Figure::MoveOk ( ) const
+{
+	return mMoveOk;
+} //----- End of MoveOk
 
 
 void Figure::SetName ( std::string const & rNewName )
@@ -48,25 +60,38 @@ void Figure::SetName ( std::string const & rNewName )
 	mName = rNewName;
 	mNameLow = rNewName;
 	toLower( mNameLow );
-}
+} //----- End of SetName
+
+
+void Figure::SetIgnored ( bool ignored )
+{
+	mIsIgnored = ignored;
+} //----- End of SetIgnored
+
+
+void Figure::SetMoveOk( bool moveOk )
+{
+	mMoveOk = moveOk;
+} //----- End of SetMoveOk
 
 
 //--------------------------------------------------- Operator overloading
 bool Figure::operator == ( Figure const & rFigureToCompare ) const
 {
 	return mNameLow == rFigureToCompare.mNameLow;
-}
+} //----- End of operator ==
 
 
 bool Figure::operator < ( Figure const & rFigureToCompare ) const
 {
 	return mNameLow < rFigureToCompare.mNameLow;
-}
+} //----- End of operator <
 
 
 //---------------------------------------------- Constructors - destructor
 Figure::Figure ( string name )
-: mName( name ), mNameLow( name ), mId( currentId++ )
+: mName( name ), mNameLow( name ), mId( currentId++ ), mMoveOk( true ),
+  mIsIgnored ( false )
 {
 	toLower( mNameLow );
 	// mNameLow now is lower case
@@ -91,7 +116,7 @@ void Figure::toLower ( string & rStringToTransform ) const
 {
 	transform( rStringToTransform.begin( ), rStringToTransform.end( ),
 			   rStringToTransform.begin( ), ::tolower );
-}
+} //----- End of toLower
 
 
 //------------------------------ Other definitions depending on <Figure>
@@ -100,4 +125,4 @@ std::ostream & operator << ( std::ostream & rOutput,
 {
 	rOutput << rFigure.ToString( );
 	return rOutput;
-}
+} //----- End of operator <<
