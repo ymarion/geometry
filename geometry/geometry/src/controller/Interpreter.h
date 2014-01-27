@@ -36,6 +36,8 @@ class Interpreter
 public:
 	static char const ENDL;
 	static char const DELIMITER;
+	static char const COMMENT;
+
 	static std::string const STOP;
 	static std::string const LIST;
 	static std::string const UNDO;

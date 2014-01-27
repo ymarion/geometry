@@ -161,7 +161,7 @@ Controller::Controller ( )
 
 void Controller::handleError ( Command * pCommand ) const
 {
-	cout << "ERR: " << pCommand->ErrorMessage( ) << endl;
+	cout << "ERR" << endl << "# " << pCommand->ErrorMessage( ) << endl;
 #ifdef DEBUG
 	mOutput << "# Command will be deleted" << endl;
 #endif

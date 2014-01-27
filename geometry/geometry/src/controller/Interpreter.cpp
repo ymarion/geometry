@@ -22,12 +22,14 @@ using namespace std;
 //-------------------------------------------------------- Class constants
 char const Interpreter::ENDL = '\n';
 char const Interpreter::DELIMITER = ' ';
+char const Interpreter::COMMENT = '#';
+
 string const Interpreter::STOP = "EXIT";
 string const Interpreter::LIST = "LIST";
-
 string const Interpreter::UNDO = "UNDO";
 string const Interpreter::REDO = "REDO";
 string const Interpreter::SAVE = "SAVE";
+
 
 MapStringToCommand const Interpreter::COMMAND_TABLE =
 			CreateMap<string const, FactoryMethod>
@@ -83,7 +85,7 @@ Command * Interpreter::GetCommand ( string const & code,
 	if ( it == Interpreter::COMMAND_TABLE.end( ) )
 		// not found
 	{
-		cout << "ERR Command unknown" << endl;
+		cout << "ERR" << endl << "# Command unknown" << endl;
 		return 0;
 	}
 
@@ -102,6 +104,11 @@ bool Interpreter::InterpretCommand( string const & rLine )
 		cout << "# Bye." << endl;
 		return true;
 	}
+	if ( COMMENT == rLine[0] )
+	{
+		// Ignoring comment
+		return false;
+	}
 	if ( LIST == rLine )
 	{
 		mrController.PrintList( );
@@ -118,17 +125,18 @@ bool Interpreter::InterpretCommand( string const & rLine )
         return false;
     }
 
-	string code( rLine.substr( 0, rLine.find( DELIMITER ) ) );
+	long pos = rLine.find( DELIMITER );
+	string code( rLine.substr( 0, pos ) );
 	// All characters until first DELIMITER
-	string parameters( rLine.substr( rLine.find( DELIMITER ) + 1 ) );
+	string parameters( rLine.substr( pos + 1 ) );
 	// All characters after first DELIMITER
 
 	if ( SAVE == code )
 	{
 		ofstream outputFile( parameters.c_str( ) );
-		if ( outputFile.fail( ) )
+		if ( outputFile.fail( ) || 0 == pos )
 		{
-			cout << "ERR: Impossible to write file " << parameters;
+			cout << "ERR" << endl << "# Impossible to write file " << parameters;
 			return false;
 		}
 		mrController.PrintList( false, outputFile );
